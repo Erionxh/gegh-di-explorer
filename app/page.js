@@ -13,9 +13,9 @@ export default function Home() {
   const filteredData = lexicalCorpus.filter(item => {
     const matchesSearch = 
       item.lemma.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.concept.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.meaning.sq.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.meaning.en.toLowerCase().includes(searchTerm.toLowerCase());
+      item.meaning.sq.toLowerCase().includes(searchTerm.toLowerCase());
     
     const matchesLens = selectedLens === 'all' || item.lenses.includes(selectedLens);
 
@@ -37,8 +37,8 @@ export default function Home() {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>
-          <h1 style={{ margin: 0, color: '#38bdf8' }}>{t.title} (CRAWL v0.1)</h1>
-          <p style={{ margin: '0.5rem 0 0', color: '#94a3b8' }}>Adversarial Test Instrument & Epistemic Engine (15 Entries)</p>
+          <h1 style={{ margin: 0, color: '#38bdf8' }}>{t.title} (GEGH Gheg Baseline v0.1)</h1>
+          <p style={{ margin: '0.5rem 0 0', color: '#94a3b8' }}>Living Dialectal Attestation Engine & Epistemic Instrument</p>
         </div>
         <div style={{ display: 'flex', gap: '1rem' }}>
           <button 
@@ -60,7 +60,7 @@ export default function Home() {
       <div style={{ background: '#1e293b', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem', border: '1px solid #334155', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <input 
           type="text" 
-          placeholder={t.searchPlaceholder} 
+          placeholder="Kërko koncept, lemma gegë, ose kuptim..." 
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #475569', background: '#0f172a', color: '#fff', fontSize: '1rem' }}
@@ -96,18 +96,28 @@ export default function Home() {
           {filteredData.map((item) => (
             <div key={item.id} style={{ background: '#1e293b', padding: '1.5rem', borderRadius: '8px', border: '1px solid #334155', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ color: '#38bdf8', fontWeight: 'bold', fontSize: '1.1rem' }}>{item.lemma.toUpperCase()} [{item.id}]</span>
+                <div>
+                  <span style={{ color: '#38bdf8', fontWeight: 'bold', fontSize: '1.1rem' }}>{item.lemma.toUpperCase()}</span>
+                  <span style={{ color: '#64748b', fontSize: '0.8rem', marginLeft: '0.5rem' }}>({item.concept})</span>
+                </div>
                 <span style={{ background: getStatusColor(item.status), padding: '0.2rem 0.6rem', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', color: '#fff' }}>
                   {item.status}
                 </span>
+              </div>
+
+              {/* Gheg Attestation Box */}
+              <div style={{ background: '#0f172a', padding: '0.75rem', borderRadius: '6px', fontSize: '0.85rem', color: '#f8fafc', borderLeft: '3px solid #38bdf8' }}>
+                <div><strong>Gheg Form(s):</strong> {item.attestations.gheg.join(', ')}</div>
+                {item.attestations.tosk && <div style={{ color: '#94a3b8' }}><strong>Tosk Parallel:</strong> {item.attestations.tosk.join(', ')}</div>}
+                <div style={{ color: '#64748b', fontSize: '0.75rem', marginTop: '0.25rem' }}>{item.attestations.morphology}</div>
               </div>
 
               <p style={{ color: '#cbd5e1', fontSize: '0.95rem', margin: 0 }}>
                 {item.meaning[lang]}
               </p>
 
-              <div style={{ background: '#0f172a', padding: '0.75rem', borderRadius: '6px', fontSize: '0.85rem', color: '#94a3b8', borderLeft: `3px solid ${getStatusColor(item.status)}` }}>
-                <strong>Falsification Condition:</strong> {item.falsificationCondition}
+              <div style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
+                <strong>Falsification:</strong> {item.falsificationCondition}
               </div>
 
               <div>
@@ -132,10 +142,10 @@ export default function Home() {
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
             <thead>
               <tr style={{ background: '#0f172a', color: '#38bdf8', borderBottom: '1px solid #334155' }}>
-                <th style={{ padding: '1rem' }}>Lemma</th>
+                <th style={{ padding: '1rem' }}>Concept</th>
+                <th style={{ padding: '1rem' }}>Gheg Attestation</th>
                 <th style={{ padding: '1rem' }}>Status</th>
                 <th style={{ padding: '1rem' }}>PIE Ref</th>
-                <th style={{ padding: '1rem' }}>Proto-Albanian</th>
                 <th style={{ padding: '1rem' }}>Sanskrit</th>
                 <th style={{ padding: '1rem' }}>Latin</th>
               </tr>
@@ -143,14 +153,14 @@ export default function Home() {
             <tbody>
               {filteredData.map((item) => (
                 <tr key={item.id} style={{ borderBottom: '1px solid #334155', color: '#cbd5e1' }}>
-                  <td style={{ padding: '1rem', fontWeight: 'bold', color: '#38bdf8' }}>{item.lemma}</td>
+                  <td style={{ padding: '1rem', fontWeight: 'bold', color: '#38bdf8' }}>{item.concept}</td>
+                  <td style={{ padding: '1rem', color: '#f8fafc', fontWeight: 'bold' }}>{item.attestations.gheg.join(', ')}</td>
                   <td style={{ padding: '1rem' }}>
                     <span style={{ background: getStatusColor(item.status), padding: '0.2rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem', color: '#fff', fontWeight: 'bold' }}>
                       {item.status}
                     </span>
                   </td>
                   <td style={{ padding: '1rem' }}>{item.matrix.pie}</td>
-                  <td style={{ padding: '1rem', color: '#38bdf8' }}>{item.matrix.protoAlbanian}</td>
                   <td style={{ padding: '1rem' }}>{item.matrix.sanskrit}</td>
                   <td style={{ padding: '1rem' }}>{item.matrix.latin}</td>
                 </tr>
