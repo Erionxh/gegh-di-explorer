@@ -38,7 +38,7 @@ export default function Home() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>
           <h1 style={{ margin: 0, color: '#38bdf8' }}>{t.title} (CRAWL v0.1)</h1>
-          <p style={{ margin: '0.5rem 0 0', color: '#94a3b8' }}>Adversarial Test Instrument & Epistemic Engine</p>
+          <p style={{ margin: '0.5rem 0 0', color: '#94a3b8' }}>Adversarial Test Instrument & Epistemic Engine (15 Entries)</p>
         </div>
         <div style={{ display: 'flex', gap: '1rem' }}>
           <button 
@@ -68,7 +68,7 @@ export default function Home() {
         
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <span style={{ color: '#94a3b8', fontSize: '0.85rem', marginRight: '0.5rem' }}>Analytical Lenses:</span>
-          {['all', 'philological', 'comparative', 'embodied'].map((lens) => (
+          {['all', 'philological', 'comparative', 'mythology', 'embodied'].map((lens) => (
             <button
               key={lens}
               onClick={() => setSelectedLens(lens)}
