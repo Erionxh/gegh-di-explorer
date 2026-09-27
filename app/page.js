@@ -79,8 +79,6 @@ export default function Home() {
                       target="_blank" 
                       rel="noopener noreferrer" 
                       style={{ color: '#38bdf8', textDecoration: 'none' }}
-                      onMouseOver={(e) => e.target.style.textDecoration = 'underline'}
-                      onMouseOut={(e) => e.target.style.textDecoration = 'none'}
                     >
                       <strong>{src.author} ({src.year})</strong>: <em>{src.work}</em> [{src.id}] 🔗
                     </a>
