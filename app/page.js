@@ -48,7 +48,7 @@ export default function Home() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ color: '#38bdf8', fontWeight: 'bold', fontSize: '1.1rem' }}>{item.root}</span>
               <span style={{ 
-                background: item.status === 'supported' ? '#0284c7' : '#d97706', 
+                background: item.status === 'supported' ? '#0284c7' : item.status === 'open' ? '#d97706' : '#dc2626', 
                 padding: '0.2rem 0.6rem', 
                 borderRadius: '4px', 
                 fontSize: '0.75rem', 
@@ -71,10 +71,19 @@ export default function Home() {
               <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.85rem', color: '#64748b', textTransform: 'uppercase' }}>
                 {lang === 'sq' ? 'Burimet Arkivore & Studimet (150+ Vjet)' : 'Archival Sources & Studies (150+ Yrs)'}
               </h4>
-              <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.85rem', color: '#94a3b8' }}>
+              <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.85rem' }}>
                 {item.sources.map((src, idx) => (
-                  <li key={idx} style={{ marginBottom: '0.25rem' }}>
-                    <strong>{src.author} ({src.year})</strong>: <em>{src.work}</em> [{src.id}]
+                  <li key={idx} style={{ marginBottom: '0.35rem' }}>
+                    <a 
+                      href={src.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      style={{ color: '#38bdf8', textDecoration: 'none' }}
+                      onMouseOver={(e) => e.target.style.textDecoration = 'underline'}
+                      onMouseOut={(e) => e.target.style.textDecoration = 'none'}
+                    >
+                      <strong>{src.author} ({src.year})</strong>: <em>{src.work}</em> [{src.id}] 🔗
+                    </a>
                   </li>
                 ))}
               </ul>
