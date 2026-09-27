@@ -8,6 +8,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLens, setSelectedLens] = useState('all');
   const [viewMode, setViewMode] = useState('cards');
+  const [activeWhy, setActiveWhy] = useState(null); // INV-17 Rationale Drawer
   const t = translations[lang];
 
   const filteredData = lexicalCorpus.filter(item => {
@@ -35,10 +36,10 @@ export default function Home() {
   return (
     <main style={{ padding: '2rem', fontFamily: 'sans-serif', background: '#0f172a', color: '#f8fafc', minHeight: '100vh' }}>
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
         <div>
-          <h1 style={{ margin: 0, color: '#38bdf8' }}>{t.title} (GEGH 30-Word Lexical Baseline)</h1>
-          <p style={{ margin: '0.5rem 0 0', color: '#94a3b8' }}>Evidence Matrix, Dialectal Attestation & Falsification Engine</p>
+          <h1 style={{ margin: 0, color: '#38bdf8' }}>{t.title} (GEGH 1.0 — BUILD GATE 03)</h1>
+          <p style={{ margin: '0.5rem 0 0', color: '#94a3b8' }}>100-Word Epistemic Corpus, Evidence Matrix & INV-17 Isolation Engine</p>
         </div>
         <div style={{ display: 'flex', gap: '1rem' }}>
           <button 
@@ -54,6 +55,11 @@ export default function Home() {
             {lang === 'sq' ? '🇬🇧 English' : '🇦🇱 Shqip'}
           </button>
         </div>
+      </div>
+
+      {/* INV-17 Rule Notice Banner */}
+      <div style={{ background: '#1e293b', borderLeft: '4px solid #d97706', padding: '1rem', borderRadius: '4px', marginBottom: '1.5rem', fontSize: '0.9rem', color: '#cbd5e1' }}>
+        <strong>🛡️ INV-17 Isolation Protocol Active:</strong> Refutations apply strictly to the specified claim only. Neighboring lexical hypotheses, competing claims, or adjacent entries receive zero inherited penalties.
       </div>
 
       {/* Search & Lenses */}
@@ -92,7 +98,7 @@ export default function Home() {
 
       {/* Conditional View */}
       {viewMode === 'cards' ? (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '1.5rem' }}>
           {filteredData.map((item) => (
             <div key={item.id} style={{ background: '#1e293b', padding: '1.5rem', borderRadius: '8px', border: '1px solid #334155', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -110,7 +116,7 @@ export default function Home() {
                 <div><strong>Gheg:</strong> {item.attestations.gheg.join(', ')} | <strong>Tosk:</strong> {item.attestations.tosk.join(', ')}</div>
                 <div style={{ color: '#94a3b8' }}><strong>Morphology:</strong> {item.attestations.morphology}</div>
                 <div style={{ color: '#38bdf8' }}><strong>Phonology:</strong> {item.attestations.phonology}</div>
-                <div style={{ color: '#64748b' }}><strong>Historical Attestation:</strong> {item.attestations.historical[0]}</div>
+                <div style={{ color: '#64748b' }}><strong>Historical:</strong> {item.attestations.historical[0]}</div>
               </div>
 
               {/* Claims & Hypotheses */}
@@ -119,7 +125,23 @@ export default function Home() {
               </div>
 
               <div style={{ fontSize: '0.85rem', color: '#94a3b8', background: '#111827', padding: '0.5rem', borderRadius: '4px' }}>
-                <strong>Falsification Condition (P42):</strong> {item.falsificationCondition}
+                <strong>Falsification (P42):</strong> {item.falsificationCondition}
+              </div>
+
+              {/* "Why?" Interactive Rationale Button */}
+              <div>
+                <button
+                  onClick={() => setActiveWhy(activeWhy === item.id ? null : item.id)}
+                  style={{ width: '100%', padding: '0.4rem', background: '#334155', color: '#38bdf8', border: '1px solid #475569', borderRadius: '4px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 'bold' }}
+                >
+                  {activeWhy === item.id ? '🔬 Hide Rationale ("Why?")' : '🔬 Why does GEGH put this here?'}
+                </button>
+
+                {activeWhy === item.id && (
+                  <div style={{ background: '#0b0f19', padding: '0.75rem', borderRadius: '4px', marginTop: '0.5rem', fontSize: '0.85rem', color: '#94a3b8', border: '1px dashed #38bdf8' }}>
+                    <strong style={{ color: '#f8fafc' }}>Epistemic Rationale:</strong> {item.whyRationale}
+                  </div>
+                )}
               </div>
 
               <div>
