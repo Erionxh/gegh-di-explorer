@@ -1,1 +1,12 @@
 
+{
+  "batch": "Block 2B",
+  "region": "Mirdita",
+  "status": "MIRDITA_NATIVE_OBSERVATION_SINGLE_INFORMANT",
+  "entries": [
+    { "concept": "TOOTH", "form": "dhamb", "note": "final b is weak/reduced" },
+    { "concept": "HAND", "form": "dor", "note": "singular field realization" },
+    { "concept": "FOOT", "form": "kam / kamb", "plural": "kamët (spoken kamt, silent ë)" },
+    { "concept": "HEART", "form": "zemen / zemna / zemën", "note": "local morphological variation" }
+  ]
+}
