@@ -1,12 +1,39 @@
-
 {
   "batch": "Block 2B",
   "region": "Mirdita",
   "status": "MIRDITA_NATIVE_OBSERVATION_SINGLE_INFORMANT",
   "entries": [
-    { "concept": "TOOTH", "form": "dhamb", "note": "final b is weak/reduced" },
-    { "concept": "HAND", "form": "dor", "note": "singular field realization" },
-    { "concept": "FOOT", "form": "kam / kamb", "plural": "kamët (spoken kamt, silent ë)" },
-    { "concept": "HEART", "form": "zemen / zemna / zemën", "note": "local morphological variation" }
+    {
+      "golden_id": "GC-0007",
+      "concept": "TOOTH",
+      "form": "dhamb",
+      "morphology": "singular noun",
+      "phonology": "final b is weak/reduced",
+      "provenance": "Mirdita native speaker observation"
+    },
+    {
+      "golden_id": "GC-0008",
+      "concept": "HAND",
+      "form": "dor",
+      "morphology": "singular noun",
+      "phonology": "local uninflected realization",
+      "provenance": "Mirdita native speaker observation"
+    },
+    {
+      "golden_id": "GC-0009",
+      "concept": "FOOT",
+      "form": "kam / kamb",
+      "morphology": "singular noun / plural: kamët",
+      "phonology": "plural spoken as kamt, final ë not realized",
+      "provenance": "Mirdita native speaker observation"
+    },
+    {
+      "golden_id": "GC-0010",
+      "concept": "HEART",
+      "form": "zemen / zemna / zemën",
+      "morphology": "local morphological/oblique variation",
+      "phonology": "nasalized/compressed vocalic profile",
+      "provenance": "Mirdita native speaker observation"
+    }
   ]
 }
