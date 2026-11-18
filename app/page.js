@@ -24,7 +24,7 @@ export default function Home() {
           <p>{h.what}</p>
         </div>
 
-        <h2 className="section-title" style={{ marginTop: 40 }}>{h.lensesTitle}</h2>
+        <h2 id="lentet" className="section-title" style={{ marginTop: 40, scrollMarginTop: 20 }}>{h.lensesTitle}</h2>
         <p style={{ margin: 0, color: 'var(--ink-2)' }}>{h.lensesLead}</p>
         <div className="home-lenses">
           {t.method.lenses.map(([n, name, text]) => (

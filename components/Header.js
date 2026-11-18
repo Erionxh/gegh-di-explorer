@@ -31,7 +31,7 @@ export function LangSwitch() {
   const { lang, setLang } = useLang();
   return (
     <div className="langswitch" role="group" aria-label="Gjuha / Language">
-      <button type="button" aria-pressed={lang === 'sq'} onClick={() => setLang('sq')}>SQ</button>
+      <button type="button" aria-pressed={lang === 'sq'} onClick={() => setLang('sq')} aria-label="Shqip"><img src="/flags/al.svg" alt="" width="20" height="15" className="flag" />SQ</button>
       <button type="button" aria-pressed={lang === 'en'} onClick={() => setLang('en')}>EN</button>
     </div>
   );
@@ -51,13 +51,15 @@ export default function Header() {
           </span>
           <span className="beta">BETA</span>
         </Link>
+        <div className="lang-mobile"><LangSwitch /></div>
         <nav aria-label="Main" className="main-nav">
+          <Link href="/#lentet" className="nav-lenses">{t.nav.lenses}</Link>
           <Link href="/#fjalet">{t.nav.words}</Link>
           <Link href="/kujtesa">{t.nav.memory}</Link>
           <Link href="/studiuesit">{t.nav.scholars}</Link>
           <Link href="/metodologjia">{t.method.navLabel}</Link>
           <Link href="/burimet">{t.nav.sources}</Link>
-          <LangSwitch />
+          <div className="lang-desktop"><LangSwitch /></div>
         </nav>
       </div>
     </header>
