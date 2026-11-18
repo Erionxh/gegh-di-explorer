@@ -89,5 +89,135 @@
         "test_en": "Complication: uj comes from the same root as English water and Greek hydor, so it was inherited, not invented by imitation."
       }
     ]
+  },
+  "Q20002": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "ha: zanorja e hapur a hap gojën plot, siç bëhet kur ha.",
+        "en": "ha: the open vowel a opens the mouth wide, as when you eat.",
+        "test_sq": "Krahaso me fjalët për të njëjtin kuptim në shumë gjuhë: a përsëritet lidhja tingull–lëvizje e gojës më shpesh se rastësisht?",
+        "test_en": "Compare with the words for the same meaning in many languages: does the sound–mouth-movement link recur more often than chance?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
+  },
+  "Q20003": {
+    "family": [
+      "hap",
+      "hapi (step)",
+      "hapje",
+      "i hapur"
+    ],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "hap / hapi: e njëjta hapje (goja, dera, këmbët te hapi); a e hapur e bart kuptimin.",
+        "en": "hap / hapi: the same opening (mouth, door, legs in a step); the open a carries the meaning.",
+        "test_sq": "Krahaso me fjalët për të njëjtin kuptim në shumë gjuhë: a përsëritet lidhja tingull–lëvizje e gojës më shpesh se rastësisht?",
+        "test_en": "Compare with the words for the same meaning in many languages: does the sound–mouth-movement link recur more often than chance?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
+  },
+  "Q20004": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "mbyll: nis me m dhe b, tingujt që bëhen duke mbyllur buzët. Goja mbyllet ndërsa thotë „mbyll”.",
+        "en": "mbyll: starts with m and b, the sounds made by closing the lips. The mouth closes while saying 'close'.",
+        "test_sq": "A nisin fjalët për „mbyll, hesht, buzë” me tinguj buzorë (m, b, p) më shpesh se rastësisht, në shumë gjuhë? Kjo prirje është testuar në kërkime për ikonicitetin.",
+        "test_en": "Do words for 'close, silent, lips' start with lip sounds (m, b, p) more often than chance across many languages? This tendency has been tested in iconicity research."
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
+  },
+  "Q20005": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "qesh: e dhe sh i tërheqin buzët anash, si në buzëqeshje.",
+        "en": "qesh: e and sh pull the lips sideways, as in a smile.",
+        "test_sq": "Krahaso me fjalët për të njëjtin kuptim në shumë gjuhë: a përsëritet lidhja tingull–lëvizje e gojës më shpesh se rastësisht?",
+        "test_en": "Compare with the words for the same meaning in many languages: does the sound–mouth-movement link recur more often than chance?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
+  },
+  "Q20006": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "kjaj / qaj: nofulla bie te a, fytyra ulet si në trishtim.",
+        "en": "kjaj / qaj: the jaw drops on a, the face falls as in sadness.",
+        "test_sq": "Krahaso me fjalët për të njëjtin kuptim në shumë gjuhë: a përsëritet lidhja tingull–lëvizje e gojës më shpesh se rastësisht?",
+        "test_en": "Compare with the words for the same meaning in many languages: does the sound–mouth-movement link recur more often than chance?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
   }
 }
