@@ -42,10 +42,11 @@ export default function Method() {
         </div>
         <h3 style={{ fontFamily: 'var(--sans)', fontSize: 18, marginTop: 28 }}>{m.subTitle}</h3>
         <div className="lens-grid" style={{ marginTop: 12 }}>
-          {m.sub.map(([n, name, text]) => (
+          {m.sub.map(([n, name, text, tag]) => (
             <article key={n} id={`lente-${n}`} className="card lens-card" style={{ borderLeft: '4px solid var(--gold)' }}>
               <span className="lens-n" style={{ width: 'auto', padding: '0 10px' }}>{n}</span>
               <h3>{name}</h3>
+              {tag && <em className="sub-tag">{tag}</em>}
               <p>{text}</p>
             </article>
           ))}
