@@ -136,3 +136,48 @@ table.data tr:hover td { background: #f7f9fc; }
 .lens-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
 .lens-list li { display: flex; justify-content: space-between; gap: 8px; }
 .superseded { background: #f7f7f4; border: 1px dashed #cfcabd; border-radius: 10px; padding: 14px 16px; font-size: 14px; color: var(--muted); }
+
+/* Metodologjia */
+.flow { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+.flow li { display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 12px; background: var(--paper); border: 1px solid var(--line); }
+.flow-n { width: 34px; height: 34px; border-radius: 999px; background: var(--green); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; }
+.flow li span:last-child { color: var(--ink-2); font-size: 15px; }
+.lens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-top: 24px; }
+.lens-card { padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+.lens-card h3 { font-size: 22px; }
+.lens-card p { margin: 0; color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+.lens-n { width: 40px; height: 40px; border-radius: 10px; background: var(--navy); color: var(--gold); display: inline-flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; font-size: 20px; }
+.legend { margin: 0; }
+.legend > div { display: grid; grid-template-columns: 170px 1fr; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #eef0f4; align-items: center; }
+.legend > div:last-child { border-bottom: none; }
+.legend dd { margin: 0; color: var(--ink-2); }
+@media (max-width: 560px) { .legend > div { grid-template-columns: 1fr; gap: 6px; } }
+.pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 20px; }
+.pillar { padding: 20px; }
+.pillar h3 { font-size: 20px; margin-bottom: 6px; }
+.pillar p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.roles { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.roles dt { font-weight: 700; color: var(--gold); }
+.roles dd { margin: 2px 0 0; color: #e6ebf4; }
+
+/* Dosja */
+.dossier-head { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; }
+.summary-box { flex: 1 1 260px; max-width: 360px; border: 1px solid #e1e4ea; border-radius: 10px; padding: 16px 18px; background: #fafbfc; }
+.summary-box h2 { font-family: var(--sans); font-size: 15px; margin-bottom: 10px; }
+.summary-box dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 14px; font-size: 14px; }
+.summary-box dt { color: var(--muted); }
+.summary-box dd { margin: 0; }
+.tabs { display: flex; flex-wrap: wrap; gap: 2px; border-bottom: 1px solid #e1e4ea; }
+.tabs button { min-height: 44px; padding: 0 14px; border: none; border-bottom: 2px solid transparent; background: none; font: inherit; font-size: 14px; color: var(--ink-2); cursor: pointer; }
+.tabs button[aria-selected="true"] { border-bottom-color: #1d4e89; color: #1d4e89; font-weight: 600; }
+.tabpanel p { margin: 0 0 10px; }
+.method-note { background: #eef3fb; border-radius: 10px; padding: 12px 14px; font-size: 14px; color: #1d3a63; }
+.chain { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0; }
+.chain li { display: flex; flex-direction: column; gap: 4px; padding: 12px 0 12px 22px; border-left: 2px solid #c9d6ea; position: relative; }
+.chain li::before { content: ""; position: absolute; left: -7px; top: 16px; width: 12px; height: 12px; border-radius: 999px; background: #1d4e89; }
+.chain li span { color: var(--ink-2); font-size: 15px; }
+.derivation { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 0 18px; }
+.deriv-box { padding: 8px 18px; border-radius: 8px; background: #e8eef7; color: #1d4e89; font-weight: 700; }
+.deriv-end { background: var(--green-soft); color: #22603d; }
+.deriv-pending { padding: 8px 18px; border-radius: 8px; border: 1.5px dashed #cfcabd; color: var(--muted); }
+.deriv-arrow { color: var(--muted); }

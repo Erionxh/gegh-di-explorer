@@ -1,8 +1,11 @@
 'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { UI } from '../lib/ui';
+import { UI2 } from '../lib/ui2';
 
-const LangContext = createContext({ lang: 'sq', setLang: () => {}, t: UI.sq });
+const T = { sq: { ...UI.sq, ...UI2.sq }, en: { ...UI.en, ...UI2.en } };
+
+const LangContext = createContext({ lang: 'sq', setLang: () => {}, t: T.sq });
 
 export function LangProvider({ children }) {
   const [lang, setLangState] = useState('sq');
@@ -23,7 +26,7 @@ export function LangProvider({ children }) {
     try { window.localStorage.setItem('geg-lang', l); } catch (e) {}
   };
 
-  return <LangContext.Provider value={{ lang, setLang, t: UI[lang] }}>{children}</LangContext.Provider>;
+  return <LangContext.Provider value={{ lang, setLang, t: T[lang] }}>{children}</LangContext.Provider>;
 }
 
 export function useLang() {

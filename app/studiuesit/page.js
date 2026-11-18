@@ -43,7 +43,7 @@ export default function Scholars() {
           </tbody>
         </table>
       </div>
-      <p style={{ fontSize: 13, color: 'var(--muted)', marginTop: 12 }}>{s.rule}</p>
+      <p style={{ fontSize: 13, color: 'var(--muted)', marginTop: 12 }}>{s.rule} · <Link href="/metodologjia#statuset">{t.method.legendLink}</Link></p>
     </div>
   );
 }

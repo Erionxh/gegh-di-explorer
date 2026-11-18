@@ -43,7 +43,7 @@ export default function Home() {
       <section className="band" id="si">
         <div className="wrap band-inner">
           <h2 className="section-title">{h.howTitle}</h2>
-          <p style={{ margin: 0, color: 'var(--ink-2)' }}>{h.howLead}</p>
+          <p style={{ margin: 0, color: 'var(--ink-2)' }}>{h.howLead} <Link href="/metodologjia">{t.method.h1} →</Link></p>
           <div className="steps">
             {h.steps.map(([title, text], i) => (
               <div key={title}>
