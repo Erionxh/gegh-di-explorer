@@ -236,3 +236,4 @@ table.data tr:hover td { background: #f7f9fc; }
 }
 .langswitch button { display: inline-flex; align-items: center; gap: 6px; }
 .flag { display: block; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.15); }
+.sub-tag { display: block; font-family: var(--serif); font-size: 17px; color: #8a6a1f; margin: 2px 0 6px; }

@@ -34,11 +34,12 @@ export default function Home() {
               <p>{text}</p>
               {n === '1' && (
                 <div className="home-sublenses">
-                  {t.method.sub.map(([sn, sname, stext]) => (
+                  {t.method.sub.map(([sn, sname, stext, stag]) => (
                     <div key={sn} className="home-sublens">
                       <span className="lens-n lens-n-sub">{sn}</span>
                       <div>
                         <strong>{sname}</strong>
+                        {stag && <em className="sub-tag">{stag}</em>}
                         <p>{stext}</p>
                       </div>
                     </div>
