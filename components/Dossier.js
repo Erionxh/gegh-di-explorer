@@ -164,7 +164,7 @@ export default function Dossier({ word: w }) {
             </div>
           )}
 
-          {tab === 4 && <p style={{ margin: 0, color: 'var(--ink-2)' }}>{d.sourcesEmpty}</p>}
+          {tab === 4 && <p style={{ margin: 0, color: 'var(--ink-2)' }}>{d.sourcesEmpty} <Link href="/burimet">→ {t.nav.sources}</Link></p>}
 
           {tab === 5 && (
             <div className="tabpanel">

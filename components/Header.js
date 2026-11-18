@@ -49,12 +49,14 @@ export default function Header() {
           <span className="brand-tag">
             {t.tag.map((line) => <span key={line}>{line}</span>)}
           </span>
+          <span className="beta">BETA</span>
         </Link>
         <nav aria-label="Main" className="main-nav">
           <Link href="/#fjalet">{t.nav.words}</Link>
           <Link href="/kujtesa">{t.nav.memory}</Link>
           <Link href="/studiuesit">{t.nav.scholars}</Link>
           <Link href="/metodologjia">{t.method.navLabel}</Link>
+          <Link href="/burimet">{t.nav.sources}</Link>
           <LangSwitch />
         </nav>
       </div>

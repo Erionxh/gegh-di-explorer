@@ -191,3 +191,13 @@ table.data tr:hover td { background: #f7f9fc; }
 .filter.on { background: var(--navy); border-color: var(--navy); color: #fff; }
 .sortswitch { border-color: #cfcabd; background: #fff; }
 .sortswitch button { color: var(--ink-2); }
+
+.source-list { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+.source { display: flex; gap: 22px; padding: 20px 24px; }
+.source h3 { font-size: 20px; line-height: 1.3; }
+.source-year { flex: 0 0 110px; font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--green); }
+.source-meta { margin: 0; font-size: 14px; color: var(--muted); }
+.source-link { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 8px; background: #eef3fb; color: #1d4e89; font-size: 14px; font-weight: 600; text-decoration: none; }
+.source-link:hover { background: #dfe8f6; color: #0f2f57; }
+@media (max-width: 600px) { .source { flex-direction: column; gap: 6px; } .source-year { flex: none; } }
+.beta { align-self: flex-start; margin-top: 4px; padding: 2px 7px; border: 1px solid var(--gold); border-radius: 6px; color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 1px; }
