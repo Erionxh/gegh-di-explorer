@@ -186,3 +186,8 @@ table.data tr:hover td { background: #f7f9fc; }
 .hyp p { margin: 0; }
 .hyp-test { color: var(--ink-2); font-size: 14.5px; }
 .hyp-by { color: var(--muted); font-size: 13px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.filter { min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid #d8d4c8; background: #fff; font: inherit; font-size: 14px; color: var(--ink); cursor: pointer; }
+.filter.on { background: var(--navy); border-color: var(--navy); color: #fff; }
+.sortswitch { border-color: #cfcabd; background: #fff; }
+.sortswitch button { color: var(--ink-2); }
