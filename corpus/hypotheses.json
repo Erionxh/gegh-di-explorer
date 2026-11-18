@@ -1,0 +1,223 @@
+{
+  "_about": "Hipoteza shtesë për fjalë të veçanta, sipas lenteve. Çdo hipotezë shkruan edhe testin që do ta përmbyste. Additional hypotheses per word, by lens; each states the test that would overturn it.",
+  "Q20001": {
+    "family": [
+      "me e shu' zjarmin (to put out the fire)",
+      "me e shu' sherrin (to calm a quarrel)",
+      "shuaj (Tosk)"
+    ],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1b",
+        "author": "",
+        "status": "OPEN",
+        "sq": "shuj = shh (fërshëllima e ujit mbi zjarr) + uj (ujë). Shuarja e zjarrit emërtohet nga mënyra si bëhet (me ujë) dhe nga tingulli (shhh).",
+        "en": "shuj = shh (the hiss of water on fire) + uj (water). Putting out a fire is named after how it is done (with water) and how it sounds (shhh).",
+        "test_sq": "Si duken format më të vjetra të shkruara (Buzuku, 1555)? A sillet -uj si fjala për ujë edhe në format e tjera të foljes?",
+        "test_en": "What do the oldest written forms look like (Buzuku, 1555)? Does -uj behave like the word for water in the verb's other forms?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Parashtesa sh- („çkë-, larg”, si te shkul, shkëput) + një rrënjë tjetër, pa lidhje me tingullin.",
+        "en": "The prefix sh- (‘un-, off, away’, as in shkul, shkëput) + another root, unrelated to the sound.",
+        "test_sq": "A ekziston rrënja pa sh- në shqip ose në gjuhë të afërta?",
+        "test_en": "Does the root exist without sh- in Albanian or related languages?"
+      },
+      {
+        "id": "H-03",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Folje e trashëguar; ngjashmëria me uj është rastësi.",
+        "en": "An inherited verb; the resemblance to uj is a coincidence.",
+        "test_sq": "Bie nëse H-01 ose H-02 provohen me forma të vjetra.",
+        "test_en": "Falls if H-01 or H-02 is shown by old forms."
+      }
+    ]
+  },
+  "GC-0007": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-1b",
+        "lens": "1b",
+        "author": "",
+        "status": "OPEN",
+        "sq": "shi: sh- imiton fërshëllimën e shiut.",
+        "en": "shi: the sh- imitates the hiss of rain.",
+        "test_sq": "Në shumë gjuhë, a nisin fjalët për shi, fërshëllimë e pëshpëritje me sh/s më shpesh se rastësisht?",
+        "test_en": "Across many languages, do words for rain, hissing and whispering start with sh/s more often than chance?"
+      }
+    ]
+  },
+  "GC-0002": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-1b",
+        "lens": "1b",
+        "author": "",
+        "status": "OPEN",
+        "sq": "zjerm: zj- imiton kërcitjen e zjarrit.",
+        "en": "zjerm: the zj- imitates the crackle of fire.",
+        "test_sq": "Ndërlikim: rrënja e vjetër dha edhe greq. thermos, ku nuk dëgjohet kërcitje. Ndoshta ikoniciteti ndikoi cila formë mbijetoi në shqip, jo nga lindi fjala.",
+        "test_en": "Complication: the old root also gave Greek thermos, where no crackle is heard. Iconicity may have shaped which form survived in Albanian, not where the word began."
+      }
+    ]
+  },
+  "GC-0001": {
+    "family": [
+      "ujvarë",
+      "ujis / ujit",
+      "ujëmbledhës",
+      "ujor",
+      "shuj (?)"
+    ],
+    "hypotheses": [
+      {
+        "id": "H-1b",
+        "lens": "1b",
+        "author": "",
+        "status": "OPEN",
+        "sq": "uj: tingulli u- ndjehet si rrjedhje uji.",
+        "en": "uj: the u- sound feels like flowing water.",
+        "test_sq": "Ndërlikim: uj vjen nga e njëjta rrënjë si angl. water dhe greq. hydor, pra u trashëgua, nuk u shpik nga imitimi.",
+        "test_en": "Complication: uj comes from the same root as English water and Greek hydor, so it was inherited, not invented by imitation."
+      }
+    ]
+  },
+  "Q20002": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "ha: zanorja e hapur a hap gojën plot, siç bëhet kur ha.",
+        "en": "ha: the open vowel a opens the mouth wide, as when you eat.",
+        "test_sq": "Krahaso me fjalët për të njëjtin kuptim në shumë gjuhë: a përsëritet lidhja tingull–lëvizje e gojës më shpesh se rastësisht?",
+        "test_en": "Compare with the words for the same meaning in many languages: does the sound–mouth-movement link recur more often than chance?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
+  },
+  "Q20003": {
+    "family": [
+      "hap",
+      "hapi (step)",
+      "hapje",
+      "i hapur"
+    ],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "hap / hapi: e njëjta hapje (goja, dera, këmbët te hapi); a e hapur e bart kuptimin.",
+        "en": "hap / hapi: the same opening (mouth, door, legs in a step); the open a carries the meaning.",
+        "test_sq": "Krahaso me fjalët për të njëjtin kuptim në shumë gjuhë: a përsëritet lidhja tingull–lëvizje e gojës më shpesh se rastësisht?",
+        "test_en": "Compare with the words for the same meaning in many languages: does the sound–mouth-movement link recur more often than chance?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
+  },
+  "Q20004": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "mbyll: nis me m dhe b, tingujt që bëhen duke mbyllur buzët. Goja mbyllet ndërsa thotë „mbyll”.",
+        "en": "mbyll: starts with m and b, the sounds made by closing the lips. The mouth closes while saying 'close'.",
+        "test_sq": "A nisin fjalët për „mbyll, hesht, buzë” me tinguj buzorë (m, b, p) më shpesh se rastësisht, në shumë gjuhë? Kjo prirje është testuar në kërkime për ikonicitetin.",
+        "test_en": "Do words for 'close, silent, lips' start with lip sounds (m, b, p) more often than chance across many languages? This tendency has been tested in iconicity research."
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
+  },
+  "Q20005": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "qesh: e dhe sh i tërheqin buzët anash, si në buzëqeshje.",
+        "en": "qesh: e and sh pull the lips sideways, as in a smile.",
+        "test_sq": "Krahaso me fjalët për të njëjtin kuptim në shumë gjuhë: a përsëritet lidhja tingull–lëvizje e gojës më shpesh se rastësisht?",
+        "test_en": "Compare with the words for the same meaning in many languages: does the sound–mouth-movement link recur more often than chance?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
+  },
+  "Q20006": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1a",
+        "author": "",
+        "status": "OPEN",
+        "sq": "kjaj / qaj: nofulla bie te a, fytyra ulet si në trishtim.",
+        "en": "kjaj / qaj: the jaw drops on a, the face falls as in sadness.",
+        "test_sq": "Krahaso me fjalët për të njëjtin kuptim në shumë gjuhë: a përsëritet lidhja tingull–lëvizje e gojës më shpesh se rastësisht?",
+        "test_en": "Compare with the words for the same meaning in many languages: does the sound–mouth-movement link recur more often than chance?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Fjalë e trashëguar; lidhja me lëvizjen e gojës është rastësi ose përforcim i mëvonshëm.",
+        "en": "An inherited word; the link with the mouth movement is coincidence or a later reinforcement.",
+        "test_sq": "Gjej rrënjën e vjetër dhe kognatët: a e kanë edhe ata të njëjtën lidhje tingull–kuptim?",
+        "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
+      }
+    ]
+  }
+}
