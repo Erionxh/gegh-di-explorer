@@ -1,0 +1,31 @@
+'use client';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { UI } from '../lib/ui';
+
+const LangContext = createContext({ lang: 'sq', setLang: () => {}, t: UI.sq });
+
+export function LangProvider({ children }) {
+  const [lang, setLangState] = useState('sq');
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem('geg-lang');
+      if (saved === 'sq' || saved === 'en') setLangState(saved);
+    } catch (e) {}
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  const setLang = (l) => {
+    setLangState(l);
+    try { window.localStorage.setItem('geg-lang', l); } catch (e) {}
+  };
+
+  return <LangContext.Provider value={{ lang, setLang, t: UI[lang] }}>{children}</LangContext.Provider>;
+}
+
+export function useLang() {
+  return useContext(LangContext);
+}
