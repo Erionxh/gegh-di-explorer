@@ -40,6 +40,16 @@ export default function Method() {
             </article>
           ))}
         </div>
+        <h3 style={{ fontFamily: 'var(--sans)', fontSize: 18, marginTop: 28 }}>{m.subTitle}</h3>
+        <div className="lens-grid" style={{ marginTop: 12 }}>
+          {m.sub.map(([n, name, text]) => (
+            <article key={n} className="card lens-card" style={{ borderLeft: '4px solid var(--gold)' }}>
+              <span className="lens-n" style={{ width: 'auto', padding: '0 10px' }}>{n}</span>
+              <h3>{name}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
         <h3 style={{ fontFamily: 'var(--sans)', fontSize: 18, marginTop: 28 }}>{m.extraTitle}</h3>
         <ul style={{ paddingLeft: 20, color: 'var(--ink-2)', lineHeight: 1.8 }}>
           {m.extra.map(([k, v]) => <li key={k}><strong>{k}:</strong> {v}</li>)}

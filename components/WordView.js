@@ -4,7 +4,7 @@ import { useLang } from './LangProvider';
 import { StatusPill } from './Footer';
 
 export default function WordView({ word: w }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const s = t.word;
   return (
     <div className="wrap word-page">
@@ -19,6 +19,7 @@ export default function WordView({ word: w }) {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {w.forms.map((f) => <span key={f} className="tag">{f}</span>)}
             {w.region !== '—' && <span className="tag">{w.region}</span>}
+            {w.tosk?.length > 0 && <span className="tag">Tosk: {w.tosk.join(', ')}</span>}
           </div>
         </section>
 
@@ -38,8 +39,21 @@ export default function WordView({ word: w }) {
               </div>
               {w.claim.reviewNote && <p style={{ margin: 0, color: 'var(--ink-2)' }}>{w.claim.reviewNote}</p>}
             </article>
-          ) : (
+          ) : (!w.hypotheses?.length && (
             <p style={{ margin: 0, color: 'var(--ink-2)' }}>{s.sayEmpty}</p>
+          ))}
+          {w.hypotheses?.map((h) => (
+            <article key={h.id} className="card pad" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center', justifyContent: 'space-between' }}>
+                <h3 style={{ fontFamily: 'var(--sans)', fontSize: 17 }}>{t.scholars.lensLabel} {h.lens}</h3>
+                <StatusPill status={h.status} />
+              </div>
+              <p style={{ margin: 0 }}>{lang === 'en' ? h.en : h.sq}</p>
+              <p style={{ margin: 0, color: 'var(--ink-2)', fontSize: 15 }}>{t.scholars.test}: {lang === 'en' ? h.test_en : h.test_sq}</p>
+            </article>
+          ))}
+          {w.family?.length > 0 && (
+            <div><strong>{t.scholars.family}:</strong> <span style={{ color: 'var(--ink-2)' }}>{w.family.join(' · ')}</span></div>
           )}
           <Link href={`/studiuesit/${w.id}`} className="btn btn-navy" style={{ alignSelf: 'flex-start' }}>{s.openDossier}</Link>
         </section>

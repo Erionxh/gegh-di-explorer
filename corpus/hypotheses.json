@@ -1,0 +1,93 @@
+{
+  "_about": "Hipoteza shtesë për fjalë të veçanta, sipas lenteve. Çdo hipotezë shkruan edhe testin që do ta përmbyste. Additional hypotheses per word, by lens; each states the test that would overturn it.",
+  "Q20001": {
+    "family": [
+      "me e shu' zjarmin (to put out the fire)",
+      "me e shu' sherrin (to calm a quarrel)",
+      "shuaj (Tosk)"
+    ],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "1b",
+        "author": "Erion Xhaferraj",
+        "status": "OPEN",
+        "sq": "shuj = shh (fërshëllima e ujit mbi zjarr) + uj (ujë). Shuarja e zjarrit emërtohet nga mënyra si bëhet (me ujë) dhe nga tingulli (shhh).",
+        "en": "shuj = shh (the hiss of water on fire) + uj (water). Putting out a fire is named after how it is done (with water) and how it sounds (shhh).",
+        "test_sq": "Si duken format më të vjetra të shkruara (Buzuku, 1555)? A sillet -uj si fjala për ujë edhe në format e tjera të foljes?",
+        "test_en": "What do the oldest written forms look like (Buzuku, 1555)? Does -uj behave like the word for water in the verb's other forms?"
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Parashtesa sh- („çkë-, larg”, si te shkul, shkëput) + një rrënjë tjetër, pa lidhje me tingullin.",
+        "en": "The prefix sh- (‘un-, off, away’, as in shkul, shkëput) + another root, unrelated to the sound.",
+        "test_sq": "A ekziston rrënja pa sh- në shqip ose në gjuhë të afërta?",
+        "test_en": "Does the root exist without sh- in Albanian or related languages?"
+      },
+      {
+        "id": "H-03",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Folje e trashëguar; ngjashmëria me uj është rastësi.",
+        "en": "An inherited verb; the resemblance to uj is a coincidence.",
+        "test_sq": "Bie nëse H-01 ose H-02 provohen me forma të vjetra.",
+        "test_en": "Falls if H-01 or H-02 is shown by old forms."
+      }
+    ]
+  },
+  "GC-0007": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-1b",
+        "lens": "1b",
+        "author": "Erion Xhaferraj",
+        "status": "OPEN",
+        "sq": "shi: sh- imiton fërshëllimën e shiut.",
+        "en": "shi: the sh- imitates the hiss of rain.",
+        "test_sq": "Në shumë gjuhë, a nisin fjalët për shi, fërshëllimë e pëshpëritje me sh/s më shpesh se rastësisht?",
+        "test_en": "Across many languages, do words for rain, hissing and whispering start with sh/s more often than chance?"
+      }
+    ]
+  },
+  "GC-0002": {
+    "family": [],
+    "hypotheses": [
+      {
+        "id": "H-1b",
+        "lens": "1b",
+        "author": "Erion Xhaferraj",
+        "status": "OPEN",
+        "sq": "zjerm: zj- imiton kërcitjen e zjarrit.",
+        "en": "zjerm: the zj- imitates the crackle of fire.",
+        "test_sq": "Ndërlikim: rrënja e vjetër dha edhe greq. thermos, ku nuk dëgjohet kërcitje. Ndoshta ikoniciteti ndikoi cila formë mbijetoi në shqip, jo nga lindi fjala.",
+        "test_en": "Complication: the old root also gave Greek thermos, where no crackle is heard. Iconicity may have shaped which form survived in Albanian, not where the word began."
+      }
+    ]
+  },
+  "GC-0001": {
+    "family": [
+      "ujvarë",
+      "ujis / ujit",
+      "ujëmbledhës",
+      "ujor",
+      "shuj (?)"
+    ],
+    "hypotheses": [
+      {
+        "id": "H-1b",
+        "lens": "1b",
+        "author": "Erion Xhaferraj",
+        "status": "OPEN",
+        "sq": "uj: tingulli u- ndjehet si rrjedhje uji.",
+        "en": "uj: the u- sound feels like flowing water.",
+        "test_sq": "Ndërlikim: uj vjen nga e njëjta rrënjë si angl. water dhe greq. hydor, pra u trashëgua, nuk u shpik nga imitimi.",
+        "test_en": "Complication: uj comes from the same root as English water and Greek hydor, so it was inherited, not invented by imitation."
+      }
+    ]
+  }
+}

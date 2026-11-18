@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useLang } from '../components/LangProvider';
 import { words } from '../lib/words';
 
-const FEATURED = ['GC-0001', 'GC-0002', 'GC-0004', 'GC-0022', 'GC-0024', 'GC-0079', 'GC-0025', 'GC-0012', 'GC-0013', 'GC-0039', 'GC-0037', 'Q10321'];
+const FEATURED = ['GC-0001', 'GC-0002', 'GC-0004', 'GC-0022', 'GC-0024', 'GC-0079', 'GC-0025', 'GC-0012', 'GC-0013', 'GC-0039', 'GC-0037', 'Q10321', 'Q20001'];
 
 export default function Home() {
   const { t } = useLang();

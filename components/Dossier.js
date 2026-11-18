@@ -20,7 +20,7 @@ function Dots({ status }) {
 }
 
 export default function Dossier({ word: w }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const s = t.scholars;
   const d = t.dossier;
   const c = w.claim;
@@ -29,6 +29,8 @@ export default function Dossier({ word: w }) {
   const claimRows = [];
   if (c) claimRows.push({ id: `${w.id}-A`, source: c.pieRoot, status: c.status, tag: d.current });
   if (c && c.superseded && c.superseded.pie_root) claimRows.push({ id: `${w.id}-0`, source: c.superseded.pie_root, status: 'REFUTED', tag: d.earlier });
+  (w.hypotheses || []).forEach((h) => claimRows.push({ id: `${w.id}-${h.id}`, source: lang === 'en' ? h.en : h.sq, status: h.status, tag: `${s.lensLabel} ${h.lens}${h.author ? ' · ' + h.author : ''}` }));
+  const has1b = (w.hypotheses || []).some((h) => h.lens === '1b');
   const lensStates = [c ? 'open' : 'collecting', 'none', 'collecting', 'na', 'none', 'collecting'];
   const issueUrl = `https://github.com/Erionxh/gegh-di-explorer/issues/new?title=${encodeURIComponent(w.headword + ' (' + w.id + ')')}`;
 
@@ -85,6 +87,29 @@ export default function Dossier({ word: w }) {
             <p style={{ margin: 0, color: 'var(--ink-2)' }}>{s.noClaim}</p>
           )}
         </section>
+
+        {(w.hypotheses?.length > 0 || w.family?.length > 0) && (
+          <section className="card pad" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <h2 style={{ fontSize: 24 }}>{s.hypTitle}</h2>
+            {w.hypotheses.map((h) => (
+              <article key={h.id} className="hyp">
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center', justifyContent: 'space-between' }}>
+                  <strong>{h.id} · {s.lensLabel} {h.lens}</strong>
+                  <StatusPill status={h.status} />
+                </div>
+                <p>{lang === 'en' ? h.en : h.sq}</p>
+                <p className="hyp-test"><strong>{s.test}:</strong> {lang === 'en' ? h.test_en : h.test_sq}</p>
+                {h.author && <p className="hyp-by">{s.by}: {h.author}</p>}
+              </article>
+            ))}
+            {w.family?.length > 0 && (
+              <div>
+                <strong>{s.family}:</strong>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 8 }}>{w.family.map((f) => <span key={f} className="tag">{f}</span>)}</div>
+              </div>
+            )}
+          </section>
+        )}
 
         <section className="card pad" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div role="tablist" aria-label={d.claimsTitle} className="tabs">
@@ -166,7 +191,15 @@ export default function Dossier({ word: w }) {
           <h2 style={{ fontFamily: 'var(--sans)', fontSize: 16 }}>{s.lensesTitle}</h2>
           <ul className="lens-list">
             {s.lenses.map((name, i) => (
-              <li key={name}><span>{i + 1} {name}</span><span style={{ color: 'var(--muted)' }}>{s.lensState[lensStates[i]]}</span></li>
+              <li key={name} style={{ flexDirection: 'column', gap: 6 }}>
+                <span style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}><span>{i + 1} {name}</span><span style={{ color: 'var(--muted)' }}>{s.lensState[lensStates[i]]}</span></span>
+                {i === 0 && s.sublenses.map((sub, j) => (
+                  <span key={sub} style={{ display: 'flex', justifyContent: 'space-between', gap: 8, paddingLeft: 14, fontSize: 13 }}>
+                    <span>{sub}</span>
+                    <span style={{ color: 'var(--muted)' }}>{j === 1 && has1b ? s.lensState.open : s.lensState.collecting}</span>
+                  </span>
+                ))}
+              </li>
             ))}
           </ul>
           <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--muted)' }}>{s.lensNote} <Link href="/metodologjia#lentet">→</Link></p>
