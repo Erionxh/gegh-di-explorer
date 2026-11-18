@@ -18,6 +18,38 @@ export default function Home() {
         <p className="lead">{h.lead}</p>
       </section>
 
+      <section className="wrap" style={{ paddingBottom: 48 }}>
+        <div className="card what-box">
+          <h2>{h.whatTitle}</h2>
+          <p>{h.what}</p>
+        </div>
+
+        <h2 className="section-title" style={{ marginTop: 40 }}>{h.lensesTitle}</h2>
+        <p style={{ margin: 0, color: 'var(--ink-2)' }}>{h.lensesLead}</p>
+        <div className="home-lenses">
+          {t.method.lenses.map(([n, name, text]) => (
+            <Link key={n} href={`/metodologjia#lente-${n}`} className={`card home-lens${n === '1' ? ' home-lens-1' : ''}`}>
+              <span className="lens-n">{n}</span>
+              <h3>{name}</h3>
+              <p>{text}</p>
+              {n === '1' && (
+                <div className="home-sublenses">
+                  {t.method.sub.map(([sn, sname, stext]) => (
+                    <div key={sn} className="home-sublens">
+                      <span className="lens-n lens-n-sub">{sn}</span>
+                      <div>
+                        <strong>{sname}</strong>
+                        <p>{stext}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="wrap doors" aria-label={h.d1Title + ' / ' + h.d2Title}>
         <article className="door door-memory">
           <div className="door-icon" style={{ background: '#e8f2ec' }}>

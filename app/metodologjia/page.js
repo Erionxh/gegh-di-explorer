@@ -33,7 +33,7 @@ export default function Method() {
         <p style={{ margin: 0, color: 'var(--ink-2)', maxWidth: 760 }}>{m.lensesLead}</p>
         <div className="lens-grid">
           {m.lenses.map(([n, name, text]) => (
-            <article key={n} className="card lens-card">
+            <article key={n} id={`lente-${n}`} className="card lens-card">
               <span className="lens-n">{n}</span>
               <h3>{name}</h3>
               <p>{text}</p>
@@ -43,7 +43,7 @@ export default function Method() {
         <h3 style={{ fontFamily: 'var(--sans)', fontSize: 18, marginTop: 28 }}>{m.subTitle}</h3>
         <div className="lens-grid" style={{ marginTop: 12 }}>
           {m.sub.map(([n, name, text]) => (
-            <article key={n} className="card lens-card" style={{ borderLeft: '4px solid var(--gold)' }}>
+            <article key={n} id={`lente-${n}`} className="card lens-card" style={{ borderLeft: '4px solid var(--gold)' }}>
               <span className="lens-n" style={{ width: 'auto', padding: '0 10px' }}>{n}</span>
               <h3>{name}</h3>
               <p>{text}</p>
