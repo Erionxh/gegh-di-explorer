@@ -647,3 +647,31 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .want-item em { font-style: normal; font-size: 11.5px; color: #22603d; font-weight: 700; margin-top: 3px; }
 .want-item.has { border-color: #b9dcc5; background: #f2f9f4; }
 .want-item:hover { border-color: var(--gold); }
+.rr-card { text-decoration: none; color: inherit; display: block; }
+.rr-card h2 { font-size: 22px; margin: 8px 0 6px; }
+.rr-card p { color: var(--ink-2); margin: 0 0 8px; }
+.rr-meta { font-size: 13px; color: var(--muted); }
+.rr-status { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 99px; background: #fdf1dc; color: #7a4a00; }
+.rr-leaning { background: #e6f0fb; color: #1d4f86; }
+.rr-closed { background: #e4f3ea; color: #22603d; }
+.rr-pleqnia { margin-top: 20px; border-left: 4px solid var(--gold); }
+.rr-pleqnia p { margin: 8px 0 4px; }
+.rr-pleqnia small { color: var(--muted); }
+.rr-h { font-size: 24px; margin: 30px 0 12px; }
+.rr-pos h3 { font-size: 18px; margin: 8px 0 6px; }
+.rr-pos p { color: var(--ink-2); margin: 0 0 8px; }
+.rr-pos.geg { border-color: #d9a441; }
+.rr-who { display: flex; gap: 8px; align-items: center; font-weight: 700; font-size: 14px; }
+.rr-letter { width: 26px; height: 26px; border-radius: 50%; background: var(--navy, #1d2b45); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; }
+.rr-src { font-size: 13px; color: var(--muted) !important; }
+.rr-thread { display: grid; gap: 10px; }
+.rr-ex { padding: 12px 14px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); }
+.rr-ex.obj { border-left: 4px solid #c0392b; }
+.rr-ex.rep { border-left: 4px solid #22603d; margin-left: 22px; }
+.rr-ex p { margin: 6px 0 8px; }
+.rr-exhead { font-size: 13px; color: var(--muted); }
+.rr-test li { margin-bottom: 6px; }
+.rr-votes { display: flex; gap: 8px; flex-wrap: wrap; }
+.rr-votes button { min-height: 36px; padding: 0 12px; border-radius: 99px; border: 1px solid var(--line); background: #fff; font-size: 13px; cursor: pointer; }
+.rr-votes button.on.yes { background: #e4f3ea; border-color: #22603d; color: #22603d; font-weight: 700; }
+.rr-votes button.on.no { background: #fbe9e7; border-color: #c0392b; color: #c0392b; font-weight: 700; }
