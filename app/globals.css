@@ -604,3 +604,13 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .kv-same.on { background: var(--green-soft); color: #22603d; border-color: #b9dcc5; }
 .kv-stance { background: #f3ead7; color: #7a5a12; font-weight: 600; border-radius: 6px; padding: 1px 8px; }
 .kv-motto { font-family: var(--serif, Georgia, serif); font-style: italic; font-size: 20px; color: #7a5a12; margin: 0 0 10px; }
+.wanted-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+.wanted-toggle button { display: flex; align-items: center; gap: 10px; text-align: left; padding: 12px 14px; border-radius: 12px; font: inherit; font-size: 17px; font-weight: 700; line-height: 1.25; cursor: pointer; border: 2px solid; }
+.wt-mark { font-size: 30px; line-height: 1; flex-shrink: 0; }
+.wt-yes { color: #22603d; border-color: #2f7d4f; background: #eef7f1; }
+.wt-yes.on { background: #2f7d4f; color: #fff; }
+.wt-no { color: #9a1f12; border-color: #c0392b; background: #fdf0ee; }
+.wt-no.on { background: #b03a2e; color: #fff; }
+.wt-list { margin: 4px 0 0; padding: 12px 14px 12px 32px; border-radius: 12px; font-size: 15.5px; line-height: 1.5; display: flex; flex-direction: column; gap: 6px; color: var(--ink-2); }
+.wt-list.yes { background: #eef7f1; } .wt-list.no { background: #fdf0ee; }
+@media (max-width: 380px) { .wanted-toggle button { font-size: 15px; padding: 10px; } .wt-mark { font-size: 24px; } }
