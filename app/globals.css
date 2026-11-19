@@ -237,3 +237,18 @@ table.data tr:hover td { background: #f7f9fc; }
 .langswitch button { display: inline-flex; align-items: center; gap: 6px; }
 .flag { display: block; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.15); }
 .sub-tag { display: block; font-family: var(--serif); font-size: 17px; color: #8a6a1f; margin: 2px 0 6px; }
+
+/* Sound comparison */
+.sound-compare { display: flex; flex-direction: column; gap: 14px; }
+.sc-rows { display: flex; flex-direction: column; gap: 6px; }
+.sc-row { display: grid; grid-template-columns: 44px 150px 1fr 1.2fr; gap: 12px; align-items: center; padding: 8px 10px; border-radius: 10px; background: #f6f4ee; }
+.sc-own { background: #fbf3dc; border: 1px solid #e3c873; }
+.sc-play { width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--navy, #1d2a44); color: #fff; font-size: 16px; cursor: pointer; }
+.sc-play.on { background: #b8892b; }
+.sc-lang { font-weight: 600; font-size: 15px; }
+.sc-written { font-size: 20px; font-family: var(--serif, Georgia, serif); }
+.sc-alb { font-size: 15px; color: var(--ink-2); }
+@media (max-width: 640px) {
+  .sc-row { grid-template-columns: 44px 1fr; row-gap: 2px; }
+  .sc-row .sc-lang, .sc-row .sc-written, .sc-row .sc-alb { grid-column: 2; }
+}
