@@ -23,7 +23,7 @@ const T = {
     ],
     newWords: 'Fjalët e reja që shpik populli për gjërat moderne janë thesar më vete. Si plaka në Laç që e quajti laptopin "knoisi", ai që këndon. Do t\'u hapim një sirtar të veçantë më vonë.',
     pickTitle: 'Si i thoni këto? Prekni një fjalë',
-    pickHint: 'Fjala hyn te "Çfarë do të thotë?". Ju shkruani si e thoni dhe e incizoni.',
+    pickHint: 'Fjala hyn te "Çfarë do të thotë?". Ju shkruani si e thoni dhe e regjistroni.',
   },
   en: {
     title: 'What we are looking for',
