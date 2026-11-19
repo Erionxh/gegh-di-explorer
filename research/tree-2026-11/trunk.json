@@ -1,0 +1,112 @@
+[
+ [
+  "Swedish",
+  0.211,
+  "Gothic"
+ ],
+ [
+  "Italian",
+  0.202,
+  "Latin"
+ ],
+ [
+  "Lithuanian",
+  0.202,
+  "—"
+ ],
+ [
+  "French",
+  0.201,
+  "Latin"
+ ],
+ [
+  "Icelandic",
+  0.199,
+  "Gothic"
+ ],
+ [
+  "Serbo-Croat",
+  0.198,
+  "Old Church Slavonic"
+ ],
+ [
+  "German",
+  0.197,
+  "Gothic"
+ ],
+ [
+  "Polish",
+  0.197,
+  "Old Church Slavonic"
+ ],
+ [
+  "Romanian",
+  0.196,
+  "Latin"
+ ],
+ [
+  "Spanish",
+  0.193,
+  "Latin"
+ ],
+ [
+  "Latvian",
+  0.19,
+  "—"
+ ],
+ [
+  "Russian",
+  0.19,
+  "Old Church Slavonic"
+ ],
+ [
+  "Welsh: North",
+  0.184,
+  "Old Irish"
+ ],
+ [
+  "Gaelic: Irish",
+  0.176,
+  "Old Irish"
+ ],
+ [
+  "Persian: Tehran",
+  0.175,
+  "Avestan: Younger"
+ ],
+ [
+  "Armenian: Eastern",
+  0.174,
+  "Armenian: Classical"
+ ],
+ [
+  "Greek: Modern Std",
+  0.167,
+  "Greek: Ancient"
+ ],
+ [
+  "English",
+  0.163,
+  "Gothic"
+ ],
+ [
+  "Pashto",
+  0.143,
+  "Avestan: Younger"
+ ],
+ [
+  "Hindi",
+  0.132,
+  "Vedic: Early"
+ ],
+ [
+  "Albanian: Gheg",
+  0.131,
+  "—"
+ ],
+ [
+  "Albanian: Standard",
+  0.115,
+  "—"
+ ]
+]

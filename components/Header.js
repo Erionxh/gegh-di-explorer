@@ -57,6 +57,7 @@ export default function Header() {
           <Link href="/#fjalet">{t.nav.words}</Link>
           <Link href="/kujtesa">{t.nav.memory}</Link>
           <Link href="/studiuesit">{t.nav.scholars}</Link>
+          <Link href="/pema">{t.nav.tree}</Link>
           <Link href="/metodologjia">{t.method.navLabel}</Link>
           <Link href="/burimet">{t.nav.sources}</Link>
           <div className="lang-desktop"><LangSwitch /></div>
