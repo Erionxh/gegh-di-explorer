@@ -38,6 +38,7 @@ export async function POST(req) {
     word,
     meaning: clip(form.get('meaning')),
     village: clip(form.get('village'), 120),
+    country: clip(form.get('country'), 80),
     region: clip(form.get('region'), 120),
     speaker: clip(form.get('speaker'), 60),
     era: clip(form.get('era'), 60),

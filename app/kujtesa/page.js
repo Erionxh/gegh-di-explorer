@@ -49,6 +49,7 @@ export default function Kujtesa() {
     data.set('word', f.elements['k-word'].value);
     data.set('meaning', f.elements['k-meaning'].value);
     data.set('village', f.elements['k-village'].value);
+    data.set('country', f.elements['k-country'].value);
     data.set('region', f.elements['k-region'].value);
     data.set('speaker', f.elements['k-who'].value);
     data.set('era', f.elements['k-when'].value);
@@ -127,6 +128,11 @@ export default function Kujtesa() {
             <label htmlFor="k-when">{m.when}</label>
             <input id="k-when" type="text" placeholder={m.whenPh} />
           </div>
+        </div>
+        <div className="field">
+          <label htmlFor="k-country">{m.country}</label>
+          <input id="k-country" type="text" list="k-countries" placeholder={m.countryPh} />
+          <datalist id="k-countries">{m.countries.map((c) => <option key={c} value={c} />)}</datalist>
         </div>
         <div className="field">
           <label htmlFor="k-example">{m.example}</label>
