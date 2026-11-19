@@ -3,8 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useLang } from '../../components/LangProvider';
 
 export default function Kujtesa() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const m = t.memory;
+  const [audioBlob, setAudioBlob] = useState(null);
+  const [state, setState] = useState('idle');
   const [recording, setRecording] = useState(false);
   const [audioUrl, setAudioUrl] = useState(null);
   const [micError, setMicError] = useState(false);
@@ -28,6 +30,7 @@ export default function Kujtesa() {
       rec.onstop = () => {
         stream.getTracks().forEach((tr) => tr.stop());
         const blob = new Blob(chunksRef.current, { type: rec.mimeType || 'audio/webm' });
+        setAudioBlob(blob);
         setAudioUrl(URL.createObjectURL(blob));
         setRecording(false);
       };
@@ -39,8 +42,29 @@ export default function Kujtesa() {
     }
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
+    const f = e.currentTarget;
+    const data = new FormData();
+    data.set('word', f.elements['k-word'].value);
+    data.set('meaning', f.elements['k-meaning'].value);
+    data.set('village', f.elements['k-village'].value);
+    data.set('region', f.elements['k-region'].value);
+    data.set('speaker', f.elements['k-who'].value);
+    data.set('era', f.elements['k-when'].value);
+    data.set('example', f.elements['k-example'].value);
+    data.set('consent', String(f.elements['k-consent'].checked));
+    data.set('lang', lang);
+    if (audioBlob) data.set('audio', audioBlob, 'recording');
+    setState('sending');
+    try {
+      const res = await fetch('/api/kujtesa', { method: 'POST', body: data });
+      if (res.ok) { setState('sent'); f.reset(); setAudioBlob(null); setAudioUrl(null); }
+      else if (res.status === 503) setState('offline');
+      else setState('error');
+    } catch (err) {
+      setState('error');
+    }
     setSent(true);
   }
 
@@ -109,12 +133,14 @@ export default function Kujtesa() {
           <input id="k-example" type="text" placeholder={m.examplePh} />
         </div>
         <label className="consent">
-          <input type="checkbox" required defaultChecked />
+          <input id="k-consent" type="checkbox" required defaultChecked />
           <span>{m.consent}</span>
         </label>
-        {sent && <p className="notice" role="status">{m.pending}</p>}
+        {sent && state === 'sent' && <p className="notice" role="status">{m.thanks}</p>}
+        {sent && state === 'offline' && <p className="notice" role="status">{m.pending}</p>}
+        {sent && state === 'error' && <p className="notice" role="alert" style={{ background: '#fde8e6', color: '#9a1f12' }}>{m.failed}</p>}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <button type="submit" className="btn btn-navy">{m.submit}</button>
+          <button type="submit" className="btn btn-navy" disabled={state === 'sending'}>{state === 'sending' ? m.sending : m.submit}</button>
         </div>
       </form>
     </div>
