@@ -581,3 +581,26 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .kv-ex { font-size: 11.5px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: #7a4a00; border: 1px dashed #d9a441; border-radius: 5px; padding: 1px 7px; }
 .linkish { background: none; border: none; padding: 0; font: inherit; color: var(--green); text-decoration: underline; cursor: pointer; }
 .meyer-box { display: flex; flex-direction: column; gap: 12px; }
+.kv-words { margin-top: 24px; }
+.kv-words h2 { font-size: 26px; margin-bottom: 4px; }
+.kv-words > p { margin: 0 0 14px; color: var(--ink-2); }
+.kv-wgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.kv-wcard { display: flex; flex-direction: column; gap: 4px; padding: 16px; text-decoration: none; color: inherit; position: relative; }
+.kv-wcard:hover { border-color: var(--gold); }
+.kv-wcard strong { font-family: var(--serif, Georgia, serif); font-size: 30px; color: var(--navy); }
+.kv-wcard .kv-ex { position: absolute; top: 12px; right: 12px; }
+.kv-wg { color: var(--ink-2); font-size: 15px; }
+.kv-wn { font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+.kv-wgo { font-size: 14px; color: var(--green); font-weight: 600; margin-top: 4px; }
+.kv-whead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-top: 14px; }
+.kv-vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 12px; }
+.kv-ver { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+.kv-vform { font-family: var(--serif, Georgia, serif); font-size: 28px; color: var(--navy); font-weight: 700; }
+.kv-vsay { font-style: italic; color: var(--ink-2); }
+.kv-audio { display: flex; align-items: center; gap: 10px; background: #f6f3ec; border-radius: 999px; padding: 6px 12px; font-size: 13px; color: var(--muted); }
+.kv-audio span { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--gold); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
+.kv-audio i { flex: 1; height: 14px; background: repeating-linear-gradient(90deg, #c9b98f 0 2px, transparent 2px 5px); border-radius: 3px; opacity: .8; }
+.kv-same { align-self: flex-start; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 13.5px; cursor: pointer; color: var(--ink-2); }
+.kv-same.on { background: var(--green-soft); color: #22603d; border-color: #b9dcc5; }
+.kv-stance { background: #f3ead7; color: #7a5a12; font-weight: 600; border-radius: 6px; padding: 1px 8px; }
+.kv-motto { font-family: var(--serif, Georgia, serif); font-style: italic; font-size: 20px; color: #7a5a12; margin: 0 0 10px; }

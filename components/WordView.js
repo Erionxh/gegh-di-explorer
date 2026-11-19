@@ -4,6 +4,7 @@ import { useLang } from './LangProvider';
 import { StatusPill } from './Footer';
 import SoundCompare from './SoundCompare';
 import MeyerBox from './MeyerBox';
+import { getWordDebate } from '../lib/forum';
 
 export default function WordView({ word: w }) {
   const { t, lang } = useLang();
@@ -61,7 +62,10 @@ export default function WordView({ word: w }) {
           {w.family?.length > 0 && (
             <div><strong>{t.scholars.family}:</strong> <span style={{ color: 'var(--ink-2)' }}>{w.family.join(' · ')}</span></div>
           )}
-          <Link href={`/studiuesit/${w.id}`} className="btn btn-navy" style={{ alignSelf: 'flex-start' }}>{s.openDossier}</Link>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+            <Link href={`/studiuesit/${w.id}`} className="btn btn-navy">{s.openDossier}</Link>
+            {getWordDebate(w.id) && <Link href={`/kuveni/fjala/${w.id}`} className="btn btn-outline">{lang === 'en' ? 'Debate it in the Kuven' : 'Debato në Kuven'} →</Link>}
+          </div>
         </section>
       </div>
 

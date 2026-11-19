@@ -1,7 +1,5 @@
-import { KuvendiIndex } from '../../components/Kuvendi';
-
-export const metadata = { title: 'Kuvendi · GEG', robots: { index: false } };
+import { redirect } from 'next/navigation';
 
 export default function Page() {
-  return <KuvendiIndex />;
+  redirect('/kuveni');
 }
