@@ -12,7 +12,7 @@ const T = {
     credit: 'Skanimi: Bayerische Staatsbibliothek München (MDZ), pa të drejta autori, për përdorim jo tregtar.',
     ph: 'Kërko një fjalë shqipe, gjermane ose një rrënjë…', gheg: 'Vetëm hyrjet me forma gege (geg., scut., Mirdita, Dibra, Mati)',
     count: (n, m) => `${n} hyrje${m ? ` · po shfaqen ${m}` : ''}`, more: 'Shfaq më shumë', page: 'faqja', orig: 'Shiko faqen origjinale', loading: 'Duke ngarkuar fjalorin…',
-    missing: 'Faqet 40–257 (B–M) po shtohen.', abbr: 'Shkurtime të Meyer-it: geg. = gegërisht, to. = toskërisht, scut. = Shkodër, cal./sic. = arbëreshët e Kalabrisë/Siçilisë, gr. = arvanitët e Greqisë, Ro. = Rossi, Bla. = Blanchus, Mitk. = Mitkos, Hahn, Kav. = Kavalioti.',
+    missing: '', abbr: 'Shkurtime të Meyer-it: geg. = gegërisht, to. = toskërisht, scut. = Shkodër, cal./sic. = arbëreshët e Kalabrisë/Siçilisë, gr. = arvanitët e Greqisë, Ro. = Rossi, Bla. = Blanchus, Mitk. = Mitkos, Hahn, Kav. = Kavalioti.',
   },
   en: {
     eyebrow: 'Full source · Lenses 1 and 2', h1: "Meyer's Dictionary (1891)",
@@ -21,7 +21,7 @@ const T = {
     credit: 'Scan: Bayerische Staatsbibliothek München (MDZ), no copyright, for non-commercial use.',
     ph: 'Search an Albanian or German word, or a root…', gheg: 'Only entries with Gheg forms (geg., scut., Mirdita, Dibra, Mati)',
     count: (n, m) => `${n} entries${m ? ` · showing ${m}` : ''}`, more: 'Show more', page: 'page', orig: 'See the original page', loading: 'Loading the dictionary…',
-    missing: 'Pages 40–257 (B–M) are being added.', abbr: "Meyer's abbreviations: geg. = Gheg, to. = Tosk, scut. = Shkodra, cal./sic. = Arbëresh of Calabria/Sicily, gr. = Arvanites of Greece, Ro. = Rossi, Bla. = Blanchus, Mitk. = Mitkos, Hahn, Kav. = Kavalioti.",
+    missing: '', abbr: "Meyer's abbreviations: geg. = Gheg, to. = Tosk, scut. = Shkodra, cal./sic. = Arbëresh of Calabria/Sicily, gr. = Arvanites of Greece, Ro. = Rossi, Bla. = Blanchus, Mitk. = Mitkos, Hahn, Kav. = Kavalioti.",
   },
 };
 
