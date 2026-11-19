@@ -479,3 +479,30 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .hdr-left { justify-content: flex-start; }
 .hdr-left .brand-rule { display: none; }
 .hdr-left .brand-stack { margin: 0 auto; }
+
+/* Header v5: calmer, per mockup */
+.hdr-left .brand-stack { gap: 5px; }
+.hdr-left .brand-stack .brand-name { white-space: nowrap; padding-bottom: 5px; border-bottom: 1.5px solid rgba(217,181,106,.75); letter-spacing: .5px; }
+.hdr-left .brand-region { letter-spacing: .32em; color: #e8ecf3; }
+.hdr-top .brand-tag { color: #cfae6a; }
+.hdr-beta { color: #7f8ca6; }
+.hdr-pills { position: relative; }
+.hdr-pill { border: 0 !important; height: 40px; font-size: 17px; color: #d4b36f; background: none; }
+.hdr-pill:hover { background: none; color: #f0d79c; text-decoration: underline; text-underline-offset: 5px; }
+.hdr-pills::after { content: ""; position: absolute; left: 50%; top: 9px; bottom: 9px; width: 1.5px; background: rgba(217,181,106,.6); transform: translateX(-50%); }
+.hdr-links { border-top-color: #34466b; }
+.hdr-links a { flex-direction: row !important; justify-content: center; color: #e8ecf3; }
+.hdr-links a + a { border-left-color: #34466b; }
+.hdr-tools .nav-rec { background: transparent; border: 1px solid #4a5d82; color: #e8ecf3; padding: 0 16px 0 12px; gap: 9px; }
+.hdr-tools .nav-rec:hover { background: rgba(255,255,255,.06); color: #fff; }
+.rec-dot { width: 14px; height: 14px; border-radius: 50%; background: #c2493f; box-shadow: 0 0 0 3px rgba(194,73,63,.22); flex-shrink: 0; }
+.hdr-tools .langswitch button[aria-pressed="true"] { background: rgba(217,181,106,.88); }
+@media (min-width: 701px) { .hdr-pill { font-size: 19px; } .hdr-links a { font-size: 15.5px; } }
+@media (max-width: 700px) { .hdr-left .brand-stack .brand-name { font-size: 22px; } .hdr-left .brand-region { font-size: 9.5px; } .hdr-links a { font-size: 13px; } }
+@media (max-width: 700px) {
+  .hdr-act { gap: 6px; }
+  .hdr-tools .nav-rec { padding: 0 10px 0 9px; gap: 7px; font-size: 14.5px; }
+  .rec-dot { width: 12px; height: 12px; }
+  .hdr-act .langswitch button { padding: 0 7px; font-size: 12.5px; }
+  .hdr-links a { font-size: 12.5px; }
+}
