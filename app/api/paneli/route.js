@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 // Paneli: statistika private për themeluesin. Fjalëkalimi vjen vetëm nga ADMIN_PASSWORD në Vercel.
 // Private stats for the founder. The password lives only in the ADMIN_PASSWORD env var on Vercel.
 
-const hash = (s) => crypto.createHash('sha256').update(String(s || '')).digest();
+const hash = (s) => crypto.createHash('sha256').update(String(s || '').trim()).digest(); // hapësirat në fillim/fund nuk llogariten
 const count = (rows, key) => {
   const m = {};
   rows.forEach((r) => { const k = (r[key] || '').toString().trim() || '—'; m[k] = (m[k] || 0) + 1; });
