@@ -31,23 +31,26 @@ export default function Method() {
       <section className="wrap" id="lentet" style={{ paddingTop: 56, paddingBottom: 24 }}>
         <h2 className="section-title">{m.lensesTitle}</h2>
         <p style={{ margin: 0, color: 'var(--ink-2)', maxWidth: 760 }}>{m.lensesLead}</p>
-        <div className="lens-grid">
+        <div className="home-lenses">
           {m.lenses.map(([n, name, text]) => (
-            <article key={n} id={`lente-${n}`} className="card lens-card">
+            <article key={n} id={`lente-${n}`} className={`card home-lens${n === '1' ? ' home-lens-1' : ''}`} style={{ scrollMarginTop: 20 }}>
               <span className="lens-n">{n}</span>
               <h3>{name}</h3>
               <p>{text}</p>
-            </article>
-          ))}
-        </div>
-        <h3 style={{ fontFamily: 'var(--sans)', fontSize: 18, marginTop: 28 }}>{m.subTitle}</h3>
-        <div className="lens-grid" style={{ marginTop: 12 }}>
-          {m.sub.map(([n, name, text, tag]) => (
-            <article key={n} id={`lente-${n}`} className="card lens-card" style={{ borderLeft: '4px solid var(--gold)' }}>
-              <span className="lens-n" style={{ width: 'auto', padding: '0 10px' }}>{n}</span>
-              <h3>{name}</h3>
-              {tag && <em className="sub-tag">{tag}</em>}
-              <p>{text}</p>
+              {n === '1' && (
+                <div className="home-sublenses">
+                  {m.sub.map(([sn, sname, stext, stag]) => (
+                    <div key={sn} id={`lente-${sn}`} className="home-sublens" style={{ scrollMarginTop: 20 }}>
+                      <span className="lens-n lens-n-sub">{sn}</span>
+                      <div>
+                        <strong>{sname}</strong>
+                        {stag && <em className="sub-tag">{stag}</em>}
+                        <p>{stext}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </article>
           ))}
         </div>
