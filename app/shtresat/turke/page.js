@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useLang } from '../../../components/LangProvider';
 import { TURKISH } from '../../../lib/layers';
+import { bsbUrl } from '../../../lib/meyerView';
 
 const VIA = { P: { sq: 'nga persishtja', en: 'from Persian' }, A: { sq: 'nga arabishtja', en: 'from Arabic' }, G: { sq: 'nga greqishtja, nëpërmjet arabishtes', en: 'from Greek, via Arabic' } };
 const T = {
@@ -9,7 +10,7 @@ const T = {
     back: '← Shtresat e huazimeve', eyebrow: 'Shtresa 4 · Hulumtim i hapur', h1: 'Shtresa turke',
     lead: 'Pesë shekuj nën osmanët lanë fjalë në çdo shtëpi: në kuzhinë, në shtrat, në familje, në treg. Disa nga këto fjalë nuk janë as turke në rrënjë: turqishtja i kishte marrë vetë nga persishtja ose arabishtja dhe na i dha më tej.',
     dirNote: 'Drejtimi për këto fjalë: hyrë në shqip. Turqishtja ka familjen e fjalës dhe dëshmitë më të hershme. Fjalë shqipe kanë hyrë edhe në turqishten e Ballkanit, por janë pak dhe do të shënohen veç.',
-    srcNote: 'Prejardhja turke e këtyre fjalëve është e njohur në studime. Burimi me faqe për secilën (Boretzky 1975–76, Dizdari 2005) do të shtohet, sipas rregullit të burimit.',
+    srcNote: 'Prejardhja turke e këtyre fjalëve është e njohur në studime. Për 14 prej tyre ka tani lidhje me faqen te Meyer (1891). Për të tjerat, burimi me faqe (Boretzky 1975–76, Dizdari 2005) do të shtohet, sipas rregullit të burimit.',
     qTitle: 'Pyetjet e hapura',
     q: [
       'Cilat nga këto i thoni ende? Cilat i thoshte gjyshja, por ju jo më?',
@@ -24,7 +25,7 @@ const T = {
     back: '← The loan layers', eyebrow: 'Layer 4 · Open research', h1: 'The Turkish layer',
     lead: 'Five centuries under the Ottomans left words in every house: in the kitchen, in the bed, in the family, at the market. Some of these words are not even Turkish at the root: Turkish had taken them from Persian or Arabic and passed them on.',
     dirNote: 'Direction for these words: into Albanian. Turkish has the word family and the earliest records. Albanian words also entered Balkan Turkish, but they are few and will be listed separately.',
-    srcNote: 'The Turkish origin of these words is well known in the literature. The source with page for each (Boretzky 1975–76, Dizdari 2005) will be added, under the source rule.',
+    srcNote: 'The Turkish origin of these words is well known in the literature. 14 of them now link to their page in Meyer (1891). For the rest, the source with page (Boretzky 1975–76, Dizdari 2005) will be added, under the source rule.',
     qTitle: 'The open questions',
     q: [
       'Which of these do you still say? Which did your grandmother say, but you no longer do?',
@@ -57,13 +58,14 @@ export default function TurkishLayer() {
         <section key={g.sq} className="lens-sec">
           <h2>{lang === 'en' ? g.en : g.sq}</h2>
           <div className="layer-list">
-            {g.words.map(([sq, tr, msq, men, via, native]) => (
+            {g.words.map(([sq, tr, msq, men, via, native, pg]) => (
               <div key={sq} className="layer-row">
                 <div className="layer-main">
                   <strong>{sq}</strong>
                   <span className="layer-tr">← {tr}{via ? ` (${VIA[via][lang]})` : ''}</span>
                   <span className="layer-m">{lang === 'en' ? men : msq}</span>
                   {native && <span className="layer-native">{lang === 'en' ? 'native rival' : 'fjala vendase'}: <b>{native}</b></span>}
+                  {pg > 0 && <a className="layer-native" href={bsbUrl(pg + 22)} target="_blank" rel="noopener noreferrer">Meyer, {lang === 'en' ? 'p.' : 'f.'} {pg} ↗</a>}
                 </div>
                 <Link href={`/kujtesa?fjala=${encodeURIComponent(sq)}`} className="layer-say">{t.say}</Link>
               </div>
