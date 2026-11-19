@@ -8,6 +8,7 @@ import { TURKISH } from '../../lib/layers';
 import { PILLARS, PILLAR_ORDER } from '../../lib/pillars';
 import { LENS_PAGES, LENS_ORDER } from '../../lib/lensPages';
 import { GEG500 } from '../../lib/geg500';
+import { loadMeyer, fold as mfold } from '../../lib/meyerView';
 
 const fold = (s) => (s || '').toString().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
@@ -21,6 +22,8 @@ export default function Search() {
   const t = T[lang];
   const [q, setQ] = useState('');
   useEffect(() => { setQ(new URLSearchParams(window.location.search).get('q') || ''); }, []);
+  const [meyer, setMeyer] = useState(null);
+  useEffect(() => { loadMeyer().then(setMeyer); }, []);
   const f = fold(q.trim());
 
   const res = useMemo(() => {
@@ -37,13 +40,14 @@ export default function Search() {
       ].filter((p) => has(p.name, p.text)),
     };
   }, [f, lang]);
+  const mres = useMemo(() => { if (!meyer || f.length < 2) return []; const g = mfold(q.trim()); return [...meyer.filter((e) => mfold(e.h).startsWith(g)), ...meyer.filter((e) => !mfold(e.h).startsWith(g) && e.f.includes(g))].slice(0, 8); }, [meyer, f, q]);
 
   function submit(e) {
     e.preventDefault();
     window.history.replaceState(null, '', q ? `/kerko?q=${encodeURIComponent(q)}` : '/kerko');
   }
 
-  const total = res ? Object.values(res).reduce((a, b) => a + b.length, 0) : 0;
+  const total = res ? Object.values(res).reduce((a, b) => a + b.length, 0) + mres.length : 0;
   return (
     <div className="wrap lens-page" style={{ paddingTop: 40, paddingBottom: 64 }}>
       <h1 style={{ fontSize: 'clamp(32px, 5vw, 46px)' }}>{t.h1}</h1>
@@ -70,6 +74,11 @@ export default function Search() {
       {res?.turkish.length > 0 && (
         <section className="lens-sec"><h2>{t.turkish}</h2>
           <div className="search-tags">{res.turkish.map(([sq, tr]) => <Link key={sq} href="/shtresat/turke" className="tag">{sq} ← {tr}</Link>)}</div>
+        </section>
+      )}
+      {mres.length > 0 && (
+        <section className="lens-sec"><h2>{lang === 'en' ? "Meyer's Dictionary (1891)" : 'Fjalori i Meyer-it (1891)'}</h2>
+          <ul>{mres.map((e, k) => <li key={k}><Link href={`/meyer?q=${encodeURIComponent(q.trim())}`}><strong>{e.h}</strong></Link> — {e.t.slice(0, 110)}… <span style={{ color: 'var(--muted)', fontSize: 13 }}>(f. {e.p})</span></li>)}</ul>
         </section>
       )}
       {res?.sources.length > 0 && (
