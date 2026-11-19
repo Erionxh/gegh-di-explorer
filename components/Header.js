@@ -53,7 +53,7 @@ export default function Header() {
         </Link>
         <div className="lang-mobile"><LangSwitch /></div>
         <nav aria-label="Main" className="main-nav">
-          <Link href="/kujtesa" className="nav-rec"><span className="nav-rec-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0" /><path d="M12 18v3" /></svg></span>{t.nav.add}</Link>
+          <Link href="/kujtesa" className="nav-rec" aria-label={t.nav.add + " — Kujtesa"}><span className="nav-rec-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0" /><path d="M12 18v3" /></svg></span>{t.nav.add}</Link>
           <Link href="/#lentet" className="nav-lenses">{t.nav.lenses}</Link>
           <Link href="/shtyllat" className="nav-lenses">{t.nav.pillars}</Link>
           <Link href="/#fjalet">{t.nav.words}</Link>

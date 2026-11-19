@@ -342,4 +342,3 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .hero-rec-text strong { font-size: 21px; color: #1d2a44; }
 .hero-rec-text span { font-size: 14.5px; color: var(--ink-2); }
 @media (max-width: 700px) { .main-nav { gap: 10px 12px; font-size: 14px; } }
-@media (max-width: 700px) { .main-nav a.nav-rec { width: 100%; justify-content: center; padding: 8px 14px; font-size: 16px; } .main-nav a.nav-rec .nav-rec-dot { width: 26px; height: 26px; } }
