@@ -330,3 +330,16 @@ a.home-sublens:hover strong { text-decoration: underline; }
 @media (max-width: 720px) { .memory-left, .memory-form { flex: 1 1 100%; } .memory { gap: 28px; } }
 .wanted { overflow: hidden; } .wanted-cats { width: 100%; }
 @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr !important; } .memory-form { padding: 20px; } } .field input, .field select, .field textarea { max-width: 100%; min-width: 0; box-sizing: border-box; } .field { min-width: 0; }
+
+/* Record buttons: menu and home */
+.main-nav a.nav-rec { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px 5px 5px; border-radius: 999px; background: #2f7d4f; color: #fff; font-weight: 700; }
+.main-nav a.nav-rec:hover { background: #276a43; color: #fff; }
+.nav-rec-dot { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #fff; color: #2f7d4f; }
+.hero-rec { display: inline-flex; align-items: center; gap: 16px; margin-top: 22px; padding: 10px 24px 10px 10px; border-radius: 999px; background: #fff; border: 1.5px solid #cfe3d6; text-decoration: none; color: inherit; box-shadow: 0 4px 18px rgba(47,125,79,.12); }
+.hero-rec:hover { border-color: #2f7d4f; }
+.hero-rec-btn { display: inline-flex; align-items: center; justify-content: center; width: 68px; height: 68px; border-radius: 50%; background: #2f7d4f; color: #fff; box-shadow: 0 0 0 7px #e1efe6; flex-shrink: 0; }
+.hero-rec-text { display: flex; flex-direction: column; gap: 2px; }
+.hero-rec-text strong { font-size: 21px; color: #1d2a44; }
+.hero-rec-text span { font-size: 14.5px; color: var(--ink-2); }
+@media (max-width: 700px) { .main-nav { gap: 10px 12px; font-size: 14px; } }
+@media (max-width: 700px) { .main-nav a.nav-rec { width: 100%; justify-content: center; padding: 8px 14px; font-size: 16px; } .main-nav a.nav-rec .nav-rec-dot { width: 26px; height: 26px; } }
