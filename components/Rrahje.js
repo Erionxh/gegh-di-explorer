@@ -1,20 +1,20 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
 import { useLang } from './LangProvider';
 import { RRAHJE, RR_STATUS } from '../lib/rrahje';
 import { SOURCES } from '../lib/sources';
+import LiveTopic from './KuveniLive';
 
 const T = {
   sq: {
-    mock: 'Mock-up · votat nuk ruhen ende', eyebrow: 'Kuveni · Rrahje mendimesh', h1: 'Rrahje mendimesh',
+    mock: 'Qëndrimet dhe kundërshtimet lart janë përmbledhja e GEG. Poshtë, te „Nga ju”, shkruani ju.', eyebrow: 'Kuveni · Rrahje mendimesh', h1: 'Rrahje mendimesh',
     lead: 'Pyetjet e mëdha të gegnishtes, me të gjitha anët. Çdo qëndrim ka provat e veta, çdo kundërshtim ka përgjigjen e vet. Statusin e vendos Pleqnia, me arsye, jo votat.',
     back: '← Rrahje mendimesh', backK: '← Kuveni', positions: 'Qëndrimet', exchange: 'Kundërshtime dhe përgjigje', test: 'Çka do ta zgjidhte?',
     pleqnia: 'Pleqnia', pleqniaNote: 'Statusi ndryshon vetëm kur vjen provë e re, jo kur dikush „fiton” rrahjen.',
     obj: 'Kundërshtim', rep: 'Përgjigje', to: 'për qëndrimin', yes: 'Bindëse', no: 'Jo bindëse', word: 'Faqja e fjalës', join: 'Sillni një provë ose një kundërshtim', n: 'qëndrime',
   },
   en: {
-    mock: 'Mock-up · votes are not saved yet', eyebrow: 'Kuveni · Clash of ideas', h1: 'Rrahje mendimesh',
+    mock: 'The positions and objections above are the GEG summary. Below, under "From you", you write.', eyebrow: 'Kuveni · Clash of ideas', h1: 'Rrahje mendimesh',
     lead: 'The big questions of Gheg, with every side. Each position has its evidence, each objection its reply. The status is set by the Pleqnia (the elders), with reasons, not by votes.',
     back: '← Rrahje mendimesh', backK: '← Kuveni', positions: 'The positions', exchange: 'Objections and replies', test: 'What would settle it?',
     pleqnia: 'Pleqnia (the elders\' judgment)', pleqniaNote: 'The status changes only when new evidence arrives, not when someone "wins" the argument.',
@@ -22,15 +22,6 @@ const T = {
   },
 };
 
-function Votes({ t }) {
-  const [v, setV] = useState(0);
-  return (
-    <div className="rr-votes">
-      <button className={v === 1 ? 'on yes' : ''} onClick={() => setV(v === 1 ? 0 : 1)}>✓ {t.yes}</button>
-      <button className={v === -1 ? 'on no' : ''} onClick={() => setV(v === -1 ? 0 : -1)}>✗ {t.no}</button>
-    </div>
-  );
-}
 
 const Status = ({ s, lang }) => <span className={`rr-status rr-${s}`}>{RR_STATUS[s][lang]}</span>;
 
@@ -86,7 +77,6 @@ export function RrahjeView({ x }) {
               <h3>{p.claim[lang]}</h3>
               <p>{p.why[lang]}</p>
               {s && <p className="rr-src">{s.author}, {s.year}: <i>{s.title}</i></p>}
-              <Votes t={t} />
             </article>
           );
         })}
@@ -98,10 +88,11 @@ export function RrahjeView({ x }) {
           <div key={i} className={`rr-ex ${e.kind}`}>
             <div className="rr-exhead"><b>{e.kind === 'obj' ? t.obj : t.rep}</b> · {t.to} {e.to} · {e.who}</div>
             <p>{e.t[lang]}</p>
-            <Votes t={t} />
           </div>
         ))}
       </div>
+
+      <LiveTopic topic={`rrahje:${x.id}`} mode="argument" stances={x.positions.map((p) => p.id)} />
 
       <h2 className="rr-h">{t.test}</h2>
       <ol className="rr-test">{x.test[lang].map((s, i) => <li key={i}>{s}</li>)}</ol>

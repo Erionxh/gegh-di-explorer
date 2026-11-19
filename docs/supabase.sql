@@ -32,3 +32,5 @@ alter table public.contributions
   add column if not exists age_band text check (age_band in ('<30','30-50','50-70','70+')),
   add column if not exists gender text check (gender in ('m','f')),
   add column if not exists birthplace text;
+
+-- Kuveni (forumi): shih docs/kuveni.sql

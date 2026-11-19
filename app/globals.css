@@ -675,3 +675,31 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .rr-votes button { min-height: 36px; padding: 0 12px; border-radius: 99px; border: 1px solid var(--line); background: #fff; font-size: 13px; cursor: pointer; }
 .rr-votes button.on.yes { background: #e4f3ea; border-color: #22603d; color: #22603d; font-weight: 700; }
 .rr-votes button.on.no { background: #fbe9e7; border-color: #c0392b; color: #c0392b; font-weight: 700; }
+.kl { margin-top: 30px; }
+.kl-soon { color: var(--muted); background: var(--card); border: 1px dashed var(--line); border-radius: 10px; padding: 12px 14px; }
+.kl-box { display: grid; gap: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.kl-google { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; background: #fff; border: 1px solid #c9ccd3; font-weight: 600; }
+.kl-g { font-weight: 800; color: #4285f4; font-size: 18px; }
+.kl-email { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.kl-check { display: flex; gap: 8px; align-items: flex-start; font-size: 14.5px; }
+.kl-ok { color: #22603d; font-size: 14px; }
+.kl-err { color: #c0392b; font-size: 14px; }
+.kl-compose { display: grid; gap: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.kl-compose.compact { margin-top: 10px; padding: 10px; }
+.kl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.kl-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.kl-actions audio { max-width: 100%; height: 36px; }
+.kl-recording { background: #fbe9e7; color: #c0392b; border-color: #c0392b; }
+.kl-post { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
+.kl-post.reply { margin: 10px 0 0 18px; border-left: 3px solid var(--line); }
+.kl-post.held { border-style: dashed; border-color: #d9a441; background: #fffaf0; }
+.kl-post h3 { font-size: 18px; margin: 6px 0; }
+.kl-post audio { width: 100%; height: 38px; margin: 4px 0 8px; }
+.kl-meta { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.kl-stance { margin-left: 6px; font-size: 11.5px; font-weight: 700; padding: 1px 8px; border-radius: 99px; background: #eef1f6; color: var(--ink-2); }
+.kl-body { white-space: pre-wrap; margin: 6px 0 8px; }
+.kl-form { margin: 6px 0 0; }
+.kl-held { font-size: 13px; color: #7a4a00; }
+.kl-who { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+.rr-votes button:disabled { opacity: .6; cursor: default; }
+@media (max-width: 480px) { .kl-row, .kl-email { grid-template-columns: 1fr; } }

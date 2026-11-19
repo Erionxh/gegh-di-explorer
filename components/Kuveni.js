@@ -5,10 +5,11 @@ import { useLang } from './LangProvider';
 import { StatusPill } from './Footer';
 import { FORUM_CATS, FORUM_RULES, THREADS, WORD_DEBATES } from '../lib/forum';
 import { SOURCES } from '../lib/sources';
+import LiveTopic from './KuveniLive';
 
 const UI = {
   sq: {
-    mock: 'Mock-up · asgjë nuk ruhet · postimet janë shembuj', ex: 'Shembull',
+    mock: 'Postimet me shenjën „Shembull” janë shembuj. Ato te „Nga ju” janë të vërteta.', ex: 'Shembull',
     eyebrow: 'Kuveni i GEG', h1: 'Kuveni', motto: '„Sipas venit bahet kuveni.”',
     lead: 'Vendi ku pyetet, kundërshtohet dhe sillet dëshmi. Si kuveni i pleqve: flet kushdo, por fjala peshon sa dëshmia që sjell.',
     newPost: '+ Temë e re', all: 'Të gjitha', sort: ['Më të reja', 'Më të votuara', 'Pa përgjigje'],
@@ -19,7 +20,7 @@ const UI = {
     how: 'Si funksionon statusi', howT: 'Votat tregojnë interesin. Statusin (e hapur, e mbështetur, e kontestuar…) e vendos një shqyrtues, me arsye të shkruar, sipas Kushtetutës.',
   },
   en: {
-    mock: 'Mock-up · nothing is saved · posts are examples', ex: 'Example',
+    mock: 'Posts marked "Example" are examples. Those under "From you" are real.', ex: 'Example',
     eyebrow: 'The GEG council', h1: 'Kuveni', motto: '„Sipas venit bahet kuveni.” (The council is held as the place is.)',
     lead: 'The place to ask, challenge and bring evidence. Like the council of elders (kuveni): anyone speaks, but a word weighs as much as the evidence it brings.',
     newPost: '+ New thread', all: 'All', sort: ['Newest', 'Top', 'Unanswered'],
@@ -145,6 +146,7 @@ export function KuveniIndex() {
               </article>
             ))}
           </div>
+          <LiveTopic topic="pyetje" mode="thread" />
         </div>
         <Rules t={t} lang={lang} />
       </div>
@@ -207,18 +209,12 @@ export function KuveniThread({ thread: x }) {
             </div>
           )}
 
-          <div className="card kv-reply">
-            <textarea placeholder={t.reply} rows={3} disabled title={t.disabled} />
-            <div className="kv-reply-bar">
-              <span>📖 {t.sourceReq}</span>
-              <button className="btn btn-navy" disabled title={t.disabled}>{t.send}</button>
-            </div>
-          </div>
 
           <div className="kv-comments">
             {x.comments.length === 0 && <p style={{ color: 'var(--ink-2)' }}>{t.empty}</p>}
             {x.comments.map((c, i) => <Comment key={i} c={c} t={t} />)}
           </div>
+          <LiveTopic topic={`tema:${x.id}`} mode="reply" />
         </div>
         <Rules t={t} lang={lang} />
       </div>
@@ -280,10 +276,7 @@ export function KuveniWord({ w }) {
             </div>
           ))}
         </div>
-        <div className="card kv-reply">
-          <textarea placeholder={t.reply} rows={3} disabled title={t.disabled} />
-          <div className="kv-reply-bar"><span>📖 {t.sourceReq}</span><button className="btn btn-navy" disabled title={t.disabled}>{t.send}</button></div>
-        </div>
+        <LiveTopic topic={`fjala:${w.id}`} mode="versions" />
         {w.thread && <p style={{ marginTop: 14 }}><Link href={`/kuveni/${w.thread}`}>{t.openThread}</Link></p>}
       </section>
     </div>
