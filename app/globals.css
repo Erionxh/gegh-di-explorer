@@ -439,3 +439,43 @@ a.home-sublens:hover strong { text-decoration: underline; }
   .hdr-top .brand-region { font-size: 12px; }
   .hdr-top .brand-tag { font-size: 18px; }
 }
+
+/* Header v4: one centre axis. Every row is two equal halves (links: four quarters). */
+.hdr { --gap: 12px; }
+.hdr-top, .hdr-tools, .hdr-pills { display: grid !important; grid-template-columns: 1fr 1fr; column-gap: var(--gap); gap: var(--gap); position: static; padding: 0; border: 0; border-radius: 0; text-decoration: none; color: #fff; }
+.hdr-top:hover { color: #fff; }
+.hdr-half { min-width: 0; display: flex; align-items: center; }
+.hdr-left { justify-content: flex-end; gap: 12px; padding-right: 2px; }
+.hdr-right { justify-content: space-between; align-items: center; gap: 8px; border-left: 1.5px solid var(--gold); margin-left: calc(var(--gap) / -2 - 0.75px); padding-left: calc(var(--gap) / 2 + 12px); align-self: stretch; }
+.hdr-left .brand-rule { height: 50px; }
+.hdr-beta { position: static; align-self: flex-start; padding: 0; background: none; color: #8d9bb7; font-size: 10px; font-weight: 700; letter-spacing: .14em; line-height: 1.6; }
+.hdr-tools .hdr-search { width: 100%; box-sizing: border-box; }
+.hdr-act { gap: 8px; }
+.hdr-act .nav-rec { flex: 1 1 auto; justify-content: center; }
+.hdr-act .langswitch { flex: 0 0 auto; }
+.hdr-links { gap: 0; }
+@media (min-width: 701px) {
+  .hdr { --gap: 16px; }
+  .hdr-left svg { width: 58px; height: 58px; }
+  .hdr-left .brand-rule { height: 64px; }
+  .hdr-left .brand-stack .brand-name { font-size: 36px; }
+  .hdr-left .brand-ver { font-size: 15px; }
+  .hdr-left .brand-region { font-size: 12px; }
+  .hdr-right .brand-tag { font-size: 18px; }
+}
+@media (max-width: 700px) {
+  .hdr { --gap: 10px; }
+  .hdr-left { gap: 9px; }
+  .hdr-left svg { width: 36px; height: 36px; }
+  .hdr-left .brand-rule { height: 46px; }
+  .hdr-right { padding-left: calc(var(--gap) / 2 + 9px); }
+  .hdr-right .brand-tag { font-size: 12.5px; }
+  .hdr-act .langswitch button { padding: 0 9px; }
+  .hdr-act .nav-rec { padding: 0 10px 0 5px; }
+}
+.hdr-left { justify-content: space-between; padding-right: 12px; }
+@media (min-width: 701px) { .hdr { max-width: 860px; } .hdr-left { padding-right: 18px; } }
+@media (max-width: 700px) { .hdr-left { padding-right: 9px; } }
+.hdr-left { justify-content: flex-start; }
+.hdr-left .brand-rule { display: none; }
+.hdr-left .brand-stack { margin: 0 auto; }

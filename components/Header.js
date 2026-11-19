@@ -62,23 +62,24 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="wrap hdr">
-        <div className="hdr-top">
-          <Link href="/" className="brand">
+        <Link href="/" className="hdr-top" aria-label="GEG 1.0 Mirdita">
+          <span className="hdr-half hdr-left">
             <Microscope />
             <span className="brand-rule" aria-hidden="true" />
             <span className="brand-stack"><span className="brand-name">GEG</span><span className="brand-ver">1.0</span><span className="brand-region">Mirdita</span></span>
-            <span className="brand-rule" aria-hidden="true" />
+          </span>
+          <span className="hdr-half hdr-right">
             <span className="brand-tag">{t.tag.map((line) => <span key={line}>{line}</span>)}</span>
-          </Link>
-          <span className="hdr-beta">BETA</span>
-        </div>
+            <span className="hdr-beta">BETA</span>
+          </span>
+        </Link>
         <div className="hdr-tools">
-          <form className="hdr-search" role="search" onSubmit={onSearch}>
+          <form className="hdr-search hdr-half" role="search" onSubmit={onSearch}>
             {ICONS.search}
             <input name="q" type="search" placeholder={lang === 'en' ? 'Search…' : 'Kërko…'} aria-label={lang === 'en' ? 'Search' : 'Kërko'} />
           </form>
-          <Link href="/kujtesa" className="nav-rec" aria-label={t.nav.add + ' — Kujtesa'}><span className="nav-rec-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0" /><path d="M12 18v3" /></svg></span>{t.nav.add}</Link>
-          <LangSwitch />
+          <span className="hdr-half hdr-act"><Link href="/kujtesa" className="nav-rec" aria-label={t.nav.add + ' — Kujtesa'}><span className="nav-rec-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0" /><path d="M12 18v3" /></svg></span>{t.nav.add}</Link>
+          <LangSwitch /></span>
         </div>
         <nav aria-label="Main" className="hdr-nav">
           <div className="hdr-pills">
