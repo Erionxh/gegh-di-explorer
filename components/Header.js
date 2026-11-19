@@ -54,6 +54,7 @@ export default function Header() {
         <div className="lang-mobile"><LangSwitch /></div>
         <nav aria-label="Main" className="main-nav">
           <Link href="/#lentet" className="nav-lenses">{t.nav.lenses}</Link>
+          <Link href="/shtyllat" className="nav-lenses">{t.nav.pillars}</Link>
           <Link href="/#fjalet">{t.nav.words}</Link>
           <Link href="/kujtesa">{t.nav.memory}</Link>
           <Link href="/harta">{t.nav.map}</Link>

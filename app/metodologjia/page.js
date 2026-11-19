@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useLang } from '../../components/LangProvider';
 import { StatusPill } from '../../components/Footer';
+import { PILLAR_ORDER } from '../../lib/pillars';
 
 export default function Method() {
   const { t, lang } = useLang();
@@ -82,11 +83,13 @@ export default function Method() {
       <section className="wrap" style={{ paddingTop: 32, paddingBottom: 56 }}>
         <h2 className="section-title">{m.pillarsTitle}</h2>
         <div className="pillar-grid">
-          {m.pillars.map(([name, text]) => (
-            <div key={name} className="card pillar">
+          {m.pillars.map(([name, text], k) => (
+            <Link key={name} href={`/shtyllat/${PILLAR_ORDER[k]}`} className="card pillar pillar-card-link">
+              <span className="pillar-n">{k + 1}</span>
               <h3>{name}</h3>
               <p>{text}</p>
-            </div>
+              <span className="lens-more">{lang === 'en' ? 'Read more' : 'Lexo më shumë'} →</span>
+            </Link>
           ))}
         </div>
       </section>

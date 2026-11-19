@@ -119,6 +119,10 @@ export default function Home() {
           <div style={{ flex: '1 1 380px' }}>
             <h2 className="section-title" style={{ color: '#fff' }}>{h.boardTitle}</h2>
             <p style={{ fontSize: 16, lineHeight: 1.6 }}>{h.boardText}</p>
+            <p style={{ display: 'flex', flexWrap: 'wrap', gap: 16, fontWeight: 600 }}>
+              <Link href="/shtyllat/qeverisja" style={{ color: 'var(--gold)' }}>{lang === 'en' ? 'How the board works' : 'Si punon bordi'} →</Link>
+              <Link href="/kushtetuta" style={{ color: 'var(--gold)' }}>{lang === 'en' ? 'Read the Constitution' : 'Lexo Kushtetutën'} →</Link>
+            </p>
           </div>
           <ul className="seats">{h.seats.map((s) => <li key={s}>{s}</li>)}</ul>
         </div>
