@@ -6,7 +6,7 @@ export function generateStaticParams() {
   return WORD_DEBATES.map((w) => ({ id: w.id }));
 }
 
-export const metadata = { title: 'Kuveni · GEG', robots: { index: false } };
+export const metadata = { title: 'Kuveni · GEG' };
 
 export default function Page({ params }) {
   const w = getWordDebate(params.id);

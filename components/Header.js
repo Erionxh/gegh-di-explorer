@@ -87,6 +87,7 @@ export default function Header() {
             <Link href="/shtyllat" className="hdr-pill">{t.nav.pillars}</Link>
           </div>
           <div className="hdr-links">
+            <Link href="/kuveni"><span>Kuveni</span></Link>
             <Link href="/harta"><span>{t.nav.map}</span></Link>
             <Link href="/studiuesit"><span>{t.nav.scholars}</span></Link>
             <Link href="/metodologjia"><span>{t.method.navLabel}</span></Link>
