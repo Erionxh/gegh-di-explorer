@@ -24,6 +24,17 @@ export default function Home() {
           <p>{h.what}</p>
         </div>
 
+        <div className="card why-box">
+          <h2>{h.whyTitle}</h2>
+          <p>{h.why}</p>
+          <ol className="roadmap">
+            {h.roadmap.map(([v, r], i) => (
+              <li key={v} className={i === 0 ? 'now' : ''}><strong>{v}</strong><span>{r}</span></li>
+            ))}
+          </ol>
+          <p className="why-open"><Link href="/kujtesa">{h.whyOpen} →</Link></p>
+        </div>
+
         <h2 id="lentet" className="section-title" style={{ marginTop: 40, scrollMarginTop: 20 }}>{h.lensesTitle}</h2>
         <p style={{ margin: 0, color: 'var(--ink-2)' }}>{h.lensesLead}</p>
         <div className="home-lenses">

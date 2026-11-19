@@ -273,3 +273,14 @@ table.data tr:hover td { background: #f7f9fc; }
 .home-lens h3 a { color: inherit; text-decoration: none; }
 a.home-sublens { color: inherit; text-decoration: none; }
 a.home-sublens:hover strong { text-decoration: underline; }
+
+/* Why Mirdita first + roadmap */
+.why-box { margin-top: 20px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.why-box h2 { font-size: 26px; }
+.why-box p { margin: 0; color: var(--ink-2); line-height: 1.6; }
+.roadmap { list-style: none; margin: 4px 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.roadmap li { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 10px 12px; border-radius: 10px; background: #f6f4ee; align-items: baseline; }
+.roadmap li.now { background: #fbf3dc; border: 1px solid #e3c873; }
+.roadmap strong { font-size: 15px; color: #1d2a44; }
+.roadmap span { font-size: 15px; color: var(--ink-2); }
+.why-open a { font-weight: 600; color: #2f7d4f; }
