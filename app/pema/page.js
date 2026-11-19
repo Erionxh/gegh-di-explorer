@@ -15,7 +15,7 @@ const T = {
     findTitle: 'Çfarë doli',
     finds: [
       ['Shqipja është një degë më vete', 'Të dyja metodat i bashkojnë gegnishten, shqipen standarde dhe arbërishten në një degë të vetme, të ndarë nga të tjerat. Kompjuteri e gjeti këtë vetë.'],
-      ['Te pema e ekspertëve, shqipja ndahet herët', 'Pas hititishtes (rrënja) dhe toharishtes, ndahen greqishtja me armenishten, dhe menjëherë pas tyre shqipja, para indo-iranishtes, baltosllavishtes, keltishtes, latinishtes dhe gjermanishtes. Kjo është një provë e qartë që shqipja është një linjë e vjetër e pavarur.'],
+      ['Te pema e ekspertëve, shqipja del si linjë e vjetër, pranë greqishtes dhe armenishtes', 'Shqipja, greqishtja dhe armenishtja dalin pranë njëra-tjetrës, të ndara herët nga degët e tjera. Por kjo metodë vizaton degët, nuk mat kohën: rendi midis këtyre të treve (kush u nda i pari) nuk është i besueshëm këtu. Për këtë duhet analiza me data.'],
       ['Në pemën automatike, shqipja shkon pranë latinishtes, dhe ky është mësim, jo zbulim', 'Metoda automatike i ngatërron huazimet latine me fjalë të trashëguara. Kjo tregon pikërisht pse “fshesa e pastër” ka nevojë për testin e huazimeve: ngjashmëria vetëm nuk mjafton.'],
       ['Shqipja ruan më pak fjalë bazë të përbashkëta me gjuhët e lashta', 'Nga 22 gjuhë moderne, shqipja ka përqindjen më të ulët të fjalëve bazë të përbashkëta me gjuhët e lashta (standardja 11.5%, gegnishtja 13.1%; suedishtja 21%). Kjo do të thotë se shqipja i ka ndryshuar më shumë se të tjerat fjalët e saj bazë, ose tingujt i ka shndërruar aq shumë sa lidhjet fshihen. Kjo nuk e mbështet idenë se shqipja ka mbetur më afër trungut.'],
       ['Por gegnishtja ruan më shumë se standardja', 'Gegnishtja (13.1%) ruan më shumë fjalë të përbashkëta me gjuhët e lashta se shqipja standarde (11.5%). Është një ndryshim i vogël, por shkon në drejtimin e hipotezës së GEG.'],
@@ -25,6 +25,9 @@ const T = {
     limits: [
       'Është një provë e parë me metodë të thjeshtë (fqinji më i afërt), jo analiza e plotë bayesiane që përdorin studiuesit.',
       'Disa gjuhë të lashta me pak fjalë (mikenishtja, luvishtja, oskishtja, umbrishtja, galishtja) dhe gegnishtja e Mirditës nuk hynë në pemë, sepse kishin shumë pak fjalë të përbashkëta me disa gjuhë të tjera. Mirdita hyn në fazën tjetër, kur të kemi më shumë fjalë.',
+      'Nuk ka regjistrime zanore. Janë lista fjalësh të shkruara, një fjalë për çdo kuptim. “Gegnishtja” e IE-CoR është gegnishtja verilindore e Kosovës (Prishtinë), jo Mirdita, Malësia, Dibra apo Puka. Nëndialektet mungojnë.',
+      'Një lidhje numërohet vetëm kur fjala ka të njëjtin kuptim. Nëse shqipja ka ruajtur një rrënjë të vjetër, por me kuptim tjetër, kjo metodë nuk e sheh. Kjo mund ta ulë rezultatin e shqipes.',
+      'Trakishtja dhe dakishtja nuk janë në pemë, sepse kanë mbetur vetëm fragmente (glosa, emra bimësh, emra vendesh), jo 170 fjalë bazë. Ato kërkojnë një test më vete.',
       'Drejtimi i huazimit (kush i dha kujt) nuk del nga kjo metodë: kërkon ligjet tingullore dhe datat.',
     ],
     nextTitle: 'Hapi tjetër',
@@ -46,7 +49,7 @@ const T = {
     findTitle: 'What came out',
     finds: [
       ['Albanian is a branch of its own', 'Both methods group Gheg, Standard Albanian and Arbëresh into one single branch, separate from all others. The computer found this by itself.'],
-      ['In the experts’ tree, Albanian splits off early', 'After Hittite (the root) and Tocharian, Greek and Armenian split off, and right after them Albanian, before Indo-Iranian, Balto-Slavic, Celtic, Latin and Germanic. That is clear evidence that Albanian is an old, independent line.'],
+      ['In the experts’ tree, Albanian shows up as an old line, near Greek and Armenian', 'Albanian, Greek and Armenian come out close to each other, split off early from the other branches. But this method draws branches, it does not measure time: the order among these three (who split first) is not reliable here. That needs a dated analysis.'],
       ['In the automatic tree, Albanian lands next to Latin, and that is a lesson, not a discovery', 'The automatic method mistakes Latin loanwords for inherited words. This shows exactly why the clean slate needs the borrowing test: similarity alone is not enough.'],
       ['Albanian keeps the fewest shared core words with the ancient languages', 'Of 22 modern languages, Albanian has the lowest share of core words in common with the ancient languages (Standard 11.5%, Gheg 13.1%; Swedish 21%). Albanian has changed its core words more than the others, or transformed its sounds so much that the links are hidden. This does not support the idea that Albanian stayed closer to the trunk.'],
       ['But Gheg keeps more than Standard', 'Gheg (13.1%) keeps more words in common with the ancient languages than Standard Albanian (11.5%). It is a small difference, but it goes in the direction of GEG’s hypothesis.'],
@@ -56,6 +59,9 @@ const T = {
     limits: [
       'It is a first test with a simple method (neighbour-joining), not the full Bayesian analysis scholars use.',
       'Some ancient languages with few words (Mycenaean, Luvian, Oscan, Umbrian, Gaulish) and Mirdita Gheg did not enter the tree, because they share too few attested meanings with some other languages. Mirdita joins in the next phase, when we have more words.',
+      'There are no audio recordings. These are written word lists, one word per meaning. IE-CoR’s “Gheg” is north-eastern Gheg of Kosova (Prishtina), not Mirdita, Malësia, Dibër or Pukë. The sub-dialects are missing.',
+      'A link only counts when the word has the same meaning. If Albanian kept an old root but with a different meaning, this method does not see it. That may push Albanian’s score down.',
+      'Thracian and Dacian are not in the tree, because only fragments survive (glosses, plant names, place names), not 170 core words. They need a test of their own.',
       'The direction of borrowing (who gave to whom) does not come out of this method: it needs sound laws and dates.',
     ],
     nextTitle: 'Next step',
