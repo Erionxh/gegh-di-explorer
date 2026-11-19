@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useLang } from './LangProvider';
 import { StatusPill } from './Footer';
 import SoundCompare from './SoundCompare';
+import MeyerBox from './MeyerBox';
 
 export default function WordView({ word: w }) {
   const { t, lang } = useLang();
@@ -25,6 +26,8 @@ export default function WordView({ word: w }) {
         </section>
 
         <SoundCompare concept={w.concept} />
+
+        <MeyerBox forms={[w.headword, ...w.forms, ...(w.tosk || [])]} />
 
         <section className="card pad" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <h2 style={{ fontSize: 26 }}>{s.voices}</h2>
