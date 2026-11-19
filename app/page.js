@@ -121,6 +121,15 @@ export default function Home() {
         </p>
       </section>
 
+      <section className="wrap" style={{ paddingBottom: 48 }}>
+        <Link href="/kuveni" className="card pad rr-card" style={{ borderLeft: '4px solid var(--gold)' }}>
+          <p className="eyebrow" style={{ margin: 0 }}>Kuveni · {lang === 'en' ? 'the forum' : 'forumi'}</p>
+          <h2 style={{ fontSize: 26, margin: '6px 0' }}>{lang === 'en' ? 'Kuvendo në gegnisht: speak your mind in Gheg' : 'Kuvendo në gegnisht'}</h2>
+          <p style={{ margin: '0 0 8px', color: 'var(--ink-2)' }}>{lang === 'en' ? 'Where does nder come from? Kuven or conventum? Kanun or "K\'ha un"? Bring your village\'s word, your voice and your argument.' : 'Nga vjen nderi? Kuven apo conventum? Kanun apo „K\'ha un”? Sillni fjalën e fshatit, zërin dhe argumentin tuaj.'}</p>
+          <span style={{ fontWeight: 700 }}>{lang === 'en' ? 'Enter Kuveni →' : 'Hyni në Kuven →'}</span>
+        </Link>
+      </section>
+
       <section className="board" id="bordi">
         <div className="wrap board-inner">
           <div style={{ flex: '1 1 380px' }}>

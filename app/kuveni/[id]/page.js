@@ -6,7 +6,7 @@ export function generateStaticParams() {
   return THREADS.map((t) => ({ id: t.id }));
 }
 
-export const metadata = { title: 'Kuveni · GEG', robots: { index: false } };
+export const metadata = { title: 'Kuveni · GEG' };
 
 export default function Page({ params }) {
   const t = getThread(params.id);

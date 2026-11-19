@@ -703,3 +703,6 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .kl-who { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
 .rr-votes button:disabled { opacity: .6; cursor: default; }
 @media (max-width: 480px) { .kl-row, .kl-email { grid-template-columns: 1fr; } }
+.hdr-links { grid-template-columns: repeat(5, auto); justify-content: space-between; }
+.hdr-links a { padding: 2px 6px; }
+@media (max-width: 420px) { .hdr-links a { font-size: 12px; padding: 2px 3px; } }
