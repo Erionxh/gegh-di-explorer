@@ -219,5 +219,46 @@
         "test_en": "Find the old root and its cognates: do they show the same sound–meaning link?"
       }
     ]
+  },
+  "Q20007": {
+    "family": [
+      "nderoj / nderue (to honour)",
+      "i nderuem (honoured)",
+      "falemnderit = falem me nder",
+      "Buzuku 1555: ëndēr, ënderë, ënderja",
+      "Budi 1618, Bogdani 1685: nder"
+    ],
+    "hypotheses": [
+      {
+        "id": "H-01",
+        "lens": "2",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Hipotezë GEG: nder vjen nga „në derë”: në derë → ën derë → n'derë → nder. Nderi ishte fillimisht si e pret njeriu mikun te dera. Për: Buzuku (1555) shkruan ënderë, shkronjë për shkronjë ën + derë, dhe parafjalën në e shkruan po ashtu en / ende; fjala është femërore te Buzuku (ënderja), si dera.",
+        "en": "GEG hypothesis: nder comes from 'në derë' (at the door): në derë → ën derë → n'derë → nder. Honour was first how a household receives the guest at the door. For: Buzuku (1555) writes ënderë, letter for letter ën + derë, and he writes the preposition në the same way (en / ende); the word is feminine in Buzuku (ënderja), like dera.",
+        "test_sq": "Duhen shprehje të vjetra ku nderi lidhet ende me derën, shpinë ose pritjen e mikut (në këngë, në kanun, në të folme). Duhet parë edhe zanorja: a është e njëjtë e-ja e gjatë e ndēr (Matrënga 1592) me e-në e derë? Pa këto, hipoteza mbetet e hapur.",
+        "test_en": "We need old phrases where honour is still tied to the door, the house or receiving a guest (songs, the kanun, local speech). The vowel must also be checked: is the long ē of ndēr (Matrënga 1592) the same as the e of derë? Without these, the hypothesis stays open."
+      },
+      {
+        "id": "H-02",
+        "lens": "1",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Imberciadori (2025): ndēr vjen nga një rrënjë e vjetër indoevropiane për „ballë, fytyrë” (*h₂ent-). Nderi është „fytyra”, si te „me faqe të bardhë”.",
+        "en": "Imberciadori (2025): ndēr comes from an old Indo-European root for 'forehead, face' (*h₂ent-). Honour is 'the face', as in 'me faqe të bardhë' (with a clean face).",
+        "test_sq": "A japin rregullat e njohura të tingujve nga *h₂ent- pikërisht ndēr? A ka në shqip fjalë të tjera nga e njëjta rrënjë?",
+        "test_en": "Do the known sound rules lead from *h₂ent- exactly to ndēr? Are there other Albanian words from the same root?"
+      },
+      {
+        "id": "H-03",
+        "lens": "2",
+        "author": "",
+        "status": "OPEN",
+        "sq": "Meyer (1891): huazim nga latinishtja honorem.",
+        "en": "Meyer (1891): a loan from Latin honorem.",
+        "test_sq": "A mund të shpjegohet kalimi honorem → ndēr me rregullat e huazimeve latine në shqip? Shumica e studiuesve të sotëm e shohin këtë rrugë si të vështirë.",
+        "test_en": "Can the step honorem → ndēr be explained by the rules of Latin loans in Albanian? Most scholars today see this path as difficult."
+      }
+    ]
   }
 }
