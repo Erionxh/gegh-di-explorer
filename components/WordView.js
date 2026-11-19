@@ -64,7 +64,7 @@ export default function WordView({ word: w }) {
           )}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             <Link href={`/studiuesit/${w.id}`} className="btn btn-navy">{s.openDossier}</Link>
-            {getWordDebate(w.id) && <Link href={`/kuveni/fjala/${w.id}`} className="btn btn-outline">{lang === 'en' ? 'Debate it in the Kuven' : 'Debato në Kuven'} →</Link>}
+            {getWordDebate(w.id) && <Link href={`/kuveni/fjala/${w.id}`} className="btn btn-outline">{lang === 'en' ? 'Debate it in the Kuven' : 'Kuvendo në gegnisht'} →</Link>}
           </div>
         </section>
       </div>
