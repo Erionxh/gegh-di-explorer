@@ -7,7 +7,7 @@ import { SOURCES } from '../../lib/sources';
 import { TURKISH } from '../../lib/layers';
 import { PILLARS, PILLAR_ORDER } from '../../lib/pillars';
 import { LENS_PAGES, LENS_ORDER } from '../../lib/lensPages';
-import { GEG500 } from '../../lib/geg500';
+import { WANTED } from '../../lib/wantedWords';
 import { loadMeyer, fold as mfold } from '../../lib/meyerView';
 
 const fold = (s) => (s || '').toString().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -31,7 +31,7 @@ export default function Search() {
     const has = (...xs) => xs.some((x) => fold(x).includes(f));
     return {
       words: words.filter((w) => has(w.headword, ...(w.forms || []), w.concept, w.claim?.pieRoot, w.claim?.protoAlbanian)).slice(0, 30),
-      wanted: GEG500.map(([sq, en, cat]) => ({ sq, en, cat })).filter((x) => has(x.sq, x.en)).slice(0, 20),
+      wanted: WANTED.filter((x) => has(x.sq, x.en)).slice(0, 20),
       turkish: TURKISH.flatMap((g) => g.words).filter(([sq, tr, msq, men]) => has(sq, tr, msq, men)).slice(0, 20),
       sources: SOURCES.filter((s) => has(s.author, s.title, s.year, s[lang])).slice(0, 20),
       pages: [
@@ -68,7 +68,7 @@ export default function Search() {
       )}
       {res?.wanted.length > 0 && (
         <section className="lens-sec"><h2>{t.wanted}</h2>
-          <div className="search-tags">{res.wanted.map((x) => <Link key={x.cat + x.sq} href={`/kujtesa?fjala=${encodeURIComponent(x.sq)}`} className="tag">{x.sq} ({x.en}) · {t.say}</Link>)}</div>
+          <div className="search-tags">{res.wanted.map((x) => <Link key={x.cat + x.sq} href={`/kerkojme/${x.slug}`} className="tag">{x.sq} ({x.en}) →</Link>)}</div>
         </section>
       )}
       {res?.turkish.length > 0 && (
