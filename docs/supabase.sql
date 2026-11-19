@@ -25,3 +25,10 @@ alter table public.contributions enable row level security;
 insert into storage.buckets (id, name, public)
 values ('recordings', 'recordings', false)
 on conflict (id) do nothing;
+
+-- Shtuar më vonë / added later
+alter table public.contributions
+  add column if not exists country text,
+  add column if not exists age_band text check (age_band in ('<30','30-50','50-70','70+')),
+  add column if not exists gender text check (gender in ('m','f')),
+  add column if not exists birthplace text;

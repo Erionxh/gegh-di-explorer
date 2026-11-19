@@ -614,3 +614,24 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .wt-list { margin: 4px 0 0; padding: 12px 14px 12px 32px; border-radius: 12px; font-size: 15.5px; line-height: 1.5; display: flex; flex-direction: column; gap: 6px; color: var(--ink-2); }
 .wt-list.yes { background: #eef7f1; } .wt-list.no { background: #fdf0ee; }
 @media (max-width: 380px) { .wanted-toggle button { font-size: 15px; padding: 10px; } .wt-mark { font-size: 24px; } }
+/* ---- Paneli ---- */
+.pn-input { min-height: 46px; border: 1px solid var(--line); border-radius: 10px; padding: 0 12px; font: inherit; }
+.pn-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 18px 0; }
+.pn-tile { padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
+.pn-tile b { font-size: 30px; color: var(--navy); }
+.pn-tile span { font-size: 13.5px; color: var(--muted); }
+.pn-box h2 { font-size: 20px; margin: 0 0 10px; }
+.pn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-top: 12px; }
+.pn-bar { display: grid; grid-template-columns: minmax(70px, 38%) 1fr 32px; gap: 8px; align-items: center; font-size: 14px; margin: 5px 0; }
+.pn-k { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pn-track { height: 10px; background: #f0ece2; border-radius: 6px; overflow: hidden; }
+.pn-track i { display: block; height: 100%; background: var(--green); border-radius: 6px; }
+.pn-bar b { text-align: right; }
+.pn-days { display: flex; align-items: flex-end; gap: 3px; height: 90px; margin-bottom: 6px; }
+.pn-days span { flex: 1; background: var(--gold); border-radius: 3px 3px 0 0; min-height: 2px; }
+.pn-muted { color: var(--muted); font-size: 13.5px; margin: 0; }
+.pn-list { display: flex; flex-direction: column; gap: 10px; }
+.pn-item { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+.pn-item p { margin: 0; }
+.pn-row1 { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.pn-row1 strong { font-size: 20px; }
