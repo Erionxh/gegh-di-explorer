@@ -5,7 +5,7 @@ import { Castle } from '../../components/PillarView';
 import { PILLARS, PILLAR_ORDER } from '../../lib/pillars';
 
 const T = {
-  sq: { eyebrow: 'Arkitektura e kështjellës', h1: 'Tetë shtyllat', lead: 'Lentet janë mënyrat si e shikojmë gjuhën. Shtyllat janë ajo që e mban kështjellën në këmbë: rregullat, teknika, rendi, materiali, provat, kujdestaria, puna shkencore dhe dera për publikun. Kushtetuta është themeli, ndërfaqja është çatia që shihet nga jashtë.', more: 'Lexo më shumë' },
+  sq: { eyebrow: 'Arkitektura e kështjellës', h1: 'Tetë shtyllat', lead: 'Lentet janë mënyrat si e shikojmë gjuhën. Shtyllat janë ato që e mbajnë kështjellën në këmbë: rregullat, teknika, rendi, materiali, provat, kujdestaria, puna shkencore dhe dera për publikun. Kushtetuta është themeli, ndërfaqja është çatia që shihet nga jashtë.', more: 'Lexo më shumë' },
   en: { eyebrow: 'The architecture of the castle', h1: 'The eight pillars', lead: 'The lenses are the ways we look at the language. The pillars are what keep the castle standing: the rules, the engineering, the order, the material, the evidence, the custodianship, the scientific work and the door for the public. The Constitution is the foundation; the interface is the roof seen from outside.', more: 'Read more' },
 };
 

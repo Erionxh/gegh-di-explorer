@@ -9,7 +9,7 @@ const T = {
     back: '← Shtresat e huazimeve', eyebrow: 'Shtresa 4 · Hulumtim i hapur', h1: 'Shtresa turke',
     lead: 'Pesë shekuj nën osmanët lanë fjalë në çdo shtëpi: në kuzhinë, në shtrat, në familje, në treg. Disa nga këto fjalë nuk janë as turke në rrënjë: turqishtja i kishte marrë vetë nga persishtja ose arabishtja dhe na i dha më tej.',
     dirNote: 'Drejtimi për këto fjalë: hyrë në shqip. Turqishtja ka familjen e fjalës dhe dëshmitë më të hershme. Fjalë shqipe kanë hyrë edhe në turqishten e Ballkanit, por janë pak dhe do të shënohen veç.',
-    srcNote: 'Prejardhja turke e këtyre fjalëve është e njohur në studime. Burimi me faqe për secilën (Boretzky 1975–76, Dizdari 2005) do të shtohet, sipas rregullit GOLD-INV-03.',
+    srcNote: 'Prejardhja turke e këtyre fjalëve është e njohur në studime. Burimi me faqe për secilën (Boretzky 1975–76, Dizdari 2005) do të shtohet, sipas rregullit të burimit.',
     qTitle: 'Pyetjet e hapura',
     q: [
       'Cilat nga këto i thoni ende? Cilat i thoshte gjyshja, por ju jo më?',
@@ -24,7 +24,7 @@ const T = {
     back: '← The loan layers', eyebrow: 'Layer 4 · Open research', h1: 'The Turkish layer',
     lead: 'Five centuries under the Ottomans left words in every house: in the kitchen, in the bed, in the family, at the market. Some of these words are not even Turkish at the root: Turkish had taken them from Persian or Arabic and passed them on.',
     dirNote: 'Direction for these words: into Albanian. Turkish has the word family and the earliest records. Albanian words also entered Balkan Turkish, but they are few and will be listed separately.',
-    srcNote: 'The Turkish origin of these words is well known in the literature. The source with page for each (Boretzky 1975–76, Dizdari 2005) will be added, under rule GOLD-INV-03.',
+    srcNote: 'The Turkish origin of these words is well known in the literature. The source with page for each (Boretzky 1975–76, Dizdari 2005) will be added, under the source rule.',
     qTitle: 'The open questions',
     q: [
       'Which of these do you still say? Which did your grandmother say, but you no longer do?',

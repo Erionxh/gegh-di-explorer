@@ -515,3 +515,8 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .meyer-pg { margin-left: auto; font-size: 13px; color: var(--muted); }
 .meyer-entry p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-2); overflow-wrap: anywhere; }
 .meyer-entry a { font-size: 13.5px; font-weight: 600; color: #2f7d4f; }
+/* Whole lens tile clickable (stretched link on the title) */
+.home-lens { position: relative; cursor: pointer; transition: box-shadow .15s, border-color .15s; }
+.home-lens h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.home-lens:hover { border-color: #b8892b; box-shadow: 0 4px 16px rgba(29,42,68,.08); }
+.home-lens .lens-more, .home-lens .home-sublenses, .home-lens .home-sublens { position: relative; z-index: 1; }
