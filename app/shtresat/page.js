@@ -57,6 +57,14 @@ export default function Layers() {
           </div>
         ))}
       </div>
+      <section className="lens-sec">
+        <h2>{lang === 'en' ? 'Related languages' : 'Gjuhë të afërta'}</h2>
+        <Link href="/mesapishtja" className="card pillar pillar-card-link" style={{ display: 'block' }}>
+          <h3>{lang === 'en' ? 'Messapic' : 'Mesapishtja'}</h3>
+          <p>{lang === 'en' ? 'The language of Apulia, 6th–2nd c. BCE: how close was it to the ancestor of Albanian?' : 'Gjuha e Pujës, shek. VI–II p.e.s.: sa e afërt ishte me paraardhësen e shqipes?'}</p>
+          <span className="lens-more">{lang === 'en' ? 'Open' : 'Hape'} →</span>
+        </Link>
+      </section>
     </div>
   );
 }
