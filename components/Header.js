@@ -56,6 +56,7 @@ export default function Header() {
           <Link href="/#lentet" className="nav-lenses">{t.nav.lenses}</Link>
           <Link href="/#fjalet">{t.nav.words}</Link>
           <Link href="/kujtesa">{t.nav.memory}</Link>
+          <Link href="/harta">{t.nav.map}</Link>
           <Link href="/studiuesit">{t.nav.scholars}</Link>
           <Link href="/metodologjia">{t.method.navLabel}</Link>
           <Link href="/burimet">{t.nav.sources}</Link>

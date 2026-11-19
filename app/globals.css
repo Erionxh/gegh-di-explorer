@@ -252,3 +252,10 @@ table.data tr:hover td { background: #f7f9fc; }
   .sc-row { grid-template-columns: 44px 1fr; row-gap: 2px; }
   .sc-row .sc-lang, .sc-row .sc-written, .sc-row .sc-alb { grid-column: 2; }
 }
+
+/* Map */
+.map-layers { display: flex; flex-wrap: wrap; gap: 10px; }
+.map-layer { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #ddd8cc; border-radius: 999px; background: #fff; font-size: 15px; cursor: pointer; }
+.map-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.map-count { color: var(--muted); font-size: 13px; }
+.leaflet-container { z-index: 0; }
