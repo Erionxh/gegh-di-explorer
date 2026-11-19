@@ -66,7 +66,7 @@ export default function Header() {
           <span className="hdr-half hdr-left">
             <Microscope />
             <span className="brand-rule" aria-hidden="true" />
-            <span className="brand-stack"><span className="brand-name">GEG</span><span className="brand-ver">1.0</span><span className="brand-region">Mirdita</span></span>
+            <span className="brand-stack"><span className="brand-name">GEG 1.0</span><span className="brand-region">Mirdita</span></span>
           </span>
           <span className="hdr-half hdr-right">
             <span className="brand-tag">{t.tag.map((line) => <span key={line}>{line}</span>)}</span>
@@ -78,19 +78,19 @@ export default function Header() {
             {ICONS.search}
             <input name="q" type="search" placeholder={lang === 'en' ? 'Search…' : 'Kërko…'} aria-label={lang === 'en' ? 'Search' : 'Kërko'} />
           </form>
-          <span className="hdr-half hdr-act"><Link href="/kujtesa" className="nav-rec" aria-label={t.nav.add + ' — Kujtesa'}><span className="nav-rec-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0" /><path d="M12 18v3" /></svg></span>{t.nav.add}</Link>
+          <span className="hdr-half hdr-act"><Link href="/kujtesa" className="nav-rec" aria-label={t.nav.add + ' — Kujtesa'}><span className="rec-dot" aria-hidden="true" />{t.nav.add}</Link>
           <LangSwitch /></span>
         </div>
         <nav aria-label="Main" className="hdr-nav">
           <div className="hdr-pills">
-            <Link href="/#lentet" className="hdr-pill">{ICONS.lens}{t.nav.lenses}</Link>
-            <Link href="/shtyllat" className="hdr-pill">{ICONS.layers}{t.nav.pillars}</Link>
+            <Link href="/#lentet" className="hdr-pill">{t.nav.lenses}</Link>
+            <Link href="/shtyllat" className="hdr-pill">{t.nav.pillars}</Link>
           </div>
           <div className="hdr-links">
-            <Link href="/harta">{ICONS.map}<span>{t.nav.map}</span></Link>
-            <Link href="/studiuesit">{ICONS.book}<span>{t.nav.scholars}</span></Link>
-            <Link href="/metodologjia">{ICONS.how}<span>{t.method.navLabel}</span></Link>
-            <Link href="/burimet">{ICONS.shelf}<span>{t.nav.sources}</span></Link>
+            <Link href="/harta"><span>{t.nav.map}</span></Link>
+            <Link href="/studiuesit"><span>{t.nav.scholars}</span></Link>
+            <Link href="/metodologjia"><span>{t.method.navLabel}</span></Link>
+            <Link href="/burimet"><span>{t.nav.sources}</span></Link>
           </div>
         </nav>
       </div>
