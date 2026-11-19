@@ -44,7 +44,7 @@ export default function Header() {
       <div className="wrap header-row">
         <Link href="/" className="brand">
           <Microscope />
-          <span className="brand-name">{t.brand}</span>
+          <span className="brand-stack"><span className="brand-name">{t.brand}</span><span className="brand-ver">1.0</span><span className="brand-region">Mirdita</span></span>
           <span className="brand-rule" aria-hidden="true" />
           <span className="brand-tag">
             {t.tag.map((line) => <span key={line}>{line}</span>)}
