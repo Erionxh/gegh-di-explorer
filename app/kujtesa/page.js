@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { useLang } from '../../components/LangProvider';
+import WantedGuide from '../../components/WantedGuide';
 
 export default function Kujtesa() {
   const { t, lang } = useLang();
@@ -75,6 +76,7 @@ export default function Kujtesa() {
         <p className="eyebrow" style={{ margin: 0 }}>{m.step}</p>
         <h1>{m.h1}</h1>
         <p className="lead" style={{ margin: 0, fontSize: 18 }}>{m.lead}</p>
+        <WantedGuide />
 
         <div className="card recbox">
           <button type="button" className={`recbtn${recording ? ' on' : ''}`} onClick={toggleRecording} aria-label={recording ? m.stop : m.rec}>

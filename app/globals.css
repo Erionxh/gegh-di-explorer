@@ -307,3 +307,26 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .now-next ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
 @media (max-width: 720px) { .now-next { grid-template-columns: 1fr; } }
 .castle svg { width: 100%; height: auto; max-width: 640px; display: block; margin: 0 auto; }
+
+/* Kujtesa: what we are looking for */
+.wanted { padding: 20px; display: flex; flex-direction: column; gap: 10px; border-left: 4px solid #2f7d4f; }
+.wanted h2 { font-size: 22px; margin: 0; }
+.wanted h3 { font-family: var(--sans); font-size: 16px; margin: 6px 0 0; }
+.wanted p { margin: 0; color: var(--ink-2); line-height: 1.55; font-size: 16px; }
+.wanted summary { cursor: pointer; font-weight: 600; color: #2f7d4f; font-size: 15px; }
+.wanted-yesno { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+.wanted-yesno ul { margin: 6px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 15px; line-height: 1.5; display: flex; flex-direction: column; gap: 4px; }
+.wanted-yesno .yes { color: #2f7d4f; } .wanted-yesno .no { color: #9a1f12; }
+.wanted-new { margin-top: 10px !important; font-size: 14.5px !important; font-style: italic; }
+@media (max-width: 720px) { .wanted-yesno { grid-template-columns: 1fr; } }
+.wanted-cats { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.wanted-cats button { white-space: nowrap; padding: 6px 12px; border-radius: 999px; border: 1px solid #d8d4c8; background: #f6f4ee; font-size: 14px; cursor: pointer; }
+.wanted-cats button[aria-selected="true"] { background: #1d2a44; color: #fff; border-color: #1d2a44; }
+.wanted-words { display: flex; flex-wrap: wrap; gap: 8px; }
+.wanted-words .tag { cursor: pointer; font-size: 15px; }
+.wanted-words .tag:hover { border-color: #2f7d4f; color: #2f7d4f; }
+.wanted-hint { font-size: 13.5px !important; color: var(--muted) !important; }
+.memory-left, .memory-form, .wanted { min-width: 0; max-width: 100%; }
+@media (max-width: 720px) { .memory-left, .memory-form { flex: 1 1 100%; } .memory { gap: 28px; } }
+.wanted { overflow: hidden; } .wanted-cats { width: 100%; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: 1fr !important; } .memory-form { padding: 20px; } } .field input, .field select, .field textarea { max-width: 100%; min-width: 0; box-sizing: border-box; } .field { min-width: 0; }
