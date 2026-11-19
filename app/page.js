@@ -16,6 +16,13 @@ export default function Home() {
         <p className="eyebrow">{h.eyebrow}</p>
         <h1>{h.h1}</h1>
         <p className="lead">{h.lead}</p>
+        <Link href="/kujtesa" className="hero-rec" aria-label={lang === 'en' ? 'Add a word: record it in your voice' : 'Shto një fjalë: incizoje me zërin tënd'}>
+          <span className="hero-rec-btn"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0" /><path d="M12 18v3" /></svg></span>
+          <span className="hero-rec-text">
+            <strong>{lang === 'en' ? 'Add a word' : 'Shto një fjalë'}</strong>
+            <span>{lang === 'en' ? 'Tap and say it the way your grandmother said it' : 'Prek dhe thuaje si e thoshte gjyshja'}</span>
+          </span>
+        </Link>
       </section>
 
       <section className="wrap" style={{ paddingBottom: 48 }}>
