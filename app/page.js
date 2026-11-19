@@ -117,7 +117,7 @@ export default function Home() {
           ))}
         </div>
         <p style={{ marginTop: 14, fontSize: 14, color: 'var(--muted)' }}>
-          <Link href="/studiuesit">{h.count(words.length)}</Link>
+          <Link href="/fjalet">{h.count(words.length)} · {lang === 'en' ? '500 we are looking for' : '500 që kërkojmë'} →</Link>
         </p>
       </section>
 

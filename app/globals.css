@@ -640,3 +640,10 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .seat-link:hover { color: var(--gold); }
 .seat-click { color: inherit; text-decoration: none; display: block; }
 .seat-click:hover { border-color: var(--gold); }
+.want-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.want-item { display: flex; flex-direction: column; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); text-decoration: none; color: inherit; }
+.want-item strong { font-size: 16px; }
+.want-item span { font-size: 13px; color: var(--muted); }
+.want-item em { font-style: normal; font-size: 11.5px; color: #22603d; font-weight: 700; margin-top: 3px; }
+.want-item.has { border-color: #b9dcc5; background: #f2f9f4; }
+.want-item:hover { border-color: var(--gold); }
