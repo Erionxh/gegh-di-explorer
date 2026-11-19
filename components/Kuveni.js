@@ -3,28 +3,30 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useLang } from './LangProvider';
 import { StatusPill } from './Footer';
-import { FORUM_CATS, FORUM_RULES, THREADS } from '../lib/forum';
+import { FORUM_CATS, FORUM_RULES, THREADS, WORD_DEBATES } from '../lib/forum';
 import { SOURCES } from '../lib/sources';
 
 const UI = {
   sq: {
     mock: 'Mock-up · asgjë nuk ruhet · postimet janë shembuj', ex: 'Shembull',
-    eyebrow: 'Kuvendi i GEG', h1: 'Kuvendi',
-    lead: 'Vendi ku pyetet, kundërshtohet dhe sillet dëshmi. Si kuvendi i pleqve: flet kushdo, por fjala peshon sa dëshmia që sjell.',
+    eyebrow: 'Kuveni i GEG', h1: 'Kuveni', motto: '„Sipas venit bahet kuveni.”',
+    lead: 'Vendi ku pyetet, kundërshtohet dhe sillet dëshmi. Si kuveni i pleqve: flet kushdo, por fjala peshon sa dëshmia që sjell.',
     newPost: '+ Temë e re', all: 'Të gjitha', sort: ['Më të reja', 'Më të votuara', 'Pa përgjigje'],
-    comments: 'komente', rules: 'Kanuni i Kuvendit', by: 'nga', reviewer: 'Shqyrtues/e', geg: 'GEG',
-    back: '← Kuvendi', review: 'Shënimi i shqyrtuesit', reply: 'Shkruaj një përgjigje…', send: 'Dërgo', sourceReq: 'Shto burim ose shëno „pa burim”',
+    comments: 'komente', rules: 'Kanuni i Kuvenit', by: 'nga', reviewer: 'Shqyrtues/e', geg: 'GEG',
+    back: '← Kuveni', review: 'Shënimi i shqyrtuesit', reply: 'Shkruaj një përgjigje…', send: 'Dërgo', sourceReq: 'Shto burim ose shëno „pa burim”',
     noSource: 'pa burim', wordPage: 'Faqja e fjalës', srcs: 'Burimet', disabled: 'Mock-up: dërgimi s\'është aktiv', empty: 'Ende pa komente. Bëhu i pari.',
+    wordsH: 'Fjalët në Kuven', wordsLead: 'Zgjidh një fjalë: dëgjo si e thonë të tjerët, shto versionin tënd, dhe debato pse.', versions: 'versione', debateN: 'në debat', openW: 'Hyr', vH: 'Versionet: si e thonë', addV: '🎙 Shto versionin tënd', same: 'Edhe ne kështu', dH: 'Debati: pse?', dLead: 'Këtu nuk debatohet kush e thotë më bukur, por nga vjen fjala dhe çfarë e provon.', openThread: 'Tema e plotë në Kuven →', wordPage: 'Faqja e fjalës', play: 'Dëgjo', noDebate: 'Ende pa debat. Hap të parin: pse mendon se e themi kështu?', backW: '← Kuveni',
     how: 'Si funksionon statusi', howT: 'Votat tregojnë interesin. Statusin (e hapur, e mbështetur, e kontestuar…) e vendos një shqyrtues, me arsye të shkruar, sipas Kushtetutës.',
   },
   en: {
     mock: 'Mock-up · nothing is saved · posts are examples', ex: 'Example',
-    eyebrow: 'The GEG council', h1: 'Kuvendi',
-    lead: 'The place to ask, challenge and bring evidence. Like the council of elders: anyone speaks, but a word weighs as much as the evidence it brings.',
+    eyebrow: 'The GEG council', h1: 'Kuveni', motto: '„Sipas venit bahet kuveni.” (The council is held as the place is.)',
+    lead: 'The place to ask, challenge and bring evidence. Like the council of elders (kuveni): anyone speaks, but a word weighs as much as the evidence it brings.',
     newPost: '+ New thread', all: 'All', sort: ['Newest', 'Top', 'Unanswered'],
-    comments: 'comments', rules: 'Rules of the Kuvend', by: 'by', reviewer: 'Reviewer', geg: 'GEG',
-    back: '← Kuvendi', review: 'Reviewer\'s note', reply: 'Write a reply…', send: 'Send', sourceReq: 'Add a source or mark "no source"',
+    comments: 'comments', rules: 'Rules of the Kuven', by: 'by', reviewer: 'Reviewer', geg: 'GEG',
+    back: '← Kuveni', review: 'Reviewer\'s note', reply: 'Write a reply…', send: 'Send', sourceReq: 'Add a source or mark "no source"',
     noSource: 'no source', wordPage: 'Word page', srcs: 'Sources', disabled: 'Mock-up: sending is off', empty: 'No comments yet. Be the first.',
+    wordsH: 'Words in the Kuven', wordsLead: 'Pick a word: hear how others say it, add your version, and debate why.', versions: 'versions', debateN: 'in debate', openW: 'Enter', vH: 'The versions: how people say it', addV: '🎙 Add your version', same: 'We say it too', dH: 'The debate: why?', dLead: 'The debate is not about who says it more beautifully, but where the word comes from and what proves it.', openThread: 'Full thread in the Kuven →', wordPage: 'Word page', play: 'Play', noDebate: 'No debate yet. Start the first: why do you think we say it this way?', backW: '← Kuveni',
     how: 'How status works', howT: 'Votes show interest. The status (open, supported, disputed…) is set by a reviewer, with written reasons, under the Constitution.',
   },
 };
@@ -73,7 +75,7 @@ function Rules({ t, lang }) {
   );
 }
 
-export function KuvendiIndex() {
+export function KuveniIndex() {
   const { lang } = useLang();
   const t = UI[lang];
   const [cat, setCat] = useState('all');
@@ -86,7 +88,23 @@ export function KuvendiIndex() {
       <Mock t={t} />
       <p className="eyebrow" style={{ marginTop: 18 }}>{t.eyebrow}</p>
       <h1 style={{ fontSize: 'clamp(34px, 5vw, 50px)' }}>{t.h1}</h1>
+      <p className="kv-motto">{t.motto}</p>
       <p className="lead" style={{ marginTop: 0 }}>{t.lead}</p>
+      <section className="kv-words">
+        <h2>{t.wordsH}</h2>
+        <p>{t.wordsLead}</p>
+        <div className="kv-wgrid">
+          {WORD_DEBATES.map((w) => (
+            <Link key={w.id} href={`/kuveni/fjala/${w.id}`} className="card kv-wcard">
+              <span className="kv-ex">{t.ex}</span>
+              <strong>{w.word}</strong>
+              <span className="kv-wg">{w.gloss[lang]}</span>
+              <span className="kv-wn">🎙 {w.versions.length} {t.versions} · 💬 {w.debate.length} {t.debateN}</span>
+              <span className="kv-wgo">{t.openW} →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
       <div className="kv-layout">
         <div>
           <div className="kv-bar">
@@ -111,7 +129,7 @@ export function KuvendiIndex() {
                     <StatusPill status={x.status} />
                     <span className="kv-ex">{t.ex}</span>
                   </div>
-                  <h3><Link href={`/kuvendi/${x.id}`}>{x.title}</Link></h3>
+                  <h3><Link href={`/kuveni/${x.id}`}>{x.title}</Link></h3>
                   <div className="kv-foot">
                     <Who u={x.author} place={x.place} badge={x.badge} t={t} />
                     <span>· {x.ago}</span>
@@ -147,13 +165,13 @@ function Comment({ c, t, depth = 0 }) {
   );
 }
 
-export function KuvendiThread({ thread: x }) {
+export function KuveniThread({ thread: x }) {
   const { lang } = useLang();
   const t = UI[lang];
   return (
     <div className="wrap" style={{ paddingTop: 28, paddingBottom: 64 }}>
       <Mock t={t} />
-      <Link href="/kuvendi" style={{ fontSize: 14, display: 'inline-block', marginTop: 16 }}>{t.back}</Link>
+      <Link href="/kuveni" style={{ fontSize: 14, display: 'inline-block', marginTop: 16 }}>{t.back}</Link>
       <div className="kv-layout">
         <div>
           <article className="card kv-item kv-post">
@@ -200,6 +218,70 @@ export function KuvendiThread({ thread: x }) {
         </div>
         <Rules t={t} lang={lang} />
       </div>
+    </div>
+  );
+}
+
+function SameBtn({ n, label }) {
+  const [on, setOn] = useState(false);
+  return <button type="button" className={`kv-same ${on ? 'on' : ''}`} onClick={() => setOn(!on)}>👍 {label} · {n + (on ? 1 : 0)}</button>;
+}
+
+export function KuveniWord({ w }) {
+  const { lang } = useLang();
+  const t = UI[lang];
+  return (
+    <div className="wrap" style={{ paddingTop: 28, paddingBottom: 64 }}>
+      <Mock t={t} />
+      <Link href="/kuveni" style={{ fontSize: 14, display: 'inline-block', marginTop: 16 }}>{t.backW}</Link>
+      <div className="kv-whead">
+        <h1 className="headword">{w.word}</h1>
+        <span className="kv-wg">{w.gloss[lang]}</span>
+        <span className="kv-ex">{t.ex}</span>
+      </div>
+      <p className="lead" style={{ marginTop: 4 }}>{w.ask[lang]}</p>
+      <div className="kv-links">
+        {!w.noPage && <Link className="kv-word" href={`/fjala/${w.id}`}>{t.wordPage}: <b>{w.word}</b> →</Link>}
+        <Link className="btn btn-gold" style={{ minHeight: 40 }} href={`/kujtesa?fjala=${encodeURIComponent(w.word)}`}>{t.addV}</Link>
+      </div>
+
+      <section style={{ marginTop: 24 }}>
+        <h2 style={{ fontSize: 26 }}>{t.vH}</h2>
+        <div className="kv-vgrid">
+          {w.versions.map((v, i) => (
+            <article key={i} className="card kv-ver">
+              <div className="kv-vform">{v.form}</div>
+              <div className="kv-vsay">{v.say}</div>
+              <div className="kv-audio" title={t.disabled}><span>▶</span><i />{v.audio}</div>
+              <div className="kv-foot"><b style={{ color: 'var(--ink)' }}>{v.place}</b><span>· {v.who}</span></div>
+              <SameBtn n={v.same} label={t.same} />
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ marginTop: 28 }}>
+        <h2 style={{ fontSize: 26 }}>{t.dH}</h2>
+        <p style={{ color: 'var(--ink-2)', marginTop: 4 }}>{t.dLead}</p>
+        <div className="kv-comments">
+          {w.debate.length === 0 && <p style={{ color: 'var(--ink-2)' }}>{t.noDebate}</p>}
+          {w.debate.map((c, i) => (
+            <div key={i} className="kv-c d0">
+              <Vote n={c.votes} />
+              <div className="kv-body">
+                <div className="kv-foot"><Who u={c.u} badge={c.badge} t={t} /><span className="kv-stance">{c.stance[lang]}</span></div>
+                <p>{c.t}</p>
+                <div className="kv-foot">{c.src ? <span className="kv-src">📖 {srcLabel(c.src)}</span> : <span className="kv-tag">{t.noSource}</span>}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="card kv-reply">
+          <textarea placeholder={t.reply} rows={3} disabled title={t.disabled} />
+          <div className="kv-reply-bar"><span>📖 {t.sourceReq}</span><button className="btn btn-navy" disabled title={t.disabled}>{t.send}</button></div>
+        </div>
+        {w.thread && <p style={{ marginTop: 14 }}><Link href={`/kuveni/${w.thread}`}>{t.openThread}</Link></p>}
+      </section>
     </div>
   );
 }
