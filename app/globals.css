@@ -342,3 +342,10 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .hero-rec-text strong { font-size: 21px; color: #1d2a44; }
 .hero-rec-text span { font-size: 14.5px; color: var(--ink-2); }
 @media (max-width: 700px) { .main-nav { gap: 10px 12px; font-size: 14px; } }
+
+/* Brand stack: GEG / 1.0 / Mirdita */
+.brand-stack { display: flex; flex-direction: column; align-items: center; line-height: 1; gap: 3px; }
+.brand-stack .brand-name { font-size: 27px; }
+.brand-ver { font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: .08em; padding: 1px 0; border-top: 1px solid rgba(217,181,106,.6); border-bottom: 1px solid rgba(217,181,106,.6); width: 100%; text-align: center; }
+.brand-region { font-size: 10.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #fff; }
+@media (max-width: 700px) { .brand-stack .brand-name { font-size: 24px; } }
