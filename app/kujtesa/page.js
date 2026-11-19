@@ -16,6 +16,11 @@ export default function Kujtesa() {
   const chunksRef = useRef([]);
 
   useEffect(() => () => { if (audioUrl) URL.revokeObjectURL(audioUrl); }, [audioUrl]);
+  useEffect(() => {
+    const w = new URLSearchParams(window.location.search).get('fjala');
+    const el = document.getElementById('k-meaning');
+    if (w && el) el.value = w.slice(0, 80);
+  }, []);
 
   async function toggleRecording() {
     if (recording) {

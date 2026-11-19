@@ -349,3 +349,17 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .brand-ver { font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: .08em; padding: 1px 0; border-top: 1px solid rgba(217,181,106,.6); border-bottom: 1px solid rgba(217,181,106,.6); width: 100%; text-align: center; }
 .brand-region { font-size: 10.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #fff; }
 @media (max-width: 700px) { .brand-stack .brand-name { font-size: 24px; } }
+
+/* Loan layers */
+.dir-legend { display: flex; flex-wrap: wrap; gap: 8px; }
+.dir { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; }
+.dir-in { background: #e8eefb; color: #1d3a7a; } .dir-out { background: #e1efe6; color: #1f6a3f; }
+.dir-both { background: #fbf3dc; color: #7a5a12; } .dir-open { background: #eee; color: #555; }
+.layer-list { display: flex; flex-direction: column; gap: 8px; }
+.layer-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 12px; background: #fff; border: 1px solid #e3ded2; }
+.layer-main { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; min-width: 0; }
+.layer-main strong { font-size: 19px; font-family: var(--serif); color: #1d2a44; }
+.layer-tr { font-size: 14px; color: #8a6a1f; }
+.layer-m { font-size: 15px; color: var(--ink-2); width: 100%; }
+.layer-native { font-size: 13.5px; color: #2f7d4f; }
+.layer-say { flex-shrink: 0; font-size: 13px; font-weight: 600; color: #2f7d4f; padding: 6px 10px; border: 1px solid #cfe3d6; border-radius: 999px; text-decoration: none; }
