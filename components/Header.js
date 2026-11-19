@@ -70,7 +70,7 @@ export default function Header() {
             <span className="brand-rule" aria-hidden="true" />
             <span className="brand-tag">{t.tag.map((line) => <span key={line}>{line}</span>)}</span>
           </Link>
-          <span className="beta">BETA</span>
+          <span className="hdr-beta">BETA</span>
         </div>
         <div className="hdr-tools">
           <form className="hdr-search" role="search" onSubmit={onSearch}>
