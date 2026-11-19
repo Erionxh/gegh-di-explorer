@@ -15,7 +15,7 @@ const UI = {
     comments: 'komente', rules: 'Kanuni i Kuvenit', by: 'nga', reviewer: 'Shqyrtues/e', geg: 'GEG',
     back: '← Kuveni', review: 'Shënimi i shqyrtuesit', reply: 'Shkruaj një përgjigje…', send: 'Dërgo', sourceReq: 'Shto burim ose shëno „pa burim”',
     noSource: 'pa burim', wordPage: 'Faqja e fjalës', srcs: 'Burimet', disabled: 'Mock-up: dërgimi s\'është aktiv', empty: 'Ende pa komente. Bëhu i pari.',
-    wordsH: 'Fjalët në Kuven', wordsLead: 'Zgjidh një fjalë: dëgjo si e thonë të tjerët, shto versionin tënd, dhe debato pse.', versions: 'versione', debateN: 'në debat', openW: 'Hyr', vH: 'Versionet: si e thonë', addV: '🎙 Shto versionin tënd', same: 'Edhe ne kështu', dH: 'Debati: pse?', dLead: 'Këtu nuk debatohet kush e thotë më bukur, por nga vjen fjala dhe çfarë e provon.', openThread: 'Tema e plotë në Kuven →', wordPage: 'Faqja e fjalës', play: 'Dëgjo', noDebate: 'Ende pa debat. Hap të parin: pse mendon se e themi kështu?', backW: '← Kuveni',
+    wordsH: 'Fjalët në Kuven', wordsLead: 'Zgjidh një fjalë: dëgjo si e thonë të tjerët, shto versionin tënd, dhe kuvendo pse.', versions: 'versione', debateN: 'në kuvend', openW: 'Hyr', vH: 'Versionet: si e thonë', addV: '🎙 Shto versionin tënd', same: 'Edhe ne kështu', dH: 'Kuvendo: pse?', dLead: 'Këtu nuk kuvendohet kush e thotë më bukur, por nga vjen fjala dhe çfarë e provon. Kuvendo në gegnisht, lirisht.', openThread: 'Tema e plotë në Kuven →', wordPage: 'Faqja e fjalës', play: 'Dëgjo', noDebate: 'Ende pa kuvend. Nise ti: pse mendon se e themi kështu?', backW: '← Kuveni',
     how: 'Si funksionon statusi', howT: 'Votat tregojnë interesin. Statusin (e hapur, e mbështetur, e kontestuar…) e vendos një shqyrtues, me arsye të shkruar, sipas Kushtetutës.',
   },
   en: {
