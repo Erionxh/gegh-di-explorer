@@ -8,7 +8,7 @@ import { SOURCES } from '../lib/sources';
 
 const UI = {
   sq: {
-    mock: 'Mock-up · asgjë nuk ruhet · postimet janë shembuj',
+    mock: 'Mock-up · asgjë nuk ruhet · postimet janë shembuj', ex: 'Shembull',
     eyebrow: 'Kuvendi i GEG', h1: 'Kuvendi',
     lead: 'Vendi ku pyetet, kundërshtohet dhe sillet dëshmi. Si kuvendi i pleqve: flet kushdo, por fjala peshon sa dëshmia që sjell.',
     newPost: '+ Temë e re', all: 'Të gjitha', sort: ['Më të reja', 'Më të votuara', 'Pa përgjigje'],
@@ -18,7 +18,7 @@ const UI = {
     how: 'Si funksionon statusi', howT: 'Votat tregojnë interesin. Statusin (e hapur, e mbështetur, e kontestuar…) e vendos një shqyrtues, me arsye të shkruar, sipas Kushtetutës.',
   },
   en: {
-    mock: 'Mock-up · nothing is saved · posts are examples',
+    mock: 'Mock-up · nothing is saved · posts are examples', ex: 'Example',
     eyebrow: 'The GEG council', h1: 'Kuvendi',
     lead: 'The place to ask, challenge and bring evidence. Like the council of elders: anyone speaks, but a word weighs as much as the evidence it brings.',
     newPost: '+ New thread', all: 'All', sort: ['Newest', 'Top', 'Unanswered'],
@@ -109,6 +109,7 @@ export function KuvendiIndex() {
                   <div className="kv-meta">
                     <span className={`kv-cat c-${x.cat}`}>{FORUM_CATS[x.cat][lang]}</span>
                     <StatusPill status={x.status} />
+                    <span className="kv-ex">{t.ex}</span>
                   </div>
                   <h3><Link href={`/kuvendi/${x.id}`}>{x.title}</Link></h3>
                   <div className="kv-foot">
@@ -161,6 +162,7 @@ export function KuvendiThread({ thread: x }) {
               <div className="kv-meta">
                 <span className={`kv-cat c-${x.cat}`}>{FORUM_CATS[x.cat][lang]}</span>
                 <StatusPill status={x.status} />
+                <span className="kv-ex">{t.ex}</span>
               </div>
               <h1 className="kv-title">{x.title}</h1>
               <div className="kv-foot"><span>{t.by}</span><Who u={x.author} place={x.place} badge={x.badge} t={t} /><span>· {x.ago}</span></div>
