@@ -1,9 +1,10 @@
 'use client';
+import Link from 'next/link';
 import { useLang } from '../../components/LangProvider';
 import { StatusPill } from '../../components/Footer';
 
 export default function Method() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const m = t.method;
   return (
     <div className="method">
@@ -35,19 +36,20 @@ export default function Method() {
           {m.lenses.map(([n, name, text]) => (
             <article key={n} id={`lente-${n}`} className={`card home-lens${n === '1' ? ' home-lens-1' : ''}`} style={{ scrollMarginTop: 20 }}>
               <span className="lens-n">{n}</span>
-              <h3>{name}</h3>
+              <h3><Link href={`/lente/${n}`}>{name}</Link></h3>
               <p>{text}</p>
+              <Link href={`/lente/${n}`} className="lens-more">{lang === 'en' ? 'Read more' : 'Lexo më shumë'} →</Link>
               {n === '1' && (
                 <div className="home-sublenses">
                   {m.sub.map(([sn, sname, stext, stag]) => (
-                    <div key={sn} id={`lente-${sn}`} className="home-sublens" style={{ scrollMarginTop: 20 }}>
+                    <Link key={sn} id={`lente-${sn}`} href={`/lente/${sn}`} className="home-sublens" style={{ scrollMarginTop: 20 }}>
                       <span className="lens-n lens-n-sub">{sn}</span>
                       <div>
                         <strong>{sname}</strong>
                         {stag && <em className="sub-tag">{stag}</em>}
                         <p>{stext}</p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}

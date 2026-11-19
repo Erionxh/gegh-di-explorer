@@ -34,7 +34,7 @@ export default function Sources() {
           <h2 className="section-title" style={{ fontSize: 28 }}>{t.groups[g]}</h2>
           <div className="source-list">
             {SOURCES.filter((s) => s.group === g).map((s) => (
-              <article key={s.id} className="card source">
+              <article key={s.id} id={s.id} className="card source" style={{ scrollMarginTop: 20 }}>
                 <div className="source-year">{s.year}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
                   <h3>{s.title}</h3>
