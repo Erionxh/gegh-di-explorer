@@ -52,6 +52,7 @@ export default function WantedGuide() {
   const { lang } = useLang();
   const t = T[lang];
   const [cat, setCat] = useState(0);
+  const [open, setOpen] = useState(null);
   const c = WANTED[cat];
 
   function pick(word) {
@@ -65,14 +66,19 @@ export default function WantedGuide() {
     <div className="card wanted">
       <h2>{t.title}</h2>
       <p>{t.lead}</p>
-      <details>
-        <summary>{t.yesTitle} / {t.noTitle}</summary>
-        <div className="wanted-yesno">
-          <div><strong className="yes">✓ {t.yesTitle}</strong><ul>{t.yes.map((x) => <li key={x}>{x}</li>)}</ul></div>
-          <div><strong className="no">✗ {t.noTitle}</strong><ul>{t.no.map((x) => <li key={x}>{x}</li>)}</ul></div>
-        </div>
+      <div className="wanted-toggle">
+        <button type="button" className={`wt-yes ${open === 'yes' ? 'on' : ''}`} aria-expanded={open === 'yes'} onClick={() => setOpen(open === 'yes' ? null : 'yes')}>
+          <span className="wt-mark">✓</span>{t.yesTitle}
+        </button>
+        <button type="button" className={`wt-no ${open === 'no' ? 'on' : ''}`} aria-expanded={open === 'no'} onClick={() => setOpen(open === 'no' ? null : 'no')}>
+          <span className="wt-mark">✗</span>{t.noTitle}
+        </button>
+      </div>
+      {open === 'yes' && <ul className="wt-list yes">{t.yes.map((x) => <li key={x}>{x}</li>)}</ul>}
+      {open === 'no' && (<>
+        <ul className="wt-list no">{t.no.map((x) => <li key={x}>{x}</li>)}</ul>
         <p className="wanted-new">{t.newWords}</p>
-      </details>
+      </>)}
       <h3>{t.pickTitle}</h3>
       <div className="wanted-cats" role="tablist">
         {WANTED.map((x, i) => (
