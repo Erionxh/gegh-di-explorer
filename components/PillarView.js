@@ -45,7 +45,7 @@ export default function PillarView({ id }) {
           <p>{c.seatsNote}</p>
           <div className="seat-grid">
             {c.seats.map(([h, txt], k) => (
-              <div key={h} className="seat"><strong>{k + 1}. {h}</strong><span>{txt}</span><br /><em>{k === 8 ? t.founder : t.open}</em></div>
+              <Link key={h} href={`/bordi/${k + 1}`} className="seat seat-click"><strong>{k + 1}. {h}</strong><span>{txt}</span><br /><em>{k === 8 ? t.founder : t.open}</em></Link>
             ))}
           </div>
         </section>

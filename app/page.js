@@ -131,7 +131,7 @@ export default function Home() {
               <Link href="/kushtetuta" style={{ color: 'var(--gold)' }}>{lang === 'en' ? 'Read the Constitution' : 'Lexo Kushtetutën'} →</Link>
             </p>
           </div>
-          <ul className="seats">{h.seats.map((s) => <li key={s}>{s}</li>)}</ul>
+          <ul className="seats">{h.seats.map((s, k) => <li key={s}><Link href={`/bordi/${k + 1}`} className="seat-link">{s} <span aria-hidden="true">→</span></Link></li>)}</ul>
         </div>
       </section>
     </>

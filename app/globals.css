@@ -635,3 +635,8 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .pn-item p { margin: 0; }
 .pn-row1 { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .pn-row1 strong { font-size: 20px; }
+.seat-link { color: inherit; text-decoration: none; display: flex; justify-content: space-between; gap: 10px; }
+.seat-link span { color: var(--gold); }
+.seat-link:hover { color: var(--gold); }
+.seat-click { color: inherit; text-decoration: none; display: block; }
+.seat-click:hover { border-color: var(--gold); }
