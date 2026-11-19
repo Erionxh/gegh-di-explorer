@@ -506,3 +506,12 @@ a.home-sublens:hover strong { text-decoration: underline; }
   .hdr-act .langswitch button { padding: 0 7px; font-size: 12.5px; }
   .hdr-links a { font-size: 12.5px; }
 }
+/* Meyer dictionary */
+.meyer-list { display: flex; flex-direction: column; gap: 10px; }
+.meyer-entry { padding: 14px 16px; border-radius: 12px; background: #fff; border: 1px solid #e3ded2; display: flex; flex-direction: column; gap: 6px; }
+.meyer-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.meyer-head strong { font-family: var(--serif); font-size: 20px; color: #1d2a44; }
+.meyer-geg { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #2f7d4f; background: #e1efe6; padding: 2px 7px; border-radius: 999px; }
+.meyer-pg { margin-left: auto; font-size: 13px; color: var(--muted); }
+.meyer-entry p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-2); overflow-wrap: anywhere; }
+.meyer-entry a { font-size: 13.5px; font-weight: 600; color: #2f7d4f; }
