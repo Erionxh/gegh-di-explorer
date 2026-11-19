@@ -6,7 +6,7 @@ import { words } from '../lib/words';
 const FEATURED = ['GC-0001', 'GC-0002', 'GC-0004', 'GC-0022', 'GC-0024', 'GC-0079', 'GC-0025', 'GC-0012', 'GC-0013', 'GC-0039', 'GC-0037', 'Q10321', 'Q20001', 'Q20004', 'Q20005'];
 
 export default function Home() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const h = t.home;
   const featured = FEATURED.map((id) => words.find((w) => w.id === id)).filter(Boolean);
 
@@ -28,25 +28,26 @@ export default function Home() {
         <p style={{ margin: 0, color: 'var(--ink-2)' }}>{h.lensesLead}</p>
         <div className="home-lenses">
           {t.method.lenses.map(([n, name, text]) => (
-            <Link key={n} href={`/metodologjia#lente-${n}`} className={`card home-lens${n === '1' ? ' home-lens-1' : ''}`}>
+            <article key={n} className={`card home-lens${n === '1' ? ' home-lens-1' : ''}`}>
               <span className="lens-n">{n}</span>
-              <h3>{name}</h3>
+              <h3><Link href={`/lente/${n}`}>{name}</Link></h3>
               <p>{text}</p>
+              <Link href={`/lente/${n}`} className="lens-more">{lang === 'en' ? 'Read more' : 'Lexo më shumë'} →</Link>
               {n === '1' && (
                 <div className="home-sublenses">
                   {t.method.sub.map(([sn, sname, stext, stag]) => (
-                    <div key={sn} className="home-sublens">
+                    <Link key={sn} href={`/lente/${sn}`} className="home-sublens">
                       <span className="lens-n lens-n-sub">{sn}</span>
                       <div>
                         <strong>{sname}</strong>
                         {stag && <em className="sub-tag">{stag}</em>}
                         <p>{stext}</p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}
-            </Link>
+            </article>
           ))}
         </div>
       </section>

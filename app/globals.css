@@ -259,3 +259,17 @@ table.data tr:hover td { background: #f7f9fc; }
 .map-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
 .map-count { color: var(--muted); font-size: 13px; }
 .leaflet-container { z-index: 0; }
+
+/* Lens pages */
+.lens-page { display: flex; flex-direction: column; gap: 18px; }
+.lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+.lens-sec h2, .lens-example h2 { font-size: 24px; margin-bottom: 8px; }
+.lens-sec p, .lens-sec li, .lens-example li { font-size: 17px; line-height: 1.6; color: var(--ink-2); }
+.lens-sec ul, .lens-example ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+.lens-example { display: flex; flex-direction: column; gap: 12px; border-left: 4px solid #b8892b; }
+.lens-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid #e3ded2; padding-top: 18px; font-size: 15px; }
+@media (max-width: 720px) { .lens-grid { grid-template-columns: 1fr; } }
+.lens-more { font-weight: 600; font-size: 15px; color: #2f7d4f; margin-top: 4px; display: inline-block; }
+.home-lens h3 a { color: inherit; text-decoration: none; }
+a.home-sublens { color: inherit; text-decoration: none; }
+a.home-sublens:hover strong { text-decoration: underline; }
