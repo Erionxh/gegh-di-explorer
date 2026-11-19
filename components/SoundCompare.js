@@ -6,7 +6,7 @@ import { ANCIENT, LANGS } from '../lib/ancient';
 const TXT = {
   sq: {
     title: 'Dëgjo dhe krahaso',
-    lead: 'Fjala e Mirditës pranë gjuhëve më të vjetra të shkruara. Shtyp ▶ për ta dëgjuar.',
+    lead: 'Fjala e Mirditës pranë fjalës me të njëjtin kuptim në gjuhët më të vjetra të shkruara. Shtyp ▶ për ta dëgjuar.',
     read: 'Si lexohet',
     all: '▶ Dëgjoji të gjitha',
     root: 'Rrënja e përbashkët',
@@ -14,7 +14,7 @@ const TXT = {
   },
   en: {
     title: 'Listen and compare',
-    lead: 'The Mirdita word next to the oldest written languages. Press ▶ to hear it.',
+    lead: 'The Mirdita word next to the word with the same meaning in the oldest written languages. Press ▶ to hear it.',
     read: 'How to say it',
     all: '▶ Play them all',
     root: 'Shared root',
@@ -62,6 +62,7 @@ export default function SoundCompare({ concept }) {
         ))}
       </div>
       <p style={{ margin: 0, fontSize: 15 }}>{t.root}: <strong>{set.root}</strong></p>
+      {set.extra && <p style={{ margin: 0, fontSize: 15, color: 'var(--ink-2)' }}>{set.extra[lang]}</p>}
       <p style={{ margin: 0, fontSize: 13, color: 'var(--muted)' }}>{t.note}</p>
     </section>
   );
