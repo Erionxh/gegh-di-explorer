@@ -8,17 +8,7 @@ const TOPIC = /^(pyetje|(fjala|rrahje|tema):[A-Za-z0-9-]{1,60})$/;
 const KINDS = ['post', 'reply', 'version', 'argument'];
 const MAX_AUDIO = 5 * 1024 * 1024;
 
-export async function GET(req) {
-  const db = admin();
-  if (!db) return json({ ok: false, error: 'not_configured' }, 503);
-  const topic = new URL(req.url).searchParams.get('topic') || '';
-  if (!TOPIC.test(topic)) return json({ ok: false, error: 'bad_topic' }, 400);
-  const user = await userFrom(req, db);
-
-  let q = db.from('kv_posts').select('id, topic, kind, parent_id, title, body, form, place, stance, audio_path, author, status, created_at').eq('topic', topic).order('created_at', { ascending: true }).limit(500);
-  q = user ? q.or(`status.eq.live,and(status.eq.held,author.eq.${user.id})`) : q.eq('status', 'live');
-  const { data: posts, error } = await q;
-  if (error) return json({ ok: false, error: 'read_failed' }, 500);
+async function shape(db, posts, user) {
   const ids = posts.map((p) => p.id);
   const authors = [...new Set(posts.map((p) => p.author))];
   const [{ data: profs }, { data: votes }] = await Promise.all([
@@ -26,7 +16,7 @@ export async function GET(req) {
     ids.length ? db.from('kv_votes').select('post_id, user_id, value').in('post_id', ids) : { data: [] },
   ]);
   const pm = Object.fromEntries((profs || []).map((p) => [p.id, p]));
-  const out = await Promise.all(posts.map(async (p) => {
+  return Promise.all(posts.map(async (p) => {
     const vs = (votes || []).filter((v) => v.post_id === p.id);
     let audio = null;
     if (p.audio_path) {
@@ -41,6 +31,40 @@ export async function GET(req) {
       my: user ? (vs.find((v) => v.user_id === user.id)?.value || 0) : 0,
     };
   }));
+}
+
+const COLS = 'id, topic, kind, parent_id, title, body, form, place, stance, audio_path, author, status, created_at';
+const UUID = /^[0-9a-f-]{36}$/i;
+
+export async function GET(req) {
+  const db = admin();
+  if (!db) return json({ ok: false, error: 'not_configured' }, 503);
+  const sp = new URL(req.url).searchParams;
+  const user = await userFrom(req, db);
+  const visible = (q) => (user ? q.or(`status.eq.live,and(status.eq.held,author.eq.${user.id})`) : q.eq('status', 'live'));
+
+  const id = sp.get('id');
+  if (id) {
+    if (!UUID.test(id)) return json({ ok: false, error: 'bad_id' }, 400);
+    const { data } = await visible(db.from('kv_posts').select(COLS).eq('id', id)).maybeSingle();
+    if (!data) return json({ ok: false, error: 'not_found' }, 404);
+    const [post] = await shape(db, [data], user);
+    return json({ ok: true, post: { ...post, topic: data.topic } });
+  }
+
+  const topic = sp.get('topic') || '';
+  if (!TOPIC.test(topic)) return json({ ok: false, error: 'bad_topic' }, 400);
+  const { data: posts, error } = await visible(db.from('kv_posts').select(COLS).eq('topic', topic)).order('created_at', { ascending: true }).limit(500);
+  if (error) return json({ ok: false, error: 'read_failed' }, 500);
+  const out = await shape(db, posts, user);
+  if (topic === 'pyetje' && posts.length) {
+    const { data: ans } = await db.from('kv_posts').select('topic, created_at').in('topic', posts.map((p) => `tema:${p.id}`)).eq('status', 'live');
+    out.forEach((p) => {
+      const mine = (ans || []).filter((a) => a.topic === `tema:${p.id}`);
+      p.answers = mine.length;
+      p.last = mine.reduce((m, a) => (a.created_at > m ? a.created_at : m), p.at);
+    });
+  }
   return json({ ok: true, posts: out });
 }
 

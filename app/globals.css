@@ -706,3 +706,8 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .hdr-links { grid-template-columns: repeat(5, auto); justify-content: space-between; }
 .hdr-links a { padding: 2px 6px; }
 @media (max-width: 420px) { .hdr-links a { font-size: 12px; padding: 2px 3px; } }
+.kl-topic { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); text-decoration: none; color: inherit; }
+.kl-topic strong { font-size: 16.5px; }
+.kl-topic span { font-size: 13px; color: var(--muted); }
+.kl-topic.held { border-style: dashed; border-color: #d9a441; }
+.kl-topic:hover { border-color: var(--gold); }

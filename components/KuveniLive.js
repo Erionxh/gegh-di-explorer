@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useLang } from './LangProvider';
 import { supa } from '../lib/supaClient';
 import { FORUM_RULES } from '../lib/forum';
@@ -15,7 +16,7 @@ const T = {
     rec: '🎙 Regjistro zërin', stop: '■ Ndalo', redo: 'Fshije regjistrimin', yes: 'Bindëse', no: 'Jo bindëse', reply: 'Përgjigju', report: 'Raporto',
     reported: 'U raportua. Faleminderit.', del: 'Fshije', held: 'Në pritje të shqyrtimit: vetëm ju e shihni.', heldSent: 'U dërgua. Disa fjalë kërkojnë shqyrtim, ndaj do të shfaqet pasi ta shohë moderatori.',
     empty: 'Asgjë ende. Bëhuni i pari.', stance: 'Për cilin qëndrim?', obj: 'Kundërshtim', sup: 'Mbështetje', q: 'Pyetje', err: 'Diçka nuk shkoi. Provoni përsëri.',
-    tooMany: 'Keni shkruar shumë sot. Provoni nesër.', mod: 'Moderimi', loading: 'Po ngarkohet…',
+    tooMany: 'Keni shkruar shumë sot. Provoni nesër.', mod: 'Moderimi', loading: 'Po ngarkohet…', best: 'Më bindëset', newest: 'Më të rejat', active: 'Më të gjallat', answers: 'përgjigje', open: 'Hap një bisedë të re', back: '← Të gjitha bisedat', answersH: 'Përgjigjet',
   },
   en: {
     live: 'From you', soon: 'The forum is being switched on. Soon you will be able to write here.', signin: 'Sign in to write',
@@ -26,7 +27,7 @@ const T = {
     rec: '🎙 Record your voice', stop: '■ Stop', redo: 'Delete the recording', yes: 'Convincing', no: 'Not convincing', reply: 'Reply', report: 'Report',
     reported: 'Reported. Thank you.', del: 'Delete', held: 'Waiting for review: only you can see it.', heldSent: 'Sent. Some words need review, so it will appear once a moderator has seen it.',
     empty: 'Nothing yet. Be the first.', stance: 'On which position?', obj: 'Objection', sup: 'Support', q: 'Question', err: 'Something went wrong. Try again.',
-    tooMany: 'You have written a lot today. Try tomorrow.', mod: 'Moderation', loading: 'Loading…',
+    tooMany: 'You have written a lot today. Try tomorrow.', mod: 'Moderation', loading: 'Loading…', best: 'Most convincing', newest: 'Newest', active: 'Most active', answers: 'answers', open: 'Open a new discussion', back: '← All discussions', answersH: 'The answers',
   },
 };
 
@@ -124,7 +125,7 @@ function Composer({ topic, mode, stances, parent, token, t, onSent, compact }) {
       setBusy(true); setMsg('');
       const res = await fetch('/api/kuveni', { method: 'POST', headers: { authorization: `Bearer ${token}` }, body: d }).then((x) => x.json()).catch(() => ({}));
       setBusy(false);
-      if (res.ok) { f.reset(); r.clear(); setMsg(res.held ? t.heldSent : ''); onSent(); }
+      if (res.ok) { f.reset(); r.clear(); setMsg(res.held ? t.heldSent : ''); onSent(res); }
       else setMsg(res.error === 'too_many' ? t.tooMany : t.err);
     }}>
       {!parent && mode === 'thread' && <input name="title" className="pn-input" maxLength={160} placeholder={t.title} required />}
@@ -184,11 +185,15 @@ function Post({ p, children, token, t, refresh, canWrite, topic, mode }) {
   );
 }
 
-export default function LiveTopic({ topic, mode = 'thread', stances, heading }) {
+const score = (p) => p.yes - p.no;
+
+export default function LiveTopic({ topic, mode = 'thread', stances, heading, list = false }) {
   const { lang } = useLang();
   const t = T[lang];
+  const router = useRouter();
   const { client, session, profile, mod, reload, token } = useKvAuth();
   const [posts, setPosts] = useState(null);
+  const [sort, setSort] = useState(list ? 'active' : 'best');
   const load = useCallback(async () => {
     const r = await fetch(`/api/kuveni?topic=${encodeURIComponent(topic)}`, { headers: token ? { authorization: `Bearer ${token}` } : {} }).then((x) => x.json()).catch(() => ({}));
     setPosts(r.ok ? r.posts : []);
@@ -196,12 +201,30 @@ export default function LiveTopic({ topic, mode = 'thread', stances, heading }) 
   useEffect(() => { if (client) load(); }, [client, load]);
 
   if (!client) return <section className="kl"><h2 className="rr-h">{heading || t.live}</h2><p className="kl-soon">{t.soon}</p></section>;
-  const roots = (posts || []).filter((p) => !p.parent);
+  const roots = (posts || []).filter((p) => !p.parent).slice();
+  if (sort === 'best') roots.sort((a, b) => score(b) - score(a) || (a.at < b.at ? 1 : -1));
+  if (sort === 'newest') roots.sort((a, b) => (a.at < b.at ? 1 : -1));
+  if (sort === 'active') roots.sort((a, b) => ((b.last || b.at) > (a.last || a.at) ? 1 : -1));
   const canWrite = !!(session && profile && !profile.banned);
+  const sorts = list ? ['active', 'newest', 'best'] : ['best', 'newest'];
   return (
     <section className="kl">
       <h2 className="rr-h">{heading || t.live}</h2>
-      {posts === null ? <p>{t.loading}</p> : roots.length === 0 ? <p className="kl-soon">{t.empty}</p> : roots.map((p) => (
+      {roots.length > 1 && (
+        <div className="kv-chips" style={{ marginBottom: 10 }}>
+          {sorts.map((k) => <button key={k} className={sort === k ? 'on' : ''} onClick={() => setSort(k)}>{t[k]}</button>)}
+        </div>
+      )}
+      {posts === null ? <p>{t.loading}</p> : roots.length === 0 ? <p className="kl-soon">{t.empty}</p> : list ? (
+        <div style={{ display: 'grid', gap: 8 }}>
+          {roots.map((p) => (
+            <Link key={p.id} href={`/kuveni/t/${p.id}`} className={`kl-topic ${p.held ? 'held' : ''}`}>
+              <strong>{p.title || p.body.slice(0, 80)}</strong>
+              <span>{p.who}{p.village && ` · ${p.village}`} · 💬 {p.answers || 0} {t.answers} · ✓ {p.yes}{p.held ? ` · ${t.held}` : ''}</span>
+            </Link>
+          ))}
+        </div>
+      ) : roots.map((p) => (
         <Post key={p.id} p={p} token={token} t={t} refresh={load} canWrite={canWrite} topic={topic} mode={mode}>
           {posts.filter((c) => c.parent === p.id).map((c) => <Post key={c.id} p={c} token={token} t={t} refresh={load} canWrite={canWrite} topic={topic} mode={mode} />)}
         </Post>
@@ -209,11 +232,36 @@ export default function LiveTopic({ topic, mode = 'thread', stances, heading }) 
       <div style={{ marginTop: 16 }}>
         {!session ? <SignIn client={client} t={t} /> : profile === undefined ? null : !profile ? <Setup token={token} t={t} lang={lang} onDone={reload} /> : (
           <>
-            <Composer topic={topic} mode={mode} stances={stances} token={token} t={t} onSent={load} />
+            {list && <p style={{ fontWeight: 700, margin: '0 0 8px' }}>{t.open}</p>}
+            <Composer topic={topic} mode={mode} stances={stances} token={token} t={t} onSent={(res) => { if (list && res?.id && !res.held) router.push(`/kuveni/t/${res.id}`); else load(); }} />
             <p className="kl-who">{t.as} <b>{profile.display_name}</b> · <button className="linkish" onClick={() => client.auth.signOut()}>{t.out}</button>{mod && <> · <Link href="/kuveni/moderimi">{t.mod}</Link></>}</p>
           </>
         )}
       </div>
     </section>
+  );
+}
+
+export function LiveThread({ id }) {
+  const { lang } = useLang();
+  const t = T[lang];
+  const { client, session, profile, token } = useKvAuth();
+  const [p, setP] = useState(undefined);
+  const load = useCallback(async () => {
+    const r = await fetch(`/api/kuveni?id=${encodeURIComponent(id)}`, { headers: token ? { authorization: `Bearer ${token}` } : {} }).then((x) => x.json()).catch(() => ({}));
+    setP(r.ok ? r.post : null);
+  }, [id, token]);
+  useEffect(() => { if (client) load(); }, [client, load]);
+  return (
+    <div className="wrap" style={{ paddingTop: 28, paddingBottom: 64, maxWidth: 860 }}>
+      <Link href="/kuveni" style={{ fontSize: 14 }}>{t.back}</Link>
+      {p === undefined ? <p style={{ marginTop: 20 }}>{t.loading}</p> : p === null ? <p style={{ marginTop: 20 }}>—</p> : (
+        <>
+          <h1 style={{ fontSize: 'clamp(26px, 4.5vw, 38px)', margin: '16px 0 10px' }}>{p.title}</h1>
+          <Post p={{ ...p, title: null }} token={token} t={t} refresh={load} canWrite={false} topic={p.topic} mode="thread" />
+          <LiveTopic topic={`tema:${id}`} mode="reply" heading={t.answersH} />
+        </>
+      )}
+    </div>
   );
 }
