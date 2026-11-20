@@ -711,3 +711,33 @@ a.home-sublens:hover strong { text-decoration: underline; }
 .kl-topic span { font-size: 13px; color: var(--muted); }
 .kl-topic.held { border-style: dashed; border-color: #d9a441; }
 .kl-topic:hover { border-color: var(--gold); }
+.kt-wrap { min-height: 80vh; display: flex; align-items: flex-start; justify-content: center; padding: 28px 14px 60px; background: radial-gradient(circle at 20% 0%, #f6ecd6 0, transparent 60%); }
+.kt-card { position: relative; width: 100%; max-width: 520px; background: #fffdf7; border: 1px solid #e2d3b0; border-radius: 18px; padding: 26px 22px 24px; box-shadow: 0 10px 30px rgba(60,40,10,.10); display: flex; flex-direction: column; gap: 10px; }
+.kt-stamp { position: absolute; top: 14px; right: 14px; font-size: 11px; font-weight: 800; letter-spacing: .08em; color: #a6741f; border: 2px dashed #d9a441; border-radius: 6px; padding: 4px 7px; transform: rotate(4deg); }
+.kt-from { font-size: 14px; color: #7a5a1f; margin: 0 70px 0 0; font-style: italic; }
+.kt-h { font-size: clamp(30px, 8vw, 40px); line-height: 1.1; margin: 6px 70px 4px 0; }
+.kt-lead { font-size: 17px; line-height: 1.5; color: var(--ink-2); margin: 0 0 6px; }
+.kt-check { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--ink-2); }
+.kt-check input { width: 20px; height: 20px; margin-top: 1px; flex: none; }
+.kt-btn { display: flex; align-items: center; justify-content: center; min-height: 52px; border: 0; border-radius: 12px; background: #1d2b45; color: #fff; font-size: 17px; font-weight: 700; cursor: pointer; text-decoration: none; margin-top: 6px; }
+.kt-btn:disabled { opacity: .45; cursor: default; }
+.kt-wa { background: #1f8f4e; }
+.kt-q { font-size: 21px; margin: 6px 0 2px; }
+.kt-input { min-height: 48px; border: 1px solid #d8ccb0; border-radius: 10px; padding: 0 12px; font-size: 16px; background: #fff; }
+.kt-small { font-size: 13.5px; color: var(--muted); margin: 4px 0; }
+.kt-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.kt-pills button { min-height: 40px; padding: 0 14px; border-radius: 99px; border: 1px solid #d8ccb0; background: #fff; font-size: 15px; cursor: pointer; }
+.kt-pills button.on { background: #1d2b45; color: #fff; border-color: #1d2b45; }
+.kt-progress { height: 6px; background: #efe5cf; border-radius: 99px; overflow: hidden; margin-right: 70px; }
+.kt-progress span { display: block; height: 100%; background: #d9a441; transition: width .3s; }
+.kt-word { font-family: var(--serif, Georgia, serif); font-size: clamp(44px, 13vw, 64px); font-weight: 700; line-height: 1.05; color: #1d2b45; margin: 2px 0 6px; }
+.kt-rec { min-height: 64px; border-radius: 16px; border: 2px solid #c0392b; background: #fff; color: #c0392b; font-size: 19px; font-weight: 800; cursor: pointer; }
+.kt-rec.on { background: #c0392b; color: #fff; animation: ktpulse 1.2s infinite; }
+@keyframes ktpulse { 50% { box-shadow: 0 0 0 8px rgba(192,57,43,.18); } }
+.kt-audio { width: 100%; }
+.kt-skip { background: none; border: 0; color: var(--muted); font-size: 15px; text-decoration: underline; cursor: pointer; padding: 10px; }
+.kt-err { color: #c0392b; font-size: 14px; margin: 0; }
+.kt-more { text-align: center; font-size: 15px; margin-top: 6px; }
+/* Kartolina: vetëm kartolina, pa kutinë e madhe rreth saj */
+body:has(.kt-wrap) header, body:has(.kt-wrap) footer { display: none; }
+body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
