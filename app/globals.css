@@ -741,3 +741,4 @@ a.home-sublens:hover strong { text-decoration: underline; }
 /* Kartolina: vetëm kartolina, pa kutinë e madhe rreth saj */
 body:has(.kt-wrap) header, body:has(.kt-wrap) footer { display: none; }
 body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
+.kt-eyebrow { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #a6741f; margin: 0 70px 0 0; }
