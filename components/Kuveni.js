@@ -146,7 +146,7 @@ export function KuveniIndex() {
               </article>
             ))}
           </div>
-          <LiveTopic topic="pyetje" mode="thread" />
+          <LiveTopic topic="pyetje" mode="thread" list heading={lang === 'en' ? 'Discussions' : 'Bisedat'} />
         </div>
         <Rules t={t} lang={lang} />
       </div>
