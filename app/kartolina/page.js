@@ -121,7 +121,7 @@ export default function Karta() {
   return (
     <div className="kt-wrap">
       <div className="kt-card">
-        <div className="kt-stamp">GEG 1.0</div>
+        <div className="kt-plate" aria-label="MR"><span className="kt-plate-flag">AL</span><b>MR</b></div>
 
         {step === 'intro' && (
           <>
