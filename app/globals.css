@@ -742,3 +742,6 @@ a.home-sublens:hover strong { text-decoration: underline; }
 body:has(.kt-wrap) header, body:has(.kt-wrap) footer { display: none; }
 body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
 .kt-eyebrow { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #a6741f; margin: 0 70px 0 0; }
+.kt-plate { position: absolute; top: 14px; right: 14px; display: flex; align-items: stretch; border: 2px solid #111; border-radius: 5px; background: #fff; overflow: hidden; transform: rotate(3deg); box-shadow: 0 2px 4px rgba(0,0,0,.15); }
+.kt-plate-flag { background: #c8102e; color: #fff; font-size: 9px; font-weight: 800; padding: 0 4px; display: flex; align-items: flex-end; padding-bottom: 3px; }
+.kt-plate b { font-family: 'Arial Black', Arial, sans-serif; font-size: 20px; letter-spacing: .06em; color: #111; padding: 2px 8px; line-height: 1.2; }
