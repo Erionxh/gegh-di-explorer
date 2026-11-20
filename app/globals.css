@@ -745,3 +745,17 @@ body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
 .kt-plate { position: absolute; top: 14px; right: 14px; display: flex; align-items: stretch; border: 2px solid #111; border-radius: 5px; background: #fff; overflow: hidden; transform: rotate(3deg); box-shadow: 0 2px 4px rgba(0,0,0,.15); }
 .kt-plate-flag { background: #c8102e; color: #fff; font-size: 9px; font-weight: 800; padding: 0 4px; display: flex; align-items: flex-end; padding-bottom: 3px; }
 .kt-plate b { font-family: 'Arial Black', Arial, sans-serif; font-size: 20px; letter-spacing: .06em; color: #111; padding: 2px 8px; line-height: 1.2; }
+.ak-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+.ak-tiles div { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 2px; }
+.ak-tiles span { font-size: 13px; color: var(--muted); }
+.ak-tiles b { font-size: clamp(18px, 5vw, 26px); font-variant-numeric: tabular-nums; }
+.ak-tiles b.in, .ak-amt.in { color: #22603d; }
+.ak-tiles b.out, .ak-amt.out { color: #a8321f; }
+.ak-list { display: grid; gap: 8px; }
+.ak-row { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.ak-top { display: flex; justify-content: space-between; align-items: baseline; }
+.ak-date { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ak-amt { font-weight: 800; font-size: 17px; font-variant-numeric: tabular-nums; }
+.ak-what { margin: 4px 0 6px; }
+.ak-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12.5px; color: var(--muted); }
+.ak-cat { background: #eef1f6; color: var(--ink-2); padding: 1px 8px; border-radius: 99px; font-weight: 700; }
