@@ -759,3 +759,16 @@ body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
 .ak-what { margin: 4px 0 6px; }
 .ak-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12.5px; color: var(--muted); }
 .ak-cat { background: #eef1f6; color: var(--ink-2); padding: 1px 8px; border-radius: 99px; font-weight: 700; }
+.th-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.th-animal { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); cursor: pointer; font-size: 15px; }
+.th-animal:hover { border-color: var(--gold); }
+.th-emoji { font-size: 36px; line-height: 1; }
+.th-h { font-size: 24px; display: flex; align-items: center; gap: 10px; margin: 12px 0; }
+.th-act { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; display: grid; gap: 8px; }
+.th-act-h { font-weight: 700; }
+.th-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.th-row audio { height: 38px; max-width: 100%; flex: 1; min-width: 180px; }
+.th-rec { min-height: 46px; padding: 0 16px; border-radius: 12px; border: 2px solid #c0392b; background: #fff; color: #c0392b; font-weight: 800; font-size: 16px; cursor: pointer; }
+.th-rec.on { background: #c0392b; color: #fff; animation: ktpulse 1.2s infinite; }
+.th-save { min-height: 44px; border: 0; border-radius: 10px; background: #1d2b45; color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; }
+.th-ok { color: #22603d; font-weight: 700; margin: 0; }
