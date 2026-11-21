@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useLang } from '../../components/LangProvider';
 import { SOURCES, SOURCE_GROUPS } from '../../lib/sources';
 
@@ -26,6 +27,7 @@ export default function Sources() {
     <div className="wrap" style={{ paddingTop: 56, paddingBottom: 64 }}>
       <p className="eyebrow">{t.eyebrow}</p>
       <h1 style={{ fontSize: 'clamp(36px, 5vw, 52px)' }}>{t.h1}</h1>
+      <p style={{ margin: '0 0 8px' }}><Link href="/a-e-dini">{lang === 'en' ? 'Did you know? Curiosities with sources →' : 'A e dini? Kuriozitete me burim →'}</Link></p>
       <p className="lead">{t.lead}</p>
       <p style={{ color: 'var(--muted)', fontSize: 14, maxWidth: 760 }}>{t.note}</p>
 

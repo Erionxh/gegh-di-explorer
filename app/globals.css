@@ -772,3 +772,14 @@ body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
 .th-rec.on { background: #c0392b; color: #fff; animation: ktpulse 1.2s infinite; }
 .th-save { min-height: 44px; border: 0; border-radius: 10px; background: #1d2b45; color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; }
 .th-ok { color: #22603d; font-weight: 700; margin: 0; }
+.tr-grid { display: grid; gap: 12px; }
+.tr-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; transition: box-shadow .3s, border-color .3s; }
+.tr-card.hi { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(217,164,65,.25); }
+.tr-top { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.tr-yr { font-family: var(--serif, Georgia, serif); font-weight: 700; font-size: 20px; color: #a6741f; }
+.tr-tag { font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 99px; }
+.tr-tag.ok { background: #e4f3ea; color: #22603d; }
+.tr-tag.deb { background: #fdf1dc; color: #7a4a00; }
+.tr-card h2 { font-size: 20px; margin: 8px 0 6px; }
+.tr-card p { margin: 0 0 8px; color: var(--ink-2); line-height: 1.55; }
+.tr-foot { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); }

@@ -91,6 +91,10 @@ export function KuveniIndex() {
       <h1 style={{ fontSize: 'clamp(34px, 5vw, 50px)' }}>{t.h1}</h1>
       <p className="kv-motto">{t.motto}</p>
       <p className="lead" style={{ marginTop: 0 }}>{t.lead}</p>
+      <Link href="/a-e-dini" className="card pad rr-card" style={{ marginTop: 16 }}>
+        <h2 style={{ marginTop: 0 }}>{lang === 'en' ? 'Did you know? →' : 'A e dini? →'}</h2>
+        <p>{lang === 'en' ? 'Albanian written in 1332? Dozens of alphabets? Three dialects in Mirdita? Curiosities with sources.' : 'Shqip e shkrueme më 1332? Dhjetëra alfabete? Tri të folme në Mirditë? Kuriozitete me burim.'}</p>
+      </Link>
       <Link href="/kuveni/rrahje" className="card pad rr-card" style={{ marginTop: 16, borderLeft: '4px solid var(--gold)' }}>
         <h2 style={{ marginTop: 0 }}>{lang === 'en' ? 'Rrahje mendimesh: the big questions →' : 'Rrahje mendimesh: pyetjet e mëdha →'}</h2>
         <p>{lang === 'en' ? 'Where does nder come from? Kuven or conventum? Why does Buzuku write ënder? Every side, with its evidence.' : 'Nga vjen nderi? Kuven apo conventum? Pse Buzuku shkruan ënder? Të gjitha anët, me provat e tyre.'}</p>
