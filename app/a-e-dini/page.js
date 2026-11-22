@@ -5,8 +5,8 @@ import { useLang } from '../../components/LangProvider';
 import { TRIVIA, TRIVIA_CATS } from '../../lib/trivia';
 
 const T = {
-  sq: { eyebrow: 'Kuriozitete me burim', h1: 'A e dini?', lead: 'Gjëra të vogla e të bukura për shqipen dhe gegnishten. Çdo kartë ka burimin e vet dhe shenjën nëse asht e vërtetuar apo ende e diskutueshme.', all: 'Të gjitha', ok: '✓ E vërtetuar', deb: '≈ E diskutueshme', myth: '✗ Mit', src: 'Burimi', more: 'Ma shumë →', rand: '🎲 Një rastësore' },
-  en: { eyebrow: 'Curiosities with sources', h1: 'Did you know?', lead: 'Small, beautiful facts about Albanian and Gheg. Every card has its source and a mark saying whether it is proven or still debated.', all: 'All', ok: '✓ Proven', deb: '≈ Debated', myth: '✗ Myth', src: 'Source', more: 'More →', rand: '🎲 A random one' },
+  sq: { eyebrow: 'Kuriozitete me burim', h1: 'A e dini?', lead: 'Gjëra të vogla e të bukura për shqipen dhe gegnishten. Çdo kartë ka burimin e vet dhe shenjën nëse asht e vërtetuar apo ende e diskutueshme.', all: 'Të gjitha', ok: '✓ E vërtetuar', deb: '≈ E diskutueshme', myth: '✗ Mit', q: '? Pyetje e hapur', src: 'Burimi', more: 'Ma shumë →', rand: '🎲 Një rastësore' },
+  en: { eyebrow: 'Curiosities with sources', h1: 'Did you know?', lead: 'Small, beautiful facts about Albanian and Gheg. Every card has its source and a mark saying whether it is proven or still debated.', all: 'All', ok: '✓ Proven', deb: '≈ Debated', myth: '✗ Myth', q: '? Open question', src: 'Source', more: 'More →', rand: '🎲 A random one' },
 };
 
 export default function AeDini() {
