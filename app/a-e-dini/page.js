@@ -5,8 +5,8 @@ import { useLang } from '../../components/LangProvider';
 import { TRIVIA, TRIVIA_CATS } from '../../lib/trivia';
 
 const T = {
-  sq: { eyebrow: 'Kuriozitete me burim', h1: 'A e dini?', lead: 'Gjëra të vogla e të bukura për shqipen dhe gegnishten. Çdo kartë ka burimin e vet dhe shenjën nëse asht e vërtetuar apo ende e diskutueshme.', all: 'Të gjitha', ok: '✓ E vërtetuar', deb: '≈ E diskutueshme', src: 'Burimi', more: 'Ma shumë →', rand: '🎲 Një rastësore' },
-  en: { eyebrow: 'Curiosities with sources', h1: 'Did you know?', lead: 'Small, beautiful facts about Albanian and Gheg. Every card has its source and a mark saying whether it is proven or still debated.', all: 'All', ok: '✓ Proven', deb: '≈ Debated', src: 'Source', more: 'More →', rand: '🎲 A random one' },
+  sq: { eyebrow: 'Kuriozitete me burim', h1: 'A e dini?', lead: 'Gjëra të vogla e të bukura për shqipen dhe gegnishten. Çdo kartë ka burimin e vet dhe shenjën nëse asht e vërtetuar apo ende e diskutueshme.', all: 'Të gjitha', ok: '✓ E vërtetuar', deb: '≈ E diskutueshme', myth: '✗ Mit', src: 'Burimi', more: 'Ma shumë →', rand: '🎲 Një rastësore' },
+  en: { eyebrow: 'Curiosities with sources', h1: 'Did you know?', lead: 'Small, beautiful facts about Albanian and Gheg. Every card has its source and a mark saying whether it is proven or still debated.', all: 'All', ok: '✓ Proven', deb: '≈ Debated', myth: '✗ Myth', src: 'Source', more: 'More →', rand: '🎲 A random one' },
 };
 
 export default function AeDini() {
@@ -31,7 +31,7 @@ export default function AeDini() {
           const [h, b] = lang === 'en' ? x.en : x.sq;
           return (
             <article key={x.i} id={`tr-${x.i}`} className={`tr-card ${hi === x.i ? 'hi' : ''}`}>
-              <div className="tr-top">{x.yr && <span className="tr-yr">{x.yr}</span>}<span className={`tr-tag ${x.tag}`}>{x.tag === 'ok' ? t.ok : t.deb}</span></div>
+              <div className="tr-top">{x.yr && <span className="tr-yr">{x.yr}</span>}<span className={`tr-tag ${x.tag}`}>{t[x.tag]}</span></div>
               <h2>{h}</h2>
               <p>{b}</p>
               <div className="tr-foot"><span>{t.src}: {x.src}</span>{x.link && <Link href={x.link}>{t.more}</Link>}</div>
