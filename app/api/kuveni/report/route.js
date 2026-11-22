@@ -11,8 +11,6 @@ export async function POST(req) {
   try { b = await req.json(); } catch { /* empty */ }
   if (!b.post) return json({ ok: false, error: 'bad_request' }, 400);
   await db.from('kv_reports').upsert({ post_id: b.post, user_id: user.id, reason: clip(b.reason, 300) }, { onConflict: 'post_id,user_id' });
-  // Tre raportime e fshehin postimin derisa ta shohë moderatori.
-  const { count } = await db.from('kv_reports').select('id', { count: 'exact', head: true }).eq('post_id', b.post).eq('resolved', false);
-  if ((count || 0) >= 3) await db.from('kv_posts').update({ status: 'held', flag_reason: 'reports' }).eq('id', b.post).eq('status', 'live');
+  // Raportimet shkojnë te moderatori. Nuk e fshehin vetë postimin, që askush të mos e censurojë me llogari të rreme.
   return json({ ok: true });
 }

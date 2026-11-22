@@ -18,7 +18,11 @@ const T = {
     hello: 'Zani yt.', sub: 'Shpëto gjuhën e moçme shqiptare.',
     lead: 'Ulu pranë më të moshuarit të familjes, nënës, babait, gjyshes ose gjyshit, dhe regjistroje. Dy minuta, 25 fjalë. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. Nuk ke asnjë pranë? Thuaji vetë, ashtu si i dëgjoje prej tyre.', module: 'Ky është moduli i parë i projektit: dialekti geg, varianti mirditor. Por çdo zë ruhet. Je nga Tirana, Elbasani, Kavaja, Skrapari, Tepelena, Çamëria apo nga një krahinë tjetër? Regjistro si e thoni ju: do të përdoret kur të vijë moduli i krahinës sate, dhe deri atëherë krahasimi na tregon ku ndahen dialektet.',
     consent: 'Pranoj që zëri im, ose zëri i atij që regjistroj me pëlqimin e tij, të ruhet në arkivin GEG 1.0 dhe të përdoret për studim.',
-    start: 'Fillo', modeQ: 'Kush do të flasë?', modes: ['Po regjistroj nënën ose babanë', 'Po regjistroj gjyshen ose gjyshin', 'Një tjetër të moshuar', 'Unë vetë, si i kujtoj'], modeHint: 'Sa më i moshuar zëri, aq më e çmuar fjala.', about: 'Çfarë është GEG 1.0? Shih punën që qëndron pas →',
+    start: 'Fillo', modeQ: 'Kush do të flasë?', modes: ['Po regjistroj nënën ose babanë', 'Po regjistroj gjyshen ose gjyshin', 'Një tjetër të moshuar', 'Unë vetë, si i kujtoj'], modeHint: 'Sa më i moshuar zëri, aq më e çmuar fjala.',
+    cTitle: 'Pëlqimi', cElderLead: 'Para se të nisni, lexoja me zë: «Ky regjistrim është për arkivin GEG 1.0. Zëri yt ruhet për studimin e gjuhës shqipe. Mund ta tërheqësh kurdo.» Pastaj le të thotë vetë një fjali pëlqimi, p.sh. «Po, pranoj.»',
+    cRec: '🎙 Regjistro pëlqimin me zë', cRecAgain: 'Regjistroje prapë', cRecHint: 'Nuk është e detyrueshme, por është mbrojtja më e mirë për të dhe për arkivin.',
+    cElderBox: 'Ai ose ajo që flet e dha vetë pëlqimin.', cPublic: 'Lejoj që zëri të dëgjohet publikisht në faqe. Pa këtë, ruhet vetëm për studim.',
+    codeLabel: 'Kodi yt për tërheqje. Ruaje (bëj një foto ekrani): nëse ndryshon mendje, e shkruan te geg1.org/terheq dhe zërat fshihen.', about: 'Çfarë është GEG 1.0? Shih punën që qëndron pas →',
     placeQ: 'Nga cili fshat ose krahinë janë të parët e tu?', placeQElder: 'Nga cili fshat ose krahinë është ai ose ajo që flet?', placePh: 'p.sh. Orosh, Shkodër, Gjakovë, Tiranë, Elbasan, Skrapar, Konispol…',
     ageQ: 'Mosha jote (nuk është e detyrueshme)', ageQElder: 'Mosha e atij ose asaj që flet (nuk është e detyrueshme)',
     next: 'Vazhdo →',
@@ -41,7 +45,11 @@ const T = {
     hello: 'Zani yt. Your voice.', sub: 'Save the old Albanian language.',
     lead: 'Sit with the eldest in your family, your mother, father, grandmother or grandfather, and record them. Two minutes, 25 words. Their voice is the oldest Albanian still alive. No one nearby? Say the words yourself, the way you heard them from them.', module: 'This is the first module of the project: the Gheg dialect, Mirdita variant. But every voice is kept. From Tirana, Elbasan, Kavaja, Skrapar, Tepelena, Çamëria or another region? Record how you say it: it will be used when your region\'s module comes, and until then the comparison shows where the dialects part.',
     consent: 'I agree that my voice, or the voice of the person I record with their consent, is kept in the GEG 1.0 archive and used for study.',
-    start: 'Start', modeQ: 'Who will speak?', modes: ['I am recording my mother or father', 'I am recording my grandmother or grandfather', 'Another elder', 'Me, as I remember it'], modeHint: 'The older the voice, the more precious the word.', about: 'What is GEG 1.0? See the work behind it →',
+    start: 'Start', modeQ: 'Who will speak?', modes: ['I am recording my mother or father', 'I am recording my grandmother or grandfather', 'Another elder', 'Me, as I remember it'], modeHint: 'The older the voice, the more precious the word.',
+    cTitle: 'Consent', cElderLead: 'Before you start, read this aloud: "This recording is for the GEG 1.0 archive. Your voice is kept for the study of the Albanian language. You can withdraw it at any time." Then let them say a sentence of consent themselves, e.g. "Yes, I agree."',
+    cRec: '🎙 Record the spoken consent', cRecAgain: 'Record it again', cRecHint: 'Not required, but it is the best protection for them and for the archive.',
+    cElderBox: 'The person speaking gave their own consent.', cPublic: 'I allow the voice to be played publicly on the site. Without this, it is kept for study only.',
+    codeLabel: 'Your withdrawal code. Keep it (take a screenshot): if you change your mind, enter it at geg1.org/terheq and the voices are deleted.', about: 'What is GEG 1.0? See the work behind it →',
     placeQ: 'Which village or region are your people from?', placeQElder: 'Which village or region is the speaker from?', placePh: 'e.g. Orosh, Kthellë, Shkodër, Gjakova…',
     ageQ: 'Your age (optional)', ageQElder: 'The speaker\'s age (optional)',
     next: 'Continue →',
@@ -73,6 +81,19 @@ export default function Karta() {
   const [i, setI] = useState(0);
   const [who, setWho] = useState(1);
   const [mode, setMode] = useState(0);
+  const [pub, setPub] = useState(false);
+  const [elderOk, setElderOk] = useState(false);
+  const [cBlob, setCBlob] = useState(null);
+  const [cUrl, setCUrl] = useState(null);
+  const [cRec, setCRec] = useState(false);
+  const [cSent, setCSent] = useState(false);
+  const cr = useRef(null);
+  const [ids] = useState(() => {
+    const u = () => (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : null);
+    const abc = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    const r = (n) => Array.from({ length: n }, () => abc[Math.floor(Math.random() * abc.length)]).join('');
+    return { session: u(), code: `GEG-${r(4)}-${r(4)}` };
+  });
   const elder = mode < 3;
   const [rec, setRec] = useState(false);
   const [blob, setBlob] = useState(null);
@@ -100,6 +121,17 @@ export default function Karta() {
     } catch { setMicErr(true); setRec(false); }
   }
 
+  async function toggleConsent() {
+    if (cRec) { cr.current?.stop(); return; }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const m = new MediaRecorder(stream); const chunks = [];
+      m.ondataavailable = (e) => e.data.size && chunks.push(e.data);
+      m.onstop = () => { stream.getTracks().forEach((x) => x.stop()); const b = new Blob(chunks, { type: m.mimeType || 'audio/webm' }); setCBlob(b); setCUrl(URL.createObjectURL(b)); setCRec(false); };
+      cr.current = m; m.start(); setCRec(true);
+    } catch { setMicErr(true); }
+  }
+
   function nextWord() {
     setBlob(null); setUrl(null);
     if (i + 1 < WORDS.length) setI(i + 1); else setStep('done');
@@ -113,7 +145,11 @@ export default function Karta() {
     d.set('village', place); d.set('region', guess); d.set('age_band', age);
     d.set('speaker', elder ? ['prindi (vetë)', 'gjyshi/gjyshja (vetë)', 'i moshuar (vetë)'][mode] : `vetë, si e thoshte: ${WHO_SQ[who]}`); d.set('era', 'kartolina'); d.set('consent', 'true'); d.set('lang', lang);
     d.set('audio', blob, 'recording');
-    try { const res = await fetch('/api/kujtesa', { method: 'POST', body: d }); if (res.ok) setSaved((n) => n + 1); } catch { /* vazhdo */ }
+    d.set('consent_by', elder ? 'on_behalf' : 'self'); d.set('consent_public', pub ? 'true' : 'false');
+    if (ids.session) { d.set('session_id', ids.session); d.set('speaker_id', ids.session); }
+    d.set('withdraw_code', ids.code); d.set('website', '');
+    if (cBlob && !cSent) d.set('consent_audio', cBlob, 'consent');
+    try { const res = await fetch('/api/kujtesa', { method: 'POST', body: d }); if (res.ok) { setSaved((n) => n + 1); if (cBlob) setCSent(true); } } catch { /* vazhdo */ }
     setBusy(false);
     nextWord();
   }
@@ -146,7 +182,25 @@ export default function Karta() {
               {t.modes.map((m, k) => <button key={k} className={mode === k ? 'on' : ''} onClick={() => setMode(k)}>{k < 3 ? '👵 ' : '🙋 '}{m}</button>)}
             </div>
             <p className="kt-small">{t.modeHint}</p>
-            <button className="kt-btn" onClick={() => setStep('place')}>{t.next}</button>
+            <button className="kt-btn" onClick={() => setStep('consent2')}>{t.next}</button>
+          </>
+        )}
+
+        {step === 'consent2' && (
+          <>
+            <h2 className="kt-q">{t.cTitle}</h2>
+            {elder && (
+              <>
+                <p className="kt-lead" style={{ fontSize: 16 }}>{t.cElderLead}</p>
+                <button className={`kt-rec ${cRec ? 'on' : ''}`} onClick={toggleConsent}>{cRec ? t.stop : cUrl ? t.cRecAgain : t.cRec}</button>
+                {cUrl && <audio controls src={cUrl} className="kt-audio" />}
+                <p className="kt-small">{t.cRecHint}</p>
+                <label className="kt-check"><input type="checkbox" checked={elderOk} onChange={(e) => setElderOk(e.target.checked)} /> {t.cElderBox}</label>
+              </>
+            )}
+            <label className="kt-check"><input type="checkbox" checked={pub} onChange={(e) => setPub(e.target.checked)} /> {t.cPublic}</label>
+            <div className="kt-code"><span>{t.codeLabel}</span><b>{ids.code}</b></div>
+            <button className="kt-btn" disabled={elder && !elderOk} onClick={() => setStep('place')}>{t.next}</button>
           </>
         )}
 
@@ -192,6 +246,7 @@ export default function Karta() {
           <>
             <h1 className="kt-h">{t.done}</h1>
             <p className="kt-lead">{saved > 0 ? t.doneLead(saved) : t.doneZero}</p>
+            {saved > 0 && <div className="kt-code"><span>{t.codeLabel}</span><b>{ids.code}</b></div>}
             <input className="kt-input" value={myName} onChange={(e) => setMyName(e.target.value)} placeholder={t.shareName} maxLength={40} />
             <a className="kt-btn kt-wa" href={`https://wa.me/?text=${encodeURIComponent(t.shareText(myName) + shareUrl)}`} target="_blank" rel="noopener noreferrer">{t.share} · WhatsApp</a>
             <Link className="kt-more" href="/">{t.more}</Link>

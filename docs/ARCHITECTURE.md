@@ -1,7 +1,7 @@
 # GEG 1.0 — Architecture overview (for reviewers)
 
 Live site: https://geg1.org · Code: https://github.com/Erionxh/gegh-di-explorer (public)
-Status: beta, built by one founder (non-linguist, "kujdestar") with an AI coding assistant, November 2026.
+Status: beta (reviewed by ChatGPT, DeepSeek and Kimi on 22 Nov 2026; first fixes applied), built by one founder (non-linguist, "kujdestar") with an AI coding assistant, November 2026.
 
 This document describes what is *under the hood*: principles, data, flows and known weak points.
 It is written so that a reviewer (human or AI) can critique the architecture, not the wording.
@@ -75,7 +75,10 @@ Schemas: `docs/supabase.sql`, `docs/kuveni.sql`.
 - Moderators: e-mails listed in the `MOD_EMAILS` env variable; moderation page `/kuveni/moderimi`.
 - Profanity: server-side word/stem list (`lib/server/profanity.js`). Matches are **held for review**, never
   silently deleted. Three user reports also hold a post.
-- Rate limit: forum, 30 posts per user per day. **Kujtesa (anonymous recordings) has no rate limit yet.**
+- Rate limits: forum, 30 posts per user per day. Kujtesa (anonymous recordings): 40 per IP-hash per hour, 150 per day, 3,000 per day for the whole site; honeypot field; audio checked by its first bytes, not by the declared type; uploaded files are removed if the database insert fails.
+- Consent (since 22 Nov 2026, `docs/mbrojtja.sql`): consent text version, who consented (speaker / relative on the speaker's behalf), optional spoken consent recording, separate permission for public playback, session/speaker ID, and a withdrawal code (stored as a hash) usable at `/terheq`, which deletes the audio and personal fields.
+- Review: `/kuveni/moderimi` lists pending recordings; approve/reject requires a written reason; every decision is written to an append-only `audit_log`. The old password panel (`/paneli`) was removed.
+- Forum reports go to moderators and no longer hide a post automatically.
 
 ## 5. Main flows
 
@@ -92,7 +95,7 @@ Schemas: `docs/supabase.sql`, `docs/kuveni.sql`.
 
 1. **Curated data lives in code.** Easy to version, hard for non-programmer reviewers to edit.
    Should it move to the database with an editorial UI and an audit trail?
-2. **No review workflow for contributions yet.** Recordings arrive as `pending`; there is no reviewer UI.
+2. **Review workflow is minimal.** Approve/reject with reason and audit log exists; no transcription field, no link from an approved recording to a word entry yet.
 3. **Consensus rule not implemented.** Planned: a form is accepted for a place when ≥3 independent speakers
    from that area agree. How to define "independent" and "same area"?
 4. **Transcription standard.** No agreed way to write Gheg forms (standard orthography? IPA? both?).
@@ -104,7 +107,7 @@ Schemas: `docs/supabase.sql`, `docs/kuveni.sql`.
 8. **Backups and storage.** Supabase free tier (~1 GB audio). No automated backup yet.
 9. **Licensing.** Code is public; licence for recordings and curated data is undecided (CC BY? CC BY-NC?).
 10. **Versioning of claims.** Hypothesis status changes are not yet logged with date, reviewer and reason.
-11. **Abuse.** Anonymous recording endpoint could be flooded; no CAPTCHA, no rate limit.
+11. **Abuse.** Rate limits and a honeypot exist; no CAPTCHA yet (Cloudflare Turnstile considered).
 12. **Funding transparency.** Planned public ledger (`/arka`, mock-up) once an association and board exist.
 
 ## 7. What we want from a reviewer

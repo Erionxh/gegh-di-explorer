@@ -3,6 +3,50 @@ import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import { useKvAuth } from '../../../components/KuveniLive';
 
+
+function Regjistrimet({ token }) {
+  const [d, setD] = useState(null);
+  const [reasons, setReasons] = useState({});
+  const [err, setErr] = useState('');
+  const load = useCallback(async () => {
+    const r = await fetch('/api/kujtesa/shqyrtim', { headers: { authorization: `Bearer ${token}` } }).then((x) => x.json()).catch(() => ({}));
+    setD(r);
+  }, [token]);
+  useEffect(() => { load(); }, [load]);
+  const act = async (id, action) => {
+    const reason = (reasons[id] || '').trim();
+    if (reason.length < 3) { setErr('Shkruaj një arsye të shkurtër para se të vendosësh.'); return; }
+    setErr('');
+    await fetch('/api/kujtesa/shqyrtim', { method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: JSON.stringify({ id, action, reason }) });
+    load();
+  };
+  if (!d) return <p>Po ngarkohet…</p>;
+  if (!d.ok) return <p>Gabim: {d.error}</p>;
+  return (
+    <section style={{ marginTop: 28 }}>
+      <h2 style={{ fontSize: 26 }}>Regjistrimet në pritje · {d.items.length}</h2>
+      <p className="kt-small">{d.total} regjistrime gjithsej. Çdo vendim kërkon një arsye dhe shënohet në ditar.</p>
+      {err && <p className="kl-err">{err}</p>}
+      {d.items.length === 0 && <p className="kl-ok">Asgjë për të shqyrtuar. ✓</p>}
+      {d.items.map((r) => (
+        <article key={r.id} className="kl-post held">
+          <div className="kl-meta">{new Date(r.created_at).toLocaleString()} · {r.region || r.era || ''} · {r.speaker || ''}{r.consent_by === 'on_behalf' ? ' · regjistruar nga një i afërm' : ''}{r.consent_public ? ' · lejon dëgjim publik' : ' · vetëm për studim'}</div>
+          <h3 style={{ margin: '6px 0' }}>{r.word} <span style={{ fontWeight: 400, color: 'var(--muted)', fontSize: 15 }}>{r.meaning}</span></h3>
+          <p className="kl-form">{[r.village, r.age_band, r.birthplace].filter(Boolean).join(' · ')}</p>
+          {r.audio ? <audio controls preload="none" src={r.audio} /> : <p className="kt-small">Pa zë.</p>}
+          {r.consent_audio && <><p className="kt-small">Pëlqimi i thënë me zë:</p><audio controls preload="none" src={r.consent_audio} /></>}
+          {r.example && <p className="kl-body">{r.example}</p>}
+          <input className="pn-input" style={{ width: '100%', margin: '6px 0' }} placeholder="Arsyeja (p.sh. zë i qartë, forma gege e saktë / zhurmë, fjalë tjetër)" value={reasons[r.id] || ''} onChange={(e) => setReasons({ ...reasons, [r.id]: e.target.value })} />
+          <div className="rr-votes">
+            <button className="on yes" onClick={() => act(r.id, 'approved')}>✓ Prano</button>
+            <button className="on no" onClick={() => act(r.id, 'rejected')}>✗ Refuzo</button>
+          </div>
+        </article>
+      ))}
+    </section>
+  );
+}
+
 export default function Moderimi() {
   const { client, session, token } = useKvAuth();
   const [d, setD] = useState(null);
@@ -24,8 +68,10 @@ export default function Moderimi() {
       {!client && <p>Forumi nuk është ndezur ende.</p>}
       {client && !session && <p>Hyni nga cilado faqe e Kuvenit me emailin e moderatorit, pastaj kthehuni këtu.</p>}
       {d && !d.ok && <p>{d.error === 'not_moderator' ? 'Ky email nuk është moderator.' : `Gabim: ${d.error}`}</p>}
+      {d?.ok && token && <Regjistrimet token={token} />}
       {d?.ok && (
         <>
+          <h2 style={{ fontSize: 26, marginTop: 32 }}>Kuveni</h2>
           <p>{d.total} postime gjithsej · {d.users} anëtarë · <b>{d.items.length}</b> presin shqyrtim</p>
           {d.items.length === 0 && <p className="kl-ok">Asgjë për të shqyrtuar. ✓</p>}
           {d.items.map((p) => (

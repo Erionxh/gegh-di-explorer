@@ -58,7 +58,7 @@ function Recorder({ animal, act, place, consent, lang, t, onSaved }) {
     setState('saving');
     const d = new FormData();
     d.set('word', `thirrje: ${animal[1]} (${act[1]})`); d.set('meaning', `call to a ${animal[2]}: ${act[2]}`);
-    d.set('village', place); d.set('example', note); d.set('era', 'thirrjet'); d.set('consent', 'true'); d.set('lang', lang);
+    d.set('village', place); d.set('example', note); d.set('era', 'thirrjet'); d.set('consent', 'true'); d.set('consent_by', 'self'); d.set('consent_public', 'false'); d.set('website', ''); d.set('lang', lang);
     d.set('audio', blob, 'recording');
     try { const res = await fetch('/api/kujtesa', { method: 'POST', body: d }); if (res.ok) { setState('saved'); onSaved(); } else setState('err'); } catch { setState('err'); }
   };
