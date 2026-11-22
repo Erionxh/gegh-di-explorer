@@ -13,7 +13,7 @@ const T = {
     out: 'Dil', as: 'Jeni brenda si', setup: 'Edhe një hap', name: 'Emri që do të shfaqet (jo detyrimisht emri i vërtetë)', village: 'Fshati ose vendi (opsionale)',
     terms: 'Jam 16 vjeç ose më shumë dhe pranoj rregullat e Kuvenit.', rules: 'Rregullat', save: 'Vazhdo',
     write: 'Shkruani', title: 'Titulli', body: 'Çfarë doni të thoni?', form: 'Si e thoni fjalën?', place: 'Ku e thonë kështu?', send: 'Dërgo',
-    rec: '🎙 Regjistro zërin', stop: '■ Ndalo', redo: 'Fshije regjistrimin', yes: 'Bindëse', no: 'Jo bindëse', reply: 'Përgjigju', report: 'Raporto',
+    rec: '🎙 Regjistro zërin', recPublic: 'Zëri që shton këtu dëgjohet publikisht nga kushdo që hap këtë bisedë.', stop: '■ Ndalo', redo: 'Fshije regjistrimin', yes: 'Bindëse', no: 'Jo bindëse', reply: 'Përgjigju', report: 'Raporto',
     reported: 'U raportua. Faleminderit.', del: 'Fshije', held: 'Në pritje të shqyrtimit: vetëm ju e shihni.', heldSent: 'U dërgua. Disa fjalë kërkojnë shqyrtim, ndaj do të shfaqet pasi ta shohë moderatori.',
     empty: 'Asgjë ende. Bëhuni i pari.', stance: 'Për cilin qëndrim?', obj: 'Kundërshtim', sup: 'Mbështetje', q: 'Pyetje', err: 'Diçka nuk shkoi. Provoni përsëri.',
     tooMany: 'Keni shkruar shumë sot. Provoni nesër.', mod: 'Moderimi', loading: 'Po ngarkohet…', best: 'Më bindëset', newest: 'Më të rejat', active: 'Më të gjallat', answers: 'përgjigje', open: 'Hap një bisedë të re', back: '← Të gjitha bisedat', answersH: 'Përgjigjet',
@@ -24,7 +24,7 @@ const T = {
     out: 'Sign out', as: 'Signed in as', setup: 'One more step', name: 'Name to show (need not be your real name)', village: 'Village or place (optional)',
     terms: 'I am 16 or older and accept the rules of Kuveni.', rules: 'The rules', save: 'Continue',
     write: 'Write', title: 'Title', body: 'What do you want to say?', form: 'How do you say the word?', place: 'Where do they say it like this?', send: 'Send',
-    rec: '🎙 Record your voice', stop: '■ Stop', redo: 'Delete the recording', yes: 'Convincing', no: 'Not convincing', reply: 'Reply', report: 'Report',
+    rec: '🎙 Record your voice', recPublic: 'A voice you add here can be heard publicly by anyone who opens this discussion.', stop: '■ Stop', redo: 'Delete the recording', yes: 'Convincing', no: 'Not convincing', reply: 'Reply', report: 'Report',
     reported: 'Reported. Thank you.', del: 'Delete', held: 'Waiting for review: only you can see it.', heldSent: 'Sent. Some words need review, so it will appear once a moderator has seen it.',
     empty: 'Nothing yet. Be the first.', stance: 'On which position?', obj: 'Objection', sup: 'Support', q: 'Question', err: 'Something went wrong. Try again.',
     tooMany: 'You have written a lot today. Try tomorrow.', mod: 'Moderation', loading: 'Loading…', best: 'Most convincing', newest: 'Newest', active: 'Most active', answers: 'answers', open: 'Open a new discussion', back: '← All discussions', answersH: 'The answers',
@@ -143,7 +143,7 @@ function Composer({ topic, mode, stances, parent, token, t, onSent, compact }) {
         {mode !== 'argument' && !compact && (
           <button type="button" className={`btn ${r.rec ? 'kl-recording' : ''}`} onClick={r.toggle}>{r.rec ? t.stop : t.rec}</button>
         )}
-        {r.blob && <><audio controls src={URL.createObjectURL(r.blob)} /><button type="button" className="linkish" onClick={r.clear}>{t.redo}</button></>}
+        {r.blob && <><audio controls src={URL.createObjectURL(r.blob)} /><span className="kt-small" style={{ flexBasis: '100%' }}>{t.recPublic}</span><button type="button" className="linkish" onClick={r.clear}>{t.redo}</button></>}
         <button className="btn btn-gold" disabled={busy}>{t.send}</button>
       </div>
       {msg && <p className="kl-ok">{msg}</p>}
@@ -193,7 +193,7 @@ export default function LiveTopic({ topic, mode = 'thread', stances, heading, li
   const router = useRouter();
   const { client, session, profile, mod, reload, token } = useKvAuth();
   const [posts, setPosts] = useState(null);
-  const [sort, setSort] = useState(list ? 'active' : 'best');
+  const [sort, setSort] = useState(list ? 'active' : 'newest');
   const load = useCallback(async () => {
     const r = await fetch(`/api/kuveni?topic=${encodeURIComponent(topic)}`, { headers: token ? { authorization: `Bearer ${token}` } : {} }).then((x) => x.json()).catch(() => ({}));
     setPosts(r.ok ? r.posts : []);
@@ -206,7 +206,7 @@ export default function LiveTopic({ topic, mode = 'thread', stances, heading, li
   if (sort === 'newest') roots.sort((a, b) => (a.at < b.at ? 1 : -1));
   if (sort === 'active') roots.sort((a, b) => ((b.last || b.at) > (a.last || a.at) ? 1 : -1));
   const canWrite = !!(session && profile && !profile.banned);
-  const sorts = list ? ['active', 'newest', 'best'] : ['best', 'newest'];
+  const sorts = list ? ['active', 'newest', 'best'] : ['newest', 'best'];
   return (
     <section className="kl">
       <h2 className="rr-h">{heading || t.live}</h2>

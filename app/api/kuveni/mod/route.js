@@ -8,7 +8,7 @@ async function guard(req) {
   const user = await userFrom(req, db);
   if (!user) return [null, json({ ok: false, error: 'login_required' }, 401)];
   if (!isMod(user)) return [null, json({ ok: false, error: 'not_moderator' }, 403)];
-  return [db, null];
+  return [db, null, user];
 }
 
 export async function GET(req) {
@@ -31,7 +31,7 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
-  const [db, err] = await guard(req);
+  const [db, err, user] = await guard(req);
   if (err) return err;
   let b = {};
   try { b = await req.json(); } catch { /* empty */ }
@@ -44,5 +44,6 @@ export async function POST(req) {
     if (data) await db.from('kv_profiles').update({ banned: true }).eq('id', data.author);
   }
   await db.from('kv_reports').update({ resolved: true }).eq('post_id', post);
+  await db.from('audit_log').insert({ actor: user.email, action: `kuveni_${action}`, target_table: 'kv_posts', target_id: post, reason: typeof b.reason === 'string' ? b.reason.slice(0, 500) : null });
   return json({ ok: true });
 }
