@@ -21,7 +21,7 @@ const T = {
     pick: 'Si e thërrisni', rec: '🎙 Thirre', stop: '■ Ndalo', again: 'Prapë', save: 'Ruaje', saving: 'Po ruhet…', saved: '✓ U ruajt',
     note: 'Shënim (opsional): kush e thoshte, a ka edhe një tjetër…', back: '← Kafshët', done: (n) => `${n} thirrje të ruajtura. Faleminderit!`,
     mic: 'Mikrofoni nuk u hap. Lejoje te shfletuesi.', needConsent: 'Shëno pëlqimin më sipër për ta ruajtur.',
-    more: 'Kartolinë nga gjyshja: 25 fjalë →',
+    more: 'Zani ut: 25 fjalë →',
   },
   en: {
     eyebrow: 'A GEG game', h1: 'Call the animals!', lead: 'How do you call the sheep to come? How do you chase the dog away? How do you stop the cows? These sounds are among the oldest in a language, and nobody has collected them for Mirdita. Pick an animal and call it.',
@@ -30,7 +30,7 @@ const T = {
     pick: 'How do you call the', rec: '🎙 Call it', stop: '■ Stop', again: 'Again', save: 'Save', saving: 'Saving…', saved: '✓ Saved',
     note: 'Note (optional): who said it, is there another one…', back: '← Animals', done: (n) => `${n} calls saved. Thank you!`,
     mic: 'The microphone did not open. Allow it in the browser.', needConsent: 'Tick the consent above to save.',
-    more: 'A postcard from grandma: 25 words →',
+    more: 'Zani ut: 25 words →',
   },
 };
 
@@ -111,7 +111,7 @@ export default function Thirrjet() {
           {ACTS.map((a) => <Recorder key={sel[1] + a[0]} animal={sel} act={a} place={place} consent={consent} lang={lang} t={t} onSaved={() => setN((x) => x + 1)} />)}
         </section>
       )}
-      <p style={{ marginTop: 28 }}><Link href="/kartolina">{t.more}</Link></p>
+      <p style={{ marginTop: 28 }}><Link href="/zani">{t.more}</Link></p>
     </div>
   );
 }

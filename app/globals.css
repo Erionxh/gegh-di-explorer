@@ -785,3 +785,4 @@ body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
 .tr-foot { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); }
 .tr-tag.myth { background: #fbe9e7; color: #a8321f; }
 .tr-tag.q { background: #e6f0fb; color: #1d4f86; }
+.kt-sub { font-size: 20px; font-weight: 700; color: #a6741f; margin: -4px 0 6px; }
