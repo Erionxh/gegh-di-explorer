@@ -1,5 +1,8 @@
 'use client';
 import Link from 'next/link';
+import { SOURCES } from '../../lib/sources';
+
+const SHELF = ['S-gjecovi-1933', 'S-durham-1909', 'S-hasluck-1954', 'S-visaret-1937', 'S-iaksa'];
 import { useState } from 'react';
 import { useLang } from '../../components/LangProvider';
 
@@ -35,8 +38,8 @@ const STAGES = [
 ];
 
 const T = {
-  sq: { mock: 'Mock-up · pyetjet janë ftesë, përgjigjet vijnë nga ju', eyebrow: 'Lentja antropologjike', h1: 'Rrethi i jetës', lead: 'Lindja, martesa dhe vdekja: tri pikat ku jeta ndalet dhe flet me fjalë të ngulitura. Gjuha e ritualit është më e moçmja që kemi, sepse fjalët e saj nuk ndryshohen. Na tregoni si bëhej te ju.', ask: 'Pyetjet', words: 'Fjalët që kërkojmë', tell: '🎙 Tregoje me zë', care: 'Për ritet e vdekjes: regjistro vetëm me pëlqimin e familjes. Arkivi i dokumenton zakonet si histori, pa i gjykuar dhe pa i lavdëruar.' },
-  en: { mock: 'Mock-up · the questions are an invitation, the answers come from you', eyebrow: 'The anthropological lens', h1: 'The circle of life', lead: 'Birth, marriage and death: the three points where life stops and speaks in fixed words. Ritual language is the oldest we have, because its words are not changed. Tell us how it was done where you come from.', ask: 'Questions', words: 'Words we are looking for', tell: '🎙 Tell it aloud', care: 'For the rites of death: record only with the family\'s consent. The archive documents customs as history, without judging or glorifying them.' },
+  sq: { mock: 'Mock-up · pyetjet janë ftesë, përgjigjet vijnë nga ju', eyebrow: 'Lentja antropologjike', h1: 'Rrethi i jetës', lead: 'Lindja, martesa dhe vdekja: tri pikat ku jeta ndalet dhe flet me fjalë të ngulitura. Gjuha e ritualit është më e moçmja që kemi, sepse fjalët e saj nuk ndryshohen. Na tregoni si bëhej te ju.', ask: 'Pyetjet', words: 'Fjalët që kërkojmë', tell: '🎙 Tregoje me zë', shelf: 'Ku është shkruar tashmë', shelfLead: 'Shumë nga këto zakone janë mbledhur e shkruar prej kohësh. GEG 1.0 nuk i rishkruan: i lidh. Libri tregon si duhej të bëhej; zëri juaj tregon si u bë në fshatin tuaj, me fjalët e atjeshme. Kur të dyja rrinë krah njëra-tjetrës, shihet edhe ku përputhen, edhe ku ndryshojnë.', shelfAll: 'Të gjitha burimet →', care: 'Për ritet e vdekjes: regjistro vetëm me pëlqimin e familjes. Arkivi i dokumenton zakonet si histori, pa i gjykuar dhe pa i lavdëruar.' },
+  en: { mock: 'Mock-up · the questions are an invitation, the answers come from you', eyebrow: 'The anthropological lens', h1: 'The circle of life', lead: 'Birth, marriage and death: the three points where life stops and speaks in fixed words. Ritual language is the oldest we have, because its words are not changed. Tell us how it was done where you come from.', ask: 'Questions', words: 'Words we are looking for', tell: '🎙 Tell it aloud', shelf: 'Where it is already written', shelfLead: 'Many of these customs were collected and written down long ago. GEG 1.0 does not rewrite them: it links them. The book says how it was meant to be done; your voice says how it was done in your village, in the words used there. Side by side, you can see both where they agree and where they differ.', shelfAll: 'All sources →', care: 'For the rites of death: record only with the family\'s consent. The archive documents customs as history, without judging or glorifying them.' },
 };
 
 export default function Rrethi() {
@@ -75,6 +78,16 @@ export default function Rrethi() {
           {L.w.map((w, k) => <Link key={w} className="chip" href={`/kujtesa?fjala=${encodeURIComponent(s.sq.w[k])}`}>{w}</Link>)}
         </div>
         {s.id === 'vdekja' && <p className="kt-small" style={{ marginTop: 14 }}>{t.care}</p>}
+      </section>
+      <section className="card pad" style={{ marginTop: 16 }}>
+        <h3 className="rj-h" style={{ marginTop: 0 }}>📚 {t.shelf}</h3>
+        <p style={{ color: 'var(--ink-2)' }}>{t.shelfLead}</p>
+        <ul className="rj-shelf">
+          {SHELF.map((id) => SOURCES.find((x) => x.id === id)).filter(Boolean).map((x) => (
+            <li key={x.id}><b>{x.title}</b> <span>· {x.author}, {x.year}</span><br /><small>{lang === 'en' ? x.en : x.sq}</small></li>
+          ))}
+        </ul>
+        <Link href="/burimet" className="rj-tell">{t.shelfAll}</Link>
       </section>
     </div>
   );
