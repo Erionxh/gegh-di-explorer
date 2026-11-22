@@ -40,8 +40,7 @@ export default function Vendet() {
   const list = TOPONYMS.filter((x) => f === 'all' || x.st === f);
   return (
     <div className="wrap" style={{ paddingTop: 28, paddingBottom: 64, maxWidth: 780 }}>
-      <div className="kv-mock">{t.mock}</div>
-      <p className="eyebrow" style={{ marginTop: 18 }}>{t.eyebrow}</p>
+      <p className="eyebrow">{t.eyebrow}</p>
       <h1 style={{ fontSize: 'clamp(34px, 7vw, 50px)', margin: '4px 0 8px' }}>{t.h1}</h1>
       <p className="lead" style={{ marginTop: 0 }}>{t.lead}</p>
       <p style={{ color: 'var(--ink-2)' }}>{t.rule}</p>

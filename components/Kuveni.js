@@ -95,6 +95,10 @@ export function KuveniIndex() {
         <h2 style={{ marginTop: 0 }}>{lang === 'en' ? 'Did you know? →' : 'A e dini? →'}</h2>
         <p>{lang === 'en' ? 'Albanian written in 1332? Dozens of alphabets? Three dialects in Mirdita? Curiosities with sources.' : 'Shqip e shkruar më 1332? Dhjetëra alfabete? Tri të folme në Mirditë? Kuriozitete me burim.'}</p>
       </Link>
+      <Link href="/vendet" className="card pad rr-card" style={{ marginTop: 16 }}>
+        <h2 style={{ marginTop: 0 }}>{lang === 'en' ? 'The names of places →' : 'Emrat e vendeve →'}</h2>
+        <p>{lang === 'en' ? 'Scodra, Lissus, Dardania: which names survived and which were lost? And what did the elders call your village, its fields and springs?' : 'Scodra, Lissus, Dardania: cilët emra mbijetuan e cilët u humbën? Dhe si i quanin pleqtë fshatin tuaj, arat e kronet?'}</p>
+      </Link>
       <Link href="/kuveni/rrahje" className="card pad rr-card" style={{ marginTop: 16, borderLeft: '4px solid var(--gold)' }}>
         <h2 style={{ marginTop: 0 }}>{lang === 'en' ? 'Rrahje mendimesh: the big questions →' : 'Rrahje mendimesh: pyetjet e mëdha →'}</h2>
         <p>{lang === 'en' ? 'Where does nder come from? Kuven or conventum? Why does Buzuku write ënder? Every side, with its evidence.' : 'Nga vjen nderi? Kuven apo conventum? Pse Buzuku shkruan ënder? Të gjitha anët, me provat e tyre.'}</p>
