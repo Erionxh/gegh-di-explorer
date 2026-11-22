@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useLang } from '../../components/LangProvider';
+import { REGION_NAMES, areasFor, villagesFor, placeLabel } from '../../lib/places';
 
 const WORDS = [
   ['qumësht', 'milk'], ['bukë', 'bread'], ['djathë', 'cheese'], ['gjalpë', 'butter'], ['vezë', 'egg'],
@@ -24,6 +25,10 @@ const T = {
     cElderBox: 'Ai ose ajo që flet e dha vetë pëlqimin.', cPublic: 'Lejoj që zëri të dëgjohet publikisht në faqe. Pa këtë, ruhet vetëm për studim.',
     codeLabel: 'Kodi yt për tërheqje. Ruaje (bëj një foto ekrani): nëse ndryshon mendje, e shkruan te geg1.org/terheq dhe zërat fshihen.', about: 'Çfarë është GEG 1.0? Shih punën që qëndron pas →',
     placeQ: 'Nga cili fshat ose krahinë janë të parët e tu?', placeQElder: 'Nga cili fshat ose krahinë është ai ose ajo që flet?', placePh: 'p.sh. Orosh, Shkodër, Gjakovë, Tiranë, Elbasan, Skrapar, Konispol…',
+    regionL: 'Krahina', regionPick: '— Zgjidh krahinën —', regionOther: 'Tjetër / nuk e gjej', regionOtherPh: 'Shkruaje krahinën',
+    areaL: 'Zona (bajraku, krahina e vogël)', areaOther: 'Tjetër', areaOtherPh: 'Shkruaje zonën',
+    villageL: 'Fshati ose qyteti', villagePh: 'Shkruaje. Nëse nuk del në listë, shkruaje vetë.',
+    placeNote: 'Çdo fshat ka të folurin e vet. Lista nuk është e plotë: çdo vend që shkruani e pasuron arkivin.',
     ageQ: 'Mosha jote (nuk është e detyrueshme)', ageQElder: 'Mosha e atij ose asaj që flet (nuk është e detyrueshme)',
     next: 'Vazhdo →',
     wordOf: (i, n) => `Fjala ${i} nga ${n}`, chunkDone: (n) => `Faleminderit! ${n} fjalë janë ruajtur.`, chunkQ: 'Edhe pesë të tjera?', more5: 'Po, edhe 5', enough: 'Mjafton për sot',
@@ -51,6 +56,10 @@ const T = {
     cElderBox: 'The person speaking gave their own consent.', cPublic: 'I allow the voice to be played publicly on the site. Without this, it is kept for study only.',
     codeLabel: 'Your withdrawal code. Keep it (take a screenshot): if you change your mind, enter it at geg1.org/terheq and the voices are deleted.', about: 'What is GEG 1.0? See the work behind it →',
     placeQ: 'Which village or region are your people from?', placeQElder: 'Which village or region is the speaker from?', placePh: 'e.g. Orosh, Kthellë, Shkodër, Gjakova…',
+    regionL: 'Region', regionPick: '— Choose a region —', regionOther: 'Other / not listed', regionOtherPh: 'Type the region',
+    areaL: 'Area (bajrak, smaller region)', areaOther: 'Other', areaOtherPh: 'Type the area',
+    villageL: 'Village or town', villagePh: 'Type it. If it isn’t in the list, write it anyway.',
+    placeNote: 'Every village has its own way of speaking. The list is not complete: every place you add enriches the archive.',
     ageQ: 'Your age (optional)', ageQElder: 'The speaker\'s age (optional)',
     next: 'Continue →',
     wordOf: (i, n) => `Word ${i} of ${n}`, chunkDone: (n) => `Thank you! ${n} words are saved.`, chunkQ: 'Five more?', more5: 'Yes, 5 more', enough: 'Enough for today',
@@ -76,6 +85,10 @@ export default function Karta() {
   const [step, setStep] = useState('intro');
   const [consent, setConsent] = useState(false);
   const [place, setPlace] = useState('');
+  const [preg, setPreg] = useState('');
+  const [pregOther, setPregOther] = useState('');
+  const [parea, setParea] = useState('');
+  const [pareaOther, setPareaOther] = useState('');
   const [age, setAge] = useState('');
   const [guess, setGuess] = useState('');
   const [i, setI] = useState(0);
@@ -142,7 +155,7 @@ export default function Karta() {
     setBusy(true);
     const d = new FormData();
     d.set('word', WORDS[i][0]); d.set('meaning', WORDS[i][1]);
-    d.set('village', place); d.set('region', guess); d.set('age_band', age);
+    d.set('village', placeLabel({ village: place, area: parea === '__o' ? pareaOther : parea, region: preg === '__o' ? pregOther : preg })); d.set('region', guess); d.set('age_band', age);
     d.set('speaker', elder ? ['prindi (vetë)', 'gjyshi/gjyshja (vetë)', 'i moshuar (vetë)'][mode] : `vetë, si e thoshte: ${WHO_SQ[who]}`); d.set('era', 'kartolina'); d.set('consent', 'true'); d.set('lang', lang);
     d.set('audio', blob, 'recording');
     d.set('consent_by', elder ? 'on_behalf' : 'self'); d.set('consent_public', pub ? 'true' : 'false');
@@ -207,7 +220,29 @@ export default function Karta() {
         {step === 'place' && (
           <>
             <h2 className="kt-q">{elder ? t.placeQElder : t.placeQ}</h2>
-            <input className="kt-input" value={place} onChange={(e) => setPlace(e.target.value)} placeholder={t.placePh} maxLength={120} />
+            <label className="kt-small" htmlFor="kt-reg">{t.regionL}</label>
+            <select id="kt-reg" className="kt-input" value={preg} onChange={(e) => { setPreg(e.target.value); setParea(''); }}>
+              <option value="">{t.regionPick}</option>
+              {REGION_NAMES.map((r) => <option key={r} value={r}>{r}</option>)}
+              <option value="__o">{t.regionOther}</option>
+            </select>
+            {preg === '__o' && <input className="kt-input" value={pregOther} onChange={(e) => setPregOther(e.target.value)} placeholder={t.regionOtherPh} maxLength={60} />}
+            {preg && preg !== '__o' && areasFor(preg).length > 0 && (
+              <>
+                <p className="kt-small">{t.areaL}</p>
+                <div className="kt-pills">
+                  {areasFor(preg).map((a) => <button key={a} className={parea === a ? 'on' : ''} onClick={() => setParea(parea === a ? '' : a)}>{a}</button>)}
+                  <button className={parea === '__o' ? 'on' : ''} onClick={() => setParea(parea === '__o' ? '' : '__o')}>{t.areaOther}</button>
+                </div>
+                {parea === '__o' && <input className="kt-input" value={pareaOther} onChange={(e) => setPareaOther(e.target.value)} placeholder={t.areaOtherPh} maxLength={60} />}
+              </>
+            )}
+            <label className="kt-small" htmlFor="kt-vil">{t.villageL}</label>
+            <input id="kt-vil" className="kt-input" list="kt-villages" value={place} onChange={(e) => setPlace(e.target.value)} placeholder={preg ? t.villagePh : t.placePh} maxLength={80} />
+            <datalist id="kt-villages">
+              {villagesFor(preg, parea && parea !== '__o' ? parea : '').map((v) => <option key={v} value={v} />)}
+            </datalist>
+            <p className="kt-small" style={{ opacity: 0.75 }}>{t.placeNote}</p>
             <p className="kt-small">{elder ? t.ageQElder : t.ageQ}</p>
             <div className="kt-pills">
               {['<30', '30-50', '50-70', '70+'].map((a) => <button key={a} className={age === a ? 'on' : ''} onClick={() => setAge(age === a ? '' : a)}>{a}</button>)}
