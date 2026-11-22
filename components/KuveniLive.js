@@ -12,7 +12,7 @@ const T = {
     google: 'Hyr me Google', email: 'Emaili juaj', sendLink: 'Më dërgo lidhjen', linkSent: 'Kontrolloni emailin: klikoni lidhjen që ju dërguam.',
     out: 'Dil', as: 'Jeni brenda si', setup: 'Edhe një hap', name: 'Emri që do të shfaqet (jo detyrimisht emri i vërtetë)', village: 'Fshati ose vendi (opsionale)',
     terms: 'Jam 16 vjeç ose më shumë dhe pranoj rregullat e Kuvenit.', rules: 'Rregullat', save: 'Vazhdo',
-    write: 'Shkruani', title: 'Titulli', body: 'Çka doni me thanë?', form: 'Si e thoni fjalën?', place: 'Ku e thonë kështu?', send: 'Dërgo',
+    write: 'Shkruani', title: 'Titulli', body: 'Çfarë doni të thoni?', form: 'Si e thoni fjalën?', place: 'Ku e thonë kështu?', send: 'Dërgo',
     rec: '🎙 Regjistro zërin', stop: '■ Ndalo', redo: 'Fshije regjistrimin', yes: 'Bindëse', no: 'Jo bindëse', reply: 'Përgjigju', report: 'Raporto',
     reported: 'U raportua. Faleminderit.', del: 'Fshije', held: 'Në pritje të shqyrtimit: vetëm ju e shihni.', heldSent: 'U dërgua. Disa fjalë kërkojnë shqyrtim, ndaj do të shfaqet pasi ta shohë moderatori.',
     empty: 'Asgjë ende. Bëhuni i pari.', stance: 'Për cilin qëndrim?', obj: 'Kundërshtim', sup: 'Mbështetje', q: 'Pyetje', err: 'Diçka nuk shkoi. Provoni përsëri.',

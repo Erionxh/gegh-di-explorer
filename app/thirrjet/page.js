@@ -9,18 +9,18 @@ const ANIMALS = [
   ['🫏', 'gomar', 'donkey', 'gomarin'], ['🐖', 'derr', 'pig', 'derrin'], ['🐝', 'bletë', 'bees', 'bletët'], ['🐑', 'qengj', 'lamb', 'qengjin'],
 ];
 const ACTS = [
-  ['ardh', 'me ardhë', 'to come', '👋'], ['ik', 'me ikë / me i përzanë', 'to go away', '🚫'],
-  ['ndal', 'me u ndalë', 'to stop', '✋'], ['nisu', 'me u nisë / me ecë', 'to move on', '➡️'],
+  ['ardh', 'të vijë', 'to come', '👋'], ['ik', 'të ikë / ta përzësh', 'to go away', '🚫'],
+  ['ndal', 'të ndalet', 'to stop', '✋'], ['nisu', 'të niset / të ecë', 'to move on', '➡️'],
 ];
 
 const T = {
   sq: {
-    eyebrow: 'Loja e GEG', h1: 'Thirre bagëtinë!', lead: 'Si e thirrni delen me ardhë? Si e përzani qenin? Si i ndalni lopët? Këta tinguj janë ndër ma të vjetrit e gjuhës, dhe askush s\'i ka mbledhë për Mirditën. Zgjidh një kafshë dhe thirre.',
-    place: 'Prej cilit fshat a krahinë? (s\'asht e detyrueshme)', placePh: 'p.sh. Orosh, Kthellë, Fan…',
-    consent: 'Pranoj që zani im të ruhet në arkivin GEG 1.0 dhe të përdoret për studim.',
-    pick: 'Si e thirrni', rec: '🎙 Thirre', stop: '■ Ndalo', again: 'Prapë', save: 'Ruaje', saving: 'Po ruhet…', saved: '✓ U ruajt',
+    eyebrow: 'Loja e GEG', h1: 'Thirre bagëtinë!', lead: 'Si e thërrisni delen të vijë? Si e përzini qenin? Si i ndalni lopët? Këta tinguj janë ndër më të vjetrit e gjuhës, dhe askush nuk i ka mbledhur për Mirditën. Zgjidh një kafshë dhe thirre.',
+    place: 'Nga cili fshat ose krahinë? (nuk është e detyrueshme)', placePh: 'p.sh. Orosh, Kthellë, Fan…',
+    consent: 'Pranoj që zëri im të ruhet në arkivin GEG 1.0 dhe të përdoret për studim.',
+    pick: 'Si e thërrisni', rec: '🎙 Thirre', stop: '■ Ndalo', again: 'Prapë', save: 'Ruaje', saving: 'Po ruhet…', saved: '✓ U ruajt',
     note: 'Shënim (opsional): kush e thoshte, a ka edhe një tjetër…', back: '← Kafshët', done: (n) => `${n} thirrje të ruajtura. Faleminderit!`,
-    mic: 'Mikrofoni nuk u hap. Lejoje te shfletuesi.', needConsent: 'Shëno pëlqimin ma sipër për me ruajtë.',
+    mic: 'Mikrofoni nuk u hap. Lejoje te shfletuesi.', needConsent: 'Shëno pëlqimin më sipër për ta ruajtur.',
     more: 'Kartolinë nga gjyshja: 25 fjalë →',
   },
   en: {
