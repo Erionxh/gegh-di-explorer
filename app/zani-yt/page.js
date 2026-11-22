@@ -18,7 +18,7 @@ const T = {
     hello: 'Zani yt.', sub: 'Shpëto gjuhën e moçme shqiptare.',
     lead: 'Ulu pranë gjyshes ose gjyshit dhe regjistroji. Dy minuta, 25 fjalë. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. Nuk ke gjysh pranë? Thuaji vetë, ashtu si i dëgjoje prej tyre.', module: 'Ky është moduli i parë i projektit: dialekti geg, varianti mirditor. Më pas do të zgjerohet në të gjitha dialektet e gjuhës shqipe. Je nga jugu? Na duhet edhe zëri yt: krahasimi na tregon ku ndahen dialektet.',
     consent: 'Pranoj që zëri im, ose zëri i atij që regjistroj me pëlqimin e tij, të ruhet në arkivin GEG 1.0 dhe të përdoret për studim.',
-    start: 'Fillo', modeQ: 'Kush do të flasë?', modes: ['Po regjistroj gjyshen ose gjyshin', 'Një tjetër të moshuar të familjes', 'Unë vetë, si i kujtoj'], modeHint: 'Sa më i moshuar zëri, aq më e çmuar fjala.',
+    start: 'Fillo', modeQ: 'Kush do të flasë?', modes: ['Po regjistroj gjyshen ose gjyshin', 'Një tjetër të moshuar të familjes', 'Unë vetë, si i kujtoj'], modeHint: 'Sa më i moshuar zëri, aq më e çmuar fjala.', about: 'Çfarë është GEG 1.0? Shih punën që qëndron pas →',
     placeQ: 'Nga cili fshat ose krahinë janë të parët e tu?', placeQElder: 'Nga cili fshat ose krahinë është ai ose ajo që flet?', placePh: 'p.sh. Orosh, Kthellë, Shkodër, Gjakovë…',
     ageQ: 'Mosha jote (nuk është e detyrueshme)', ageQElder: 'Mosha e atij ose asaj që flet (nuk është e detyrueshme)',
     next: 'Vazhdo →',
@@ -41,7 +41,7 @@ const T = {
     hello: 'Zani yt. Your voice.', sub: 'Save the old Albanian language.',
     lead: 'Sit with your grandmother or grandfather and record them. Two minutes, 25 words. Their voice is the oldest Albanian still alive. No grandparent nearby? Say the words yourself, the way you heard them from them.', module: 'This is the first module of the project: the Gheg dialect, Mirdita variant. It will then grow to every dialect of the Albanian language. From the south? We need your voice too: the comparison shows where the dialects part.',
     consent: 'I agree that my voice, or the voice of the person I record with their consent, is kept in the GEG 1.0 archive and used for study.',
-    start: 'Start', modeQ: 'Who will speak?', modes: ['I am recording my grandmother or grandfather', 'Another elder in the family', 'Me, as I remember it'], modeHint: 'The older the voice, the more precious the word.',
+    start: 'Start', modeQ: 'Who will speak?', modes: ['I am recording my grandmother or grandfather', 'Another elder in the family', 'Me, as I remember it'], modeHint: 'The older the voice, the more precious the word.', about: 'What is GEG 1.0? See the work behind it →',
     placeQ: 'Which village or region are your people from?', placeQElder: 'Which village or region is the speaker from?', placePh: 'e.g. Orosh, Kthellë, Shkodër, Gjakova…',
     ageQ: 'Your age (optional)', ageQElder: 'The speaker\'s age (optional)',
     next: 'Continue →',
@@ -133,6 +133,7 @@ export default function Karta() {
             <p className="kt-sub">{t.sub}</p>
             <p className="kt-lead">{t.lead}</p>
             <p className="kt-small" style={{ marginTop: -2 }}>{t.module}</p>
+            <Link className="kt-about" href="/">{t.about}</Link>
             <label className="kt-check"><input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} /> {t.consent}</label>
             <button className="kt-btn" disabled={!consent} onClick={() => setStep('mode')}>{t.start}</button>
           </>
