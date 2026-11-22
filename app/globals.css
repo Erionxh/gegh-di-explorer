@@ -835,3 +835,5 @@ body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
 input.lj-tile { text-align: center; border-color: #d9a441; border-style: dashed; padding: 0; }
 input.lj-tile:focus { outline: none; border-style: solid; background: #fffaf0; }
 .lj-note { margin: 0; font-size: 14px; color: var(--ink-2); }
+.rj-shelf { list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 10px; }
+.rj-shelf li { line-height: 1.4; } .rj-shelf span { color: var(--ink-2); } .rj-shelf small { color: var(--ink-2); font-size: 14px; }
