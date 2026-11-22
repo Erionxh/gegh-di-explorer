@@ -803,3 +803,15 @@ body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
 .rj-q p { margin: 0; font-size: 15.5px; }
 .rj-tell { flex: none; font-size: 13.5px; font-weight: 700; color: #c0392b; text-decoration: none; white-space: nowrap; }
 @media (max-width: 480px) { .rj-q { flex-direction: column; align-items: flex-start; } }
+.tr-form { display: grid; gap: 8px; margin-top: 6px; }
+.tr-form label { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.tr-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: end; }
+.tr-row3 { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px; }
+.tr-chain { margin: 2px 0; font-size: 15px; }
+.tr-chain span { color: var(--muted); }
+.tr-chain b { font-family: var(--serif, Georgia, serif); font-size: 19px; color: #1d2b45; }
+.tr-person { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.tr-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; align-items: baseline; }
+.tr-top b { font-family: var(--serif, Georgia, serif); font-size: 18px; }
+.tr-acts { display: flex; gap: 14px; margin-top: 4px; font-size: 13px; }
+@media (max-width: 480px) { .tr-row3 { grid-template-columns: 1fr 1fr; } .tr-row3 input:last-child { grid-column: span 2; } }
