@@ -93,7 +93,7 @@ export function KuveniIndex() {
       <p className="lead" style={{ marginTop: 0 }}>{t.lead}</p>
       <Link href="/a-e-dini" className="card pad rr-card" style={{ marginTop: 16 }}>
         <h2 style={{ marginTop: 0 }}>{lang === 'en' ? 'Did you know? →' : 'A e dini? →'}</h2>
-        <p>{lang === 'en' ? 'Albanian written in 1332? Dozens of alphabets? Three dialects in Mirdita? Curiosities with sources.' : 'Shqip e shkrueme më 1332? Dhjetëra alfabete? Tri të folme në Mirditë? Kuriozitete me burim.'}</p>
+        <p>{lang === 'en' ? 'Albanian written in 1332? Dozens of alphabets? Three dialects in Mirdita? Curiosities with sources.' : 'Shqip e shkruar më 1332? Dhjetëra alfabete? Tri të folme në Mirditë? Kuriozitete me burim.'}</p>
       </Link>
       <Link href="/kuveni/rrahje" className="card pad rr-card" style={{ marginTop: 16, borderLeft: '4px solid var(--gold)' }}>
         <h2 style={{ marginTop: 0 }}>{lang === 'en' ? 'Rrahje mendimesh: the big questions →' : 'Rrahje mendimesh: pyetjet e mëdha →'}</h2>
