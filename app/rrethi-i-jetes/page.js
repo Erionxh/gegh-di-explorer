@@ -17,10 +17,10 @@ const STAGES = [
   {
     id: 'martesa', icon: '💍',
     sq: { name: 'Martesa', lead: 'Nga shkuesi te dita kur nusja hynte në shtëpinë e re: fejesa, krushqit, pajët, këngët dhe fjalët e çdo hapi.',
-      q: ['Si bëhej fejesa dhe kush ishte shkuesi?', 'Si shkonin krushqit për nusen dhe çfarë ndodhte rrugës?', 'Çfarë kishte paja e nuses?', 'Cilat këngë këndoheshin në dasmë?', 'Çfarë thuhej kur nusja hynte në shtëpi për herë të parë?'],
+      q: ['Si bëhej fejesa dhe kush ishte shkuesi?', 'Si shkonin krushqit për nusen dhe çfarë ndodhte rrugës?', 'Pse bëhej zhurmë kur krushqit vinin për nusen? Me çfarë: pushkë, këngë, kuaj, e sot borie makinash?', 'Çfarë kishte paja e nuses?', 'Cilat këngë këndoheshin në dasmë?', 'Çfarë thuhej kur nusja hynte në shtëpi për herë të parë?'],
       w: ['shkues', 'fejesë', 'krushq', 'nuse', 'dhëndër', 'pajë', 'dasmë'] },
     en: { name: 'Marriage', lead: 'From the matchmaker to the day the bride entered her new home: the engagement, the wedding party, the dowry, the songs and the words of every step.',
-      q: ['How was an engagement arranged, and who was the matchmaker?', 'How did the wedding party go to fetch the bride, and what happened on the way?', 'What did the bride\'s dowry contain?', 'Which songs were sung at the wedding?', 'What was said when the bride entered the house for the first time?'],
+      q: ['How was an engagement arranged, and who was the matchmaker?', 'How did the wedding party go to fetch the bride, and what happened on the way?', 'Why was noise made when the wedding party came for the bride? With what: rifles, songs, horses, and today car horns?', 'What did the bride\'s dowry contain?', 'Which songs were sung at the wedding?', 'What was said when the bride entered the house for the first time?'],
       w: ['shkues (matchmaker)', 'fejesë (engagement)', 'krushq (wedding party)', 'nuse (bride)', 'dhëndër (groom)', 'pajë (dowry)', 'dasmë (wedding)'] },
   },
   {
