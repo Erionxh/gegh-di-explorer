@@ -786,3 +786,6 @@ body:has(.kt-wrap) .kt-wrap { padding-top: 22px; }
 .tr-tag.myth { background: #fbe9e7; color: #a8321f; }
 .tr-tag.q { background: #e6f0fb; color: #1d4f86; }
 .kt-sub { font-size: 20px; font-weight: 700; color: #a6741f; margin: -4px 0 6px; }
+.kt-modes { display: grid; gap: 8px; }
+.kt-modes button { min-height: 52px; text-align: left; padding: 10px 14px; border-radius: 12px; border: 1px solid #d8ccb0; background: #fff; font-size: 16px; cursor: pointer; }
+.kt-modes button.on { background: #1d2b45; color: #fff; border-color: #1d2b45; }
