@@ -16,7 +16,7 @@ const T = {
     eyebrow: 'GEG 1.0 · Moduli i parë: gegnishtja',
     from: (n, p) => `${p ? p + ', ' : ''}${n} të ka dërguar këtë ftesë.`,
     hello: 'Zani yt.', sub: 'Shpëto gjuhën e moçme shqiptare.',
-    lead: 'Ulu pranë më të moshuarit të familjes, nënës, babait, gjyshes ose gjyshit, dhe regjistroje. Dy minuta, 25 fjalë. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. Nuk ke asnjë pranë? Thuaji vetë, ashtu si i dëgjoje prej tyre.', module: 'Ky është moduli i parë i projektit: dialekti geg, varianti mirditor. Por çdo zë ruhet. Je nga Tirana, Elbasani, Kavaja, Skrapari, Tepelena, Çamëria apo nga një krahinë tjetër? Regjistro si e thoni ju: do të përdoret kur të vijë moduli i krahinës sate, dhe deri atëherë krahasimi na tregon ku ndahen dialektet.',
+    lead: 'Ulu pranë më të moshuarit të familjes, nënës, babait, gjyshes ose gjyshit, dhe regjistroje. Disa fjalë, pesë nga pesë: sa të doni. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. Nuk ke asnjë pranë? Thuaji vetë, ashtu si i dëgjoje prej tyre.', module: 'Ky është moduli i parë i projektit: dialekti geg, varianti mirditor. Por çdo zë ruhet. Je nga Tirana, Elbasani, Kavaja, Skrapari, Tepelena, Çamëria apo nga një krahinë tjetër? Regjistro si e thoni ju: do të përdoret kur të vijë moduli i krahinës sate, dhe deri atëherë krahasimi na tregon ku ndahen dialektet.',
     consent: 'Pranoj që zëri im, ose zëri i atij që regjistroj me pëlqimin e tij, të ruhet në arkivin GEG 1.0 dhe të përdoret për studim.',
     start: 'Fillo', modeQ: 'Kush do të flasë?', modes: ['Po regjistroj nënën ose babanë', 'Po regjistroj gjyshen ose gjyshin', 'Një tjetër të moshuar', 'Unë vetë, si i kujtoj'], modeHint: 'Sa më i moshuar zëri, aq më e çmuar fjala.',
     cTitle: 'Pëlqimi', cElderLead: 'Para se të nisni, lexoja me zë: «Ky regjistrim është për arkivin GEG 1.0. Zëri yt ruhet për studimin e gjuhës shqipe. Mund ta tërheqësh kurdo.» Pastaj le të thotë vetë një fjali pëlqimi, p.sh. «Po, pranoj.»',
@@ -26,7 +26,7 @@ const T = {
     placeQ: 'Nga cili fshat ose krahinë janë të parët e tu?', placeQElder: 'Nga cili fshat ose krahinë është ai ose ajo që flet?', placePh: 'p.sh. Orosh, Shkodër, Gjakovë, Tiranë, Elbasan, Skrapar, Konispol…',
     ageQ: 'Mosha jote (nuk është e detyrueshme)', ageQElder: 'Mosha e atij ose asaj që flet (nuk është e detyrueshme)',
     next: 'Vazhdo →',
-    wordOf: (i, n) => `Fjala ${i} nga ${n}`,
+    wordOf: (i, n) => `Fjala ${i} nga ${n}`, chunkDone: (n) => `Faleminderit! ${n} fjalë janë ruajtur.`, chunkQ: 'Edhe pesë të tjera?', more5: 'Po, edhe 5', enough: 'Mjafton për sot',
     std: 'Në shqipen standarde:',
     how: 'Si e thoshte nëna, babai ose gjyshja?', howElder: 'Pyete: si e thoni këtë? Pastaj shtyp dhe lëre të flasë.',
     rec: '🎙 Shtyp dhe fol', stop: '■ Ndalo', again: 'Regjistroje prapë',
@@ -36,14 +36,14 @@ const T = {
     guessQ: 'Çfarë mendon: nga cili dialekt ose krahinë është kjo mënyrë e të folurit?', guessPh: 'p.sh. Mirdita, Malësia e Madhe, Dukagjini… (nuk është e detyrueshme)',
     done: 'Faleminderit!', doneLead: (n) => `${n} fjalë me zërin tënd janë tani në arkiv. Kështu nuk humbin.`,
     doneZero: 'Faleminderit që e hape. Kur të kesh dy minuta, provoje prapë.',
-    share: 'Çoja dikujt', shareName: 'Emri yt (që ta dinë kush ua dërgoi)', shareText: (n) => `🎙 ${n ? n + ' të fton: ' : ''}Zëri yt. Ulu pranë më të moshuarit të familjes dhe regjistroje: 25 fjalë, dy minuta. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. `,
+    share: 'Çoja dikujt', shareName: 'Emri yt (që ta dinë kush ua dërgoi)', shareText: (n) => `🎙 ${n ? n + ' të fton: ' : ''}Zëri yt. Ulu pranë më të moshuarit të familjes dhe regjistroje: disa fjalë, pesë nga pesë. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. `,
     more: 'Do të shohësh më shumë? Hyr në arkiv →',
   },
   en: {
     eyebrow: 'GEG 1.0 · First module: Gheg',
     from: (n, p) => `${p ? p + ', ' : ''}${n} sent you this invitation.`,
     hello: 'Zani yt. Your voice.', sub: 'Save the old Albanian language.',
-    lead: 'Sit with the eldest in your family, your mother, father, grandmother or grandfather, and record them. Two minutes, 25 words. Their voice is the oldest Albanian still alive. No one nearby? Say the words yourself, the way you heard them from them.', module: 'This is the first module of the project: the Gheg dialect, Mirdita variant. But every voice is kept. From Tirana, Elbasan, Kavaja, Skrapar, Tepelena, Çamëria or another region? Record how you say it: it will be used when your region\'s module comes, and until then the comparison shows where the dialects part.',
+    lead: 'Sit with the eldest in your family, your mother, father, grandmother or grandfather, and record them. A few words, five at a time: as many as you like. Their voice is the oldest Albanian still alive. No one nearby? Say the words yourself, the way you heard them from them.', module: 'This is the first module of the project: the Gheg dialect, Mirdita variant. But every voice is kept. From Tirana, Elbasan, Kavaja, Skrapar, Tepelena, Çamëria or another region? Record how you say it: it will be used when your region\'s module comes, and until then the comparison shows where the dialects part.',
     consent: 'I agree that my voice, or the voice of the person I record with their consent, is kept in the GEG 1.0 archive and used for study.',
     start: 'Start', modeQ: 'Who will speak?', modes: ['I am recording my mother or father', 'I am recording my grandmother or grandfather', 'Another elder', 'Me, as I remember it'], modeHint: 'The older the voice, the more precious the word.',
     cTitle: 'Consent', cElderLead: 'Before you start, read this aloud: "This recording is for the GEG 1.0 archive. Your voice is kept for the study of the Albanian language. You can withdraw it at any time." Then let them say a sentence of consent themselves, e.g. "Yes, I agree."',
@@ -53,7 +53,7 @@ const T = {
     placeQ: 'Which village or region are your people from?', placeQElder: 'Which village or region is the speaker from?', placePh: 'e.g. Orosh, Kthellë, Shkodër, Gjakova…',
     ageQ: 'Your age (optional)', ageQElder: 'The speaker\'s age (optional)',
     next: 'Continue →',
-    wordOf: (i, n) => `Word ${i} of ${n}`,
+    wordOf: (i, n) => `Word ${i} of ${n}`, chunkDone: (n) => `Thank you! ${n} words are saved.`, chunkQ: 'Five more?', more5: 'Yes, 5 more', enough: 'Enough for today',
     std: 'In standard Albanian:',
     how: 'How did your mother, father or grandmother say it?', howElder: 'Ask: how do you say this? Then tap and let them speak.',
     rec: '🎙 Tap and speak', stop: '■ Stop', again: 'Record again',
@@ -63,7 +63,7 @@ const T = {
     guessQ: 'What do you think: where is this way of speaking from?', guessPh: 'e.g. Mirdita, Malësia e Madhe, Dukagjin… (optional)',
     done: 'Thank you!', doneLead: (n) => `${n} words in your voice are now in the archive. This way they are not lost.`,
     doneZero: 'Thank you for opening it. When you have two minutes, try again.',
-    share: 'Send it to someone', shareName: 'Your name (so they know who sent it)', shareText: (n) => `🎙 ${n ? n + ' invites you: ' : ''}Sit with the eldest in your family and record them: 25 Albanian words, two minutes. Their voice is the oldest Albanian still alive. `,
+    share: 'Send it to someone', shareName: 'Your name (so they know who sent it)', shareText: (n) => `🎙 ${n ? n + ' invites you: ' : ''}Sit with the eldest in your family and record them: a few Albanian words, five at a time. Their voice is the oldest Albanian still alive. `,
     more: 'Want to see more? Enter the archive →',
   },
 };
@@ -134,7 +134,7 @@ export default function Karta() {
 
   function nextWord() {
     setBlob(null); setUrl(null);
-    if (i + 1 < WORDS.length) setI(i + 1); else setStep('done');
+    if (i + 1 >= WORDS.length) setStep('done'); else { setI(i + 1); if ((i + 1) % 5 === 0) setStep('pause'); }
   }
 
   async function save() {
@@ -220,8 +220,8 @@ export default function Karta() {
 
         {step === 'words' && (
           <>
-            <div className="kt-progress"><span style={{ width: `${(i / WORDS.length) * 100}%` }} /></div>
-            <p className="kt-small">{t.wordOf(i + 1, WORDS.length)}</p>
+            <div className="kt-progress"><span style={{ width: `${((i % 5) / 5) * 100}%` }} /></div>
+            <p className="kt-small">{t.wordOf((i % 5) + 1, Math.min(5, WORDS.length - Math.floor(i / 5) * 5))}</p>
             <p className="kt-small" style={{ marginBottom: 0 }}>{t.std}</p>
             <div className="kt-word">{WORDS[i][0]}</div>
             {lang === 'en' && <p className="kt-small" style={{ marginTop: -6 }}>{WORDS[i][1]}</p>}
@@ -239,6 +239,16 @@ export default function Karta() {
               </>
             )}
             <button className="kt-skip" onClick={nextWord}>{t.skip}</button>
+          </>
+        )}
+
+        {step === 'pause' && (
+          <>
+            <h1 className="kt-h">🎉</h1>
+            <p className="kt-lead">{saved > 0 ? t.chunkDone(saved) : t.doneZero}</p>
+            <h2 className="kt-q">{t.chunkQ}</h2>
+            <button className="kt-btn" onClick={() => setStep('words')}>{t.more5}</button>
+            <button className="kt-skip" onClick={() => setStep('done')}>{t.enough}</button>
           </>
         )}
 
