@@ -16,10 +16,10 @@ const T = {
     eyebrow: 'GEG 1.0 · Moduli i parë: gegnishtja',
     from: (n, p) => `${p ? p + ', ' : ''}${n} të ka dërguar këtë ftesë.`,
     hello: 'Zani yt.', sub: 'Shpëto gjuhën e moçme shqiptare.',
-    lead: 'Ulu pranë gjyshes ose gjyshit dhe regjistroji. Dy minuta, 25 fjalë. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. Nuk ke gjysh pranë? Thuaji vetë, ashtu si i dëgjoje prej tyre.', module: 'Ky është moduli i parë i projektit: dialekti geg, varianti mirditor. Më pas do të zgjerohet në të gjitha dialektet e gjuhës shqipe. Je nga jugu? Na duhet edhe zëri yt: krahasimi na tregon ku ndahen dialektet.',
+    lead: 'Ulu pranë më të moshuarit të familjes, nënës, babait, gjyshes ose gjyshit, dhe regjistroje. Dy minuta, 25 fjalë. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. Nuk ke asnjë pranë? Thuaji vetë, ashtu si i dëgjoje prej tyre.', module: 'Ky është moduli i parë i projektit: dialekti geg, varianti mirditor. Por çdo zë ruhet. Je nga Elbasani, Kavaja, Skrapari, Tepelena, Çamëria apo nga një krahinë tjetër? Regjistro të folmen tënde: do të përdoret kur të vijë moduli i krahinës sate, dhe deri atëherë krahasimi na tregon ku ndahen dialektet.',
     consent: 'Pranoj që zëri im, ose zëri i atij që regjistroj me pëlqimin e tij, të ruhet në arkivin GEG 1.0 dhe të përdoret për studim.',
-    start: 'Fillo', modeQ: 'Kush do të flasë?', modes: ['Po regjistroj gjyshen ose gjyshin', 'Një tjetër të moshuar të familjes', 'Unë vetë, si i kujtoj'], modeHint: 'Sa më i moshuar zëri, aq më e çmuar fjala.', about: 'Çfarë është GEG 1.0? Shih punën që qëndron pas →',
-    placeQ: 'Nga cili fshat ose krahinë janë të parët e tu?', placeQElder: 'Nga cili fshat ose krahinë është ai ose ajo që flet?', placePh: 'p.sh. Orosh, Kthellë, Shkodër, Gjakovë…',
+    start: 'Fillo', modeQ: 'Kush do të flasë?', modes: ['Po regjistroj nënën ose babanë', 'Po regjistroj gjyshen ose gjyshin', 'Një tjetër të moshuar', 'Unë vetë, si i kujtoj'], modeHint: 'Sa më i moshuar zëri, aq më e çmuar fjala.', about: 'Çfarë është GEG 1.0? Shih punën që qëndron pas →',
+    placeQ: 'Nga cili fshat ose krahinë janë të parët e tu?', placeQElder: 'Nga cili fshat ose krahinë është ai ose ajo që flet?', placePh: 'p.sh. Orosh, Shkodër, Gjakovë, Elbasan, Skrapar, Konispol…',
     ageQ: 'Mosha jote (nuk është e detyrueshme)', ageQElder: 'Mosha e atij ose asaj që flet (nuk është e detyrueshme)',
     next: 'Vazhdo →',
     wordOf: (i, n) => `Fjala ${i} nga ${n}`,
@@ -32,16 +32,16 @@ const T = {
     guessQ: 'Çfarë mendon: nga cili dialekt ose krahinë është kjo mënyrë e të folurit?', guessPh: 'p.sh. Mirdita, Malësia e Madhe, Dukagjini… (nuk është e detyrueshme)',
     done: 'Faleminderit!', doneLead: (n) => `${n} fjalë me zërin tënd janë tani në arkiv. Kështu nuk humbin.`,
     doneZero: 'Faleminderit që e hape. Kur të kesh dy minuta, provoje prapë.',
-    share: 'Çoja dikujt', shareName: 'Emri yt (që ta dinë kush ua dërgoi)', shareText: (n) => `🎙 ${n ? n + ' të fton: ' : ''}Zëri yt. Ulu pranë gjyshes ose gjyshit dhe regjistroji: 25 fjalë, dy minuta. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. `,
+    share: 'Çoja dikujt', shareName: 'Emri yt (që ta dinë kush ua dërgoi)', shareText: (n) => `🎙 ${n ? n + ' të fton: ' : ''}Zëri yt. Ulu pranë më të moshuarit të familjes dhe regjistroje: 25 fjalë, dy minuta. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. `,
     more: 'Do të shohësh më shumë? Hyr në arkiv →',
   },
   en: {
     eyebrow: 'GEG 1.0 · First module: Gheg',
     from: (n, p) => `${p ? p + ', ' : ''}${n} sent you this invitation.`,
     hello: 'Zani yt. Your voice.', sub: 'Save the old Albanian language.',
-    lead: 'Sit with your grandmother or grandfather and record them. Two minutes, 25 words. Their voice is the oldest Albanian still alive. No grandparent nearby? Say the words yourself, the way you heard them from them.', module: 'This is the first module of the project: the Gheg dialect, Mirdita variant. It will then grow to every dialect of the Albanian language. From the south? We need your voice too: the comparison shows where the dialects part.',
+    lead: 'Sit with the eldest in your family, your mother, father, grandmother or grandfather, and record them. Two minutes, 25 words. Their voice is the oldest Albanian still alive. No one nearby? Say the words yourself, the way you heard them from them.', module: 'This is the first module of the project: the Gheg dialect, Mirdita variant. But every voice is kept. From Elbasan, Kavaja, Skrapar, Tepelena, Çamëria or another region? Record your own speech: it will be used when your region\'s module comes, and until then the comparison shows where the dialects part.',
     consent: 'I agree that my voice, or the voice of the person I record with their consent, is kept in the GEG 1.0 archive and used for study.',
-    start: 'Start', modeQ: 'Who will speak?', modes: ['I am recording my grandmother or grandfather', 'Another elder in the family', 'Me, as I remember it'], modeHint: 'The older the voice, the more precious the word.', about: 'What is GEG 1.0? See the work behind it →',
+    start: 'Start', modeQ: 'Who will speak?', modes: ['I am recording my mother or father', 'I am recording my grandmother or grandfather', 'Another elder', 'Me, as I remember it'], modeHint: 'The older the voice, the more precious the word.', about: 'What is GEG 1.0? See the work behind it →',
     placeQ: 'Which village or region are your people from?', placeQElder: 'Which village or region is the speaker from?', placePh: 'e.g. Orosh, Kthellë, Shkodër, Gjakova…',
     ageQ: 'Your age (optional)', ageQElder: 'The speaker\'s age (optional)',
     next: 'Continue →',
@@ -55,7 +55,7 @@ const T = {
     guessQ: 'What do you think: where is this way of speaking from?', guessPh: 'e.g. Mirdita, Malësia e Madhe, Dukagjin… (optional)',
     done: 'Thank you!', doneLead: (n) => `${n} words in your voice are now in the archive. This way they are not lost.`,
     doneZero: 'Thank you for opening it. When you have two minutes, try again.',
-    share: 'Send it to someone', shareName: 'Your name (so they know who sent it)', shareText: (n) => `🎙 ${n ? n + ' invites you: ' : ''}Sit with your grandmother or grandfather and record them: 25 Albanian words, two minutes. Their voice is the oldest Albanian still alive. `,
+    share: 'Send it to someone', shareName: 'Your name (so they know who sent it)', shareText: (n) => `🎙 ${n ? n + ' invites you: ' : ''}Sit with the eldest in your family and record them: 25 Albanian words, two minutes. Their voice is the oldest Albanian still alive. `,
     more: 'Want to see more? Enter the archive →',
   },
 };
@@ -73,7 +73,7 @@ export default function Karta() {
   const [i, setI] = useState(0);
   const [who, setWho] = useState(1);
   const [mode, setMode] = useState(0);
-  const elder = mode < 2;
+  const elder = mode < 3;
   const [rec, setRec] = useState(false);
   const [blob, setBlob] = useState(null);
   const [url, setUrl] = useState(null);
@@ -111,7 +111,7 @@ export default function Karta() {
     const d = new FormData();
     d.set('word', WORDS[i][0]); d.set('meaning', WORDS[i][1]);
     d.set('village', place); d.set('region', guess); d.set('age_band', age);
-    d.set('speaker', elder ? (mode === 0 ? 'gjyshi/gjyshja (vetë)' : 'i moshuar i familjes (vetë)') : `vetë, si e thoshte: ${WHO_SQ[who]}`); d.set('era', 'kartolina'); d.set('consent', 'true'); d.set('lang', lang);
+    d.set('speaker', elder ? ['prindi (vetë)', 'gjyshi/gjyshja (vetë)', 'i moshuar (vetë)'][mode] : `vetë, si e thoshte: ${WHO_SQ[who]}`); d.set('era', 'kartolina'); d.set('consent', 'true'); d.set('lang', lang);
     d.set('audio', blob, 'recording');
     try { const res = await fetch('/api/kujtesa', { method: 'POST', body: d }); if (res.ok) setSaved((n) => n + 1); } catch { /* vazhdo */ }
     setBusy(false);
@@ -143,7 +143,7 @@ export default function Karta() {
           <>
             <h2 className="kt-q">{t.modeQ}</h2>
             <div className="kt-modes">
-              {t.modes.map((m, k) => <button key={k} className={mode === k ? 'on' : ''} onClick={() => setMode(k)}>{k < 2 ? '👵 ' : '🙋 '}{m}</button>)}
+              {t.modes.map((m, k) => <button key={k} className={mode === k ? 'on' : ''} onClick={() => setMode(k)}>{k < 3 ? '👵 ' : '🙋 '}{m}</button>)}
             </div>
             <p className="kt-small">{t.modeHint}</p>
             <button className="kt-btn" onClick={() => setStep('place')}>{t.next}</button>
