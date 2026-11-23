@@ -26,7 +26,15 @@ function ModSignIn({ client }) {
 function Regjistrimet({ token }) {
   const [d, setD] = useState(null);
   const [reasons, setReasons] = useState({});
+  const [tx, setTx] = useState({});
+  const [txMsg, setTxMsg] = useState({});
   const [err, setErr] = useState('');
+  const saveTx = async (r) => {
+    const v = { ipa: r.ipa || '', geg: r.geg_spelling || '', status: r.transcription_status && r.transcription_status !== 'none' ? r.transcription_status : 'draft', ...(tx[r.id] || {}) };
+    const res = await fetch('/api/kujtesa/shqyrtim', { method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: JSON.stringify({ id: r.id, action: 'transcribe', ...v }) }).then((x) => x.json()).catch(() => ({}));
+    setTxMsg({ ...txMsg, [r.id]: res.ok ? 'U ruajt ✓' : res.error === 'needs_sql' ? 'Duhet ekzekutuar docs/transkriptimi.sql në Supabase.' : 'Nuk u ruajt.' });
+  };
+  const setT = (id, k, val) => setTx({ ...tx, [id]: { ...(tx[id] || {}), [k]: val } });
   const load = useCallback(async () => {
     const r = await fetch('/api/kujtesa/shqyrtim', { headers: { authorization: `Bearer ${token}` } }).then((x) => x.json()).catch(() => ({}));
     setD(r);
@@ -55,6 +63,17 @@ function Regjistrimet({ token }) {
           {r.audio ? <audio controls preload="none" src={r.audio} /> : <p className="kt-small">Pa zë.</p>}
           {r.consent_audio && <><p className="kt-small">Pëlqimi i thënë me zë:</p><audio controls preload="none" src={r.consent_audio} /></>}
           {r.example && <p className="kl-body">{r.example}</p>}
+          {r.said_form && <p className="kl-body">Si e tha (sipas dërguesit): <b>{r.said_form}</b></p>}
+          <details style={{ margin: '6px 0' }}>
+            <summary className="kt-small" style={{ cursor: 'pointer' }}>✍️ Transkriptimi {r.transcription_status === 'checked' ? '· i kontrolluar' : r.transcription_status === 'draft' ? '· draft' : ''}</summary>
+            <input className="pn-input" style={{ width: '100%', margin: '6px 0' }} placeholder="IPA, p.sh. [ˈtaːməl]" defaultValue={r.ipa || ''} onChange={(e) => setT(r.id, 'ipa', e.target.value)} />
+            <input className="pn-input" style={{ width: '100%', margin: '0 0 6px' }} placeholder="Shkrimi gegnisht, p.sh. tâmël" defaultValue={r.geg_spelling || ''} onChange={(e) => setT(r.id, 'geg', e.target.value)} />
+            <select className="pn-input" defaultValue={r.transcription_status && r.transcription_status !== 'none' ? r.transcription_status : 'draft'} onChange={(e) => setT(r.id, 'status', e.target.value)}>
+              <option value="draft">Draft</option><option value="checked">I kontrolluar</option>
+            </select>
+            <button className="btn" style={{ marginLeft: 8 }} onClick={() => saveTx(r)}>Ruaj</button>
+            {txMsg[r.id] && <span className="kt-small" style={{ marginLeft: 8 }}>{txMsg[r.id]}</span>}
+          </details>
           <input className="pn-input" style={{ width: '100%', margin: '6px 0' }} placeholder="Arsyeja (p.sh. zë i qartë, forma gege e saktë / zhurmë, fjalë tjetër)" value={reasons[r.id] || ''} onChange={(e) => setReasons({ ...reasons, [r.id]: e.target.value })} />
           <div className="rr-votes">
             <button className="on yes" onClick={() => act(r.id, 'approved')}>✓ Prano</button>

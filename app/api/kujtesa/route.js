@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { createHash } from 'crypto';
 import { sniffAudio } from '../../../lib/server/audio';
+import { WANTED } from '../../../lib/wantedWords';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -95,8 +96,12 @@ export async function POST(req) {
     audio_sha256: main.hash || null,
   };
 
-  let { error } = await supabase.from('contributions').insert({ ...base, ...extra });
-  if (missingColumn(error)) ({ error } = await supabase.from('contributions').insert(base)); // para se të ekzekutohet docs/mbrojtja.sql
+  const wanted = WANTED.find((w) => w.sq.split('/').some((p) => p.trim().toLowerCase() === word.toLowerCase()));
+  const tx = { word_id: wanted ? wanted.slug : null, said_form: clip(form.get('said_form'), 120) || null };
+
+  let { error } = await supabase.from('contributions').insert({ ...base, ...extra, ...tx });
+  if (missingColumn(error)) ({ error } = await supabase.from('contributions').insert({ ...base, ...extra })); // para docs/transkriptimi.sql
+  if (missingColumn(error)) ({ error } = await supabase.from('contributions').insert(base)); // para docs/mbrojtja.sql
   if (error) {
     const orphans = [main.path, spoken.path].filter(Boolean);
     if (orphans.length) await supabase.storage.from('recordings').remove(orphans);
