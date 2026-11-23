@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import { useKvAuth } from '../../../components/KuveniLive';
+import IpaPanel from '../../../components/IpaPanel';
 
 
 function ModSignIn({ client }) {
@@ -34,7 +35,14 @@ function Regjistrimet({ token }) {
     const res = await fetch('/api/kujtesa/shqyrtim', { method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: JSON.stringify({ id: r.id, action: 'transcribe', ...v }) }).then((x) => x.json()).catch(() => ({}));
     setTxMsg({ ...txMsg, [r.id]: res.ok ? 'U ruajt ✓' : res.error === 'needs_sql' ? 'Duhet ekzekutuar docs/transkriptimi.sql në Supabase.' : 'Nuk u ruajt.' });
   };
-  const setT = (id, k, val) => setTx({ ...tx, [id]: { ...(tx[id] || {}), [k]: val } });
+  const setT = (id, k, val) => setTx((cur) => ({ ...cur, [id]: { ...(cur[id] || {}), [k]: val } }));
+  const [focusId, setFocusId] = useState(null);
+  const ipaOf = (r) => (tx[r.id] && tx[r.id].ipa !== undefined ? tx[r.id].ipa : r.ipa || '');
+  const insertIpa = (sym) => {
+    const r = (d?.items || []).find((x) => x.id === focusId);
+    if (!r) { setErr('Prek fillimisht fushën IPA të një regjistrimi, pastaj simbolin.'); return; }
+    setErr(''); setT(r.id, 'ipa', ipaOf(r) + sym);
+  };
   const load = useCallback(async () => {
     const r = await fetch('/api/kujtesa/shqyrtim', { headers: { authorization: `Bearer ${token}` } }).then((x) => x.json()).catch(() => ({}));
     setD(r);
@@ -53,6 +61,7 @@ function Regjistrimet({ token }) {
     <section style={{ marginTop: 28 }}>
       <h2 style={{ fontSize: 26 }}>Regjistrimet në pritje · {d.items.length}</h2>
       <p className="kt-small">{d.total} regjistrime gjithsej. Çdo vendim kërkon një arsye dhe shënohet në ditar.</p>
+      <div className="ipa-sticky"><IpaPanel onInsert={insertIpa} /></div>
       {err && <p className="kl-err">{err}</p>}
       {d.items.length === 0 && <p className="kl-ok">Asgjë për të shqyrtuar. ✓</p>}
       {d.items.map((r) => (
@@ -66,7 +75,7 @@ function Regjistrimet({ token }) {
           {r.said_form && <p className="kl-body">Si e tha (sipas dërguesit): <b>{r.said_form}</b></p>}
           <details style={{ margin: '6px 0' }}>
             <summary className="kt-small" style={{ cursor: 'pointer' }}>✍️ Transkriptimi {r.transcription_status === 'checked' ? '· i kontrolluar' : r.transcription_status === 'draft' ? '· draft' : ''}</summary>
-            <input className="pn-input" style={{ width: '100%', margin: '6px 0' }} placeholder="IPA, p.sh. [ˈtaːməl]" defaultValue={r.ipa || ''} onChange={(e) => setT(r.id, 'ipa', e.target.value)} />
+            <input className="pn-input" style={{ width: '100%', margin: '6px 0', fontSize: 18 }} placeholder="IPA, p.sh. [ˈtaːməl]" value={ipaOf(r)} onFocus={() => setFocusId(r.id)} onChange={(e) => setT(r.id, 'ipa', e.target.value)} />
             <input className="pn-input" style={{ width: '100%', margin: '0 0 6px' }} placeholder="Shkrimi gegnisht, p.sh. tâmël" defaultValue={r.geg_spelling || ''} onChange={(e) => setT(r.id, 'geg', e.target.value)} />
             <select className="pn-input" defaultValue={r.transcription_status && r.transcription_status !== 'none' ? r.transcription_status : 'draft'} onChange={(e) => setT(r.id, 'status', e.target.value)}>
               <option value="draft">Draft</option><option value="checked">I kontrolluar</option>
