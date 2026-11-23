@@ -4,6 +4,25 @@ import { useCallback, useEffect, useState } from 'react';
 import { useKvAuth } from '../../../components/KuveniLive';
 
 
+function ModSignIn({ client }) {
+  const [email, setEmail] = useState('');
+  const [sent, setSent] = useState(false);
+  const [err, setErr] = useState('');
+  if (sent) return <p className="kl-ok">Kontrolloni emailin dhe klikoni lidhjen. Ajo ju sjell drejt këtu, te Moderimi.</p>;
+  return (
+    <form className="kl-email" style={{ maxWidth: 420 }} onSubmit={async (e) => {
+      e.preventDefault(); setErr('');
+      const { error } = await client.auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}/kuveni/moderimi` } });
+      if (error) setErr(error.message); else setSent(true);
+    }}>
+      <p style={{ margin: '0 0 8px' }}>Hyni me emailin e moderatorit:</p>
+      <input className="kt-input" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="emaili@shembull.com" />
+      <button className="btn" type="submit" style={{ marginTop: 8 }}>Më dërgo lidhjen</button>
+      {err && <p style={{ color: '#a8321f' }}>{err}</p>}
+    </form>
+  );
+}
+
 function Regjistrimet({ token }) {
   const [d, setD] = useState(null);
   const [reasons, setReasons] = useState({});
@@ -66,7 +85,7 @@ export default function Moderimi() {
       <Link href="/kuveni" style={{ fontSize: 14 }}>← Kuveni</Link>
       <h1 style={{ fontSize: 36 }}>Moderimi</h1>
       {!client && <p>Forumi nuk është ndezur ende.</p>}
-      {client && !session && <p>Hyni nga cilado faqe e Kuvenit me emailin e moderatorit, pastaj kthehuni këtu.</p>}
+      {client && !session && <ModSignIn client={client} />}
       {d && !d.ok && <p>{d.error === 'not_moderator' ? 'Ky email nuk është moderator.' : `Gabim: ${d.error}`}</p>}
       {d?.ok && token && <Regjistrimet token={token} />}
       {d?.ok && (
