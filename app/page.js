@@ -31,6 +31,11 @@ export default function Home() {
           <p>{h.what}</p>
         </div>
 
+        <div className="card what-box not-box">
+          <h2>{h.notTitle}</h2>
+          <p>{h.not}</p>
+        </div>
+
         <div className="card why-box">
           <h2>{h.whyTitle}</h2>
           <p>{h.why}</p>

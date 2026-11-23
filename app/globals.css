@@ -843,3 +843,4 @@ input.lj-tile:focus { outline: none; border-style: solid; background: #fffaf0; }
 .vs-photos img { width: 100%; height: auto; border-radius: 10px; display: block; }
 .vs-photos figcaption { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
 .vs-credit { font-size: 12px; color: var(--muted); margin: 0; }
+.not-box { border-left: 4px solid var(--gold); }
