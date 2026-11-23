@@ -209,6 +209,7 @@ export default function LiveTopic({ topic, mode = 'thread', stances, heading, li
   const sorts = list ? ['active', 'newest', 'best'] : ['newest', 'best'];
   return (
     <section className="kl">
+      {mod && <Link href="/kuveni/moderimi" className="kl-modlink">🛡 {lang === 'en' ? 'Moderation: recordings and posts →' : 'Moderimi: regjistrimet dhe postimet →'}</Link>}
       <h2 className="rr-h">{heading || t.live}</h2>
       {roots.length > 1 && (
         <div className="kv-chips" style={{ marginBottom: 10 }}>
