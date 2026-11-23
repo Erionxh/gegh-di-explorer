@@ -863,3 +863,6 @@ input.lj-tile:focus { outline: none; border-style: solid; background: #fffaf0; }
 .st-tile b { font-size: 40px; line-height: 1; color: var(--navy, #1d2b45); font-family: Inter, sans-serif; }
 .st-tile span { font-weight: 600; font-size: 15px; }
 .st-tile small { color: #2e7d4f; font-size: 13px; }
+.folk-item { border-left: 3px solid var(--gold); padding: 6px 0 6px 12px; margin: 8px 0; }
+.folk-line { margin: 2px 0; font-size: 19px; }
+.folk-line span { color: var(--ink-2); font-size: 15px; }
