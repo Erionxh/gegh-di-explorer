@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { useLang } from '../components/LangProvider';
 import { words } from '../lib/words';
 
@@ -8,6 +9,8 @@ const FEATURED = ['GC-0001', 'GC-0002', 'GC-0004', 'GC-0022', 'GC-0024', 'GC-007
 export default function Home() {
   const { t, lang } = useLang();
   const h = t.home;
+  const [voices, setVoices] = useState(null);
+  useEffect(() => { fetch('/api/statistika').then((r) => r.json()).then((d) => { if (typeof d.total === 'number') setVoices(d.total); }).catch(() => {}); }, []);
   const featured = FEATURED.map((id) => words.find((w) => w.id === id)).filter(Boolean);
 
   return (
@@ -123,7 +126,8 @@ export default function Home() {
           ))}
         </div>
         <p style={{ marginTop: 14, fontSize: 14, color: 'var(--muted)' }}>
-          <Link href="/fjalet">{h.count(words.length)} · {lang === 'en' ? '500 we are looking for' : '500 që kërkojmë'} →</Link>
+          {voices !== null && <><b style={{ color: 'var(--ink)' }}>{lang === 'en' ? `🎙 ${voices} voice recordings` : `🎙 ${voices} regjistrime me zë`}</b>{lang === 'en' ? ' (awaiting review) · ' : ' (në shqyrtim) · '}</>}
+          <Link href="/fjalet">{lang === 'en' ? `${words.length} words with a full dossier · 500 we are looking for` : `${words.length} fjalë me dosje të plotë · 500 që kërkojmë`} →</Link>
         </p>
       </section>
 
