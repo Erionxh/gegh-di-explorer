@@ -843,7 +843,11 @@ input.lj-tile:focus { outline: none; border-style: solid; background: #fffaf0; }
 .vs-photos img { width: 100%; height: auto; border-radius: 10px; display: block; }
 .vs-photos figcaption { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
 .vs-credit { font-size: 12px; color: var(--muted); margin: 0; }
-.not-box { border-left: 4px solid var(--gold); }
+.is-box { border-left: 6px solid #2e7d4f; background: #eef7f0; }
+.not-box { border-left: 6px solid #d9822b; background: #fdf1e4; margin-top: 14px; }
+.cka-ico { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; color: #fff; font-size: 20px; font-weight: 800; margin-right: 12px; vertical-align: middle; font-family: Inter, sans-serif; }
+.cka-ico.ok { background: #2e7d4f; }
+.cka-ico.no { background: #d9822b; }
 .kl-modlink { display: block; margin: 0 0 14px; padding: 12px 14px; border-radius: 12px; background: #1d2b45; color: #f6efe1; font-weight: 700; text-decoration: none; }
 .lens-pages { display: grid; gap: 12px; margin-top: 14px; }
 .ipa-panel { margin: 10px 0; }

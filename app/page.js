@@ -29,13 +29,13 @@ export default function Home() {
       </section>
 
       <section className="wrap" style={{ paddingBottom: 48 }}>
-        <div className="card what-box">
-          <h2>{h.whatTitle}</h2>
+        <div className="card what-box is-box">
+          <h2><span className="cka-ico ok">✓</span>{h.whatTitle}</h2>
           <p>{h.what}</p>
         </div>
 
         <div className="card what-box not-box">
-          <h2>{h.notTitle}</h2>
+          <h2><span className="cka-ico no">✕</span>{h.notTitle}</h2>
           <p>{h.not}</p>
         </div>
 
