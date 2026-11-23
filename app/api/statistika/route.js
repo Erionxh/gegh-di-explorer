@@ -16,7 +16,28 @@ export async function GET() {
     count(base().gte('created_at', since48)),
     count(base().gte('created_at', since7)),
   ]);
-  const { data } = await db.from('contributions').select('session_id, created_at').gte('created_at', since48).neq('status', 'withdrawn').limit(5000);
-  const sessions48 = new Set((data || []).map((r) => r.session_id).filter(Boolean)).size;
-  return Response.json({ total, last48h: last48, last7d: last7, sessions48h: sessions48 }, { headers: { 'Cache-Control': 's-maxage=300' } });
+  // Seancat: me session_id kur ekziston; për regjistrimet e vjetra (pa session_id) një vlerësim:
+  // regjistrime nga i njëjti vend, me më pak se 30 minuta mes tyre, numërohen si një seancë.
+  let { data, error } = await db.from('contributions').select('session_id, village, created_at').neq('status', 'withdrawn').order('created_at').limit(10000);
+  if (error) ({ data } = await db.from('contributions').select('village, created_at').neq('status', 'withdrawn').order('created_at').limit(10000));
+  const rows = data || [];
+  const sessionsOf = (list) => {
+    const known = new Set(list.map((r) => r.session_id).filter(Boolean));
+    const last = new Map();
+    let guessed = 0;
+    for (const r of list.filter((x) => !x.session_id)) {
+      const key = (r.village || '').trim().toLowerCase();
+      const t = new Date(r.created_at).getTime();
+      if (!last.has(key) || t - last.get(key) > 30 * 60 * 1000) guessed += 1;
+      last.set(key, t);
+    }
+    return { exact: known.size, estimated: guessed };
+  };
+  const all = sessionsOf(rows);
+  const recent = sessionsOf(rows.filter((r) => r.created_at >= since48));
+  return Response.json({
+    total, last48h: last48, last7d: last7,
+    sessions: all.exact + all.estimated, sessionsEstimated: all.estimated,
+    sessions48h: recent.exact + recent.estimated,
+  }, { headers: { 'Cache-Control': 's-maxage=300' } });
 }
