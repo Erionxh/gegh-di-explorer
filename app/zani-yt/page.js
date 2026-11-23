@@ -22,7 +22,7 @@ const T = {
     start: 'Fillo', modeQ: 'Kush do të flasë?', modes: ['Po regjistroj nënën ose babanë', 'Po regjistroj gjyshen ose gjyshin', 'Një tjetër të moshuar', 'Unë vetë, si i kujtoj'], modeHint: 'Sa më i moshuar zëri, aq më e çmuar fjala.',
     cTitle: 'Pëlqimi', cElderLead: 'Para se të nisni, lexoja me zë: «Ky regjistrim është për arkivin GEG 1.0. Zëri yt ruhet për studimin e gjuhës shqipe. Mund ta tërheqësh kurdo.» Pastaj le të thotë vetë një fjali pëlqimi, p.sh. «Po, pranoj.»',
     cRec: '🎙 Regjistro pëlqimin me zë', cRecAgain: 'Regjistroje prapë', cRecHint: 'Nuk është e detyrueshme, por është mbrojtja më e mirë për të dhe për arkivin.',
-    cElderBox: 'Ai ose ajo që flet e dha vetë pëlqimin.', cPublic: 'Lejoj që zëri të dëgjohet publikisht në faqe. Pa këtë, ruhet vetëm për studim.',
+    cElderBox: 'Ai ose ajo që flet e dha vetë pëlqimin.', cQuiet: 'Regjistroni në qetësi. Nëse në sfond flasin të tjerë që nuk kanë dhënë pëlqimin, prisni ose ndaloni regjistrimin.', saidL: 'Si e tha? Shkruaje si e dëgjove (nuk është e detyrueshme)', saidPh: 'p.sh. tâmël, shpi, nân', cPublic: 'Lejoj që zëri të dëgjohet publikisht në faqe. Pa këtë, ruhet vetëm për studim.',
     codeLabel: 'Kodi yt për tërheqje. Ruaje (bëj një foto ekrani): nëse ndryshon mendje, e shkruan te geg1.org/terheq dhe zërat fshihen.', about: 'Çfarë është GEG 1.0? Shih punën që qëndron pas →',
     placeQ: 'Nga cili fshat ose krahinë janë të parët e tu?', placeQElder: 'Nga cili fshat ose krahinë është ai ose ajo që flet?', placePh: 'p.sh. Orosh, Shkodër, Gjakovë, Tiranë, Elbasan, Skrapar, Konispol…',
     regionL: 'Krahina', regionPick: '— Zgjidh krahinën —', regionOther: 'Tjetër / nuk e gjej', regionOtherPh: 'Shkruaje krahinën',
@@ -53,7 +53,7 @@ const T = {
     start: 'Start', modeQ: 'Who will speak?', modes: ['I am recording my mother or father', 'I am recording my grandmother or grandfather', 'Another elder', 'Me, as I remember it'], modeHint: 'The older the voice, the more precious the word.',
     cTitle: 'Consent', cElderLead: 'Before you start, read this aloud: "This recording is for the GEG 1.0 archive. Your voice is kept for the study of the Albanian language. You can withdraw it at any time." Then let them say a sentence of consent themselves, e.g. "Yes, I agree."',
     cRec: '🎙 Record the spoken consent', cRecAgain: 'Record it again', cRecHint: 'Not required, but it is the best protection for them and for the archive.',
-    cElderBox: 'The person speaking gave their own consent.', cPublic: 'I allow the voice to be played publicly on the site. Without this, it is kept for study only.',
+    cElderBox: 'The person speaking gave their own consent.', cQuiet: 'Record somewhere quiet. If other people who have not consented are talking in the background, wait or stop the recording.', saidL: 'How did they say it? Write it as you heard it (optional)', saidPh: 'e.g. tâmël, shpi, nân', cPublic: 'I allow the voice to be played publicly on the site. Without this, it is kept for study only.',
     codeLabel: 'Your withdrawal code. Keep it (take a screenshot): if you change your mind, enter it at geg1.org/terheq and the voices are deleted.', about: 'What is GEG 1.0? See the work behind it →',
     placeQ: 'Which village or region are your people from?', placeQElder: 'Which village or region is the speaker from?', placePh: 'e.g. Orosh, Kthellë, Shkodër, Gjakova…',
     regionL: 'Region', regionPick: '— Choose a region —', regionOther: 'Other / not listed', regionOtherPh: 'Type the region',
@@ -85,6 +85,7 @@ export default function Karta() {
   const [step, setStep] = useState('intro');
   const [consent, setConsent] = useState(false);
   const [place, setPlace] = useState('');
+  const [said, setSaid] = useState('');
   const [preg, setPreg] = useState('');
   const [pregOther, setPregOther] = useState('');
   const [parea, setParea] = useState('');
@@ -146,7 +147,7 @@ export default function Karta() {
   }
 
   function nextWord() {
-    setBlob(null); setUrl(null);
+    setBlob(null); setUrl(null); setSaid('');
     if (i + 1 >= WORDS.length) setStep('done'); else { setI(i + 1); if ((i + 1) % 5 === 0) setStep('pause'); }
   }
 
@@ -158,6 +159,7 @@ export default function Karta() {
     d.set('village', placeLabel({ village: place, area: parea === '__o' ? pareaOther : parea, region: preg === '__o' ? pregOther : preg })); d.set('region', guess); d.set('age_band', age);
     d.set('speaker', elder ? ['prindi (vetë)', 'gjyshi/gjyshja (vetë)', 'i moshuar (vetë)'][mode] : `vetë, si e thoshte: ${WHO_SQ[who]}`); d.set('era', 'kartolina'); d.set('consent', 'true'); d.set('lang', lang);
     d.set('audio', blob, 'recording');
+    if (said.trim()) d.set('said_form', said.trim());
     d.set('consent_by', elder ? 'on_behalf' : 'self'); d.set('consent_public', pub ? 'true' : 'false');
     if (ids.session) { d.set('session_id', ids.session); d.set('speaker_id', ids.session); }
     d.set('withdraw_code', ids.code); d.set('website', '');
@@ -213,6 +215,7 @@ export default function Karta() {
               </>
             )}
             <label className="kt-check"><input type="checkbox" checked={pub} onChange={(e) => setPub(e.target.checked)} /> {t.cPublic}</label>
+            <p className="kt-small">🔇 {t.cQuiet}</p>
             <div className="kt-code"><span>{t.codeLabel}</span><b>{ids.code}</b></div>
             <button className="kt-btn" disabled={elder && !elderOk} onClick={() => setStep('place')}>{t.next}</button>
           </>
@@ -271,6 +274,8 @@ export default function Karta() {
                 <p className="kt-small">{t.who}</p>
                 <div className="kt-pills">{t.whoOpts.map((o, k) => <button key={o} className={who === k ? 'on' : ''} onClick={() => setWho(k)}>{o}</button>)}</div>
                 </>)}
+                <label className="kt-small" htmlFor="kt-said">{t.saidL}</label>
+                <input id="kt-said" className="kt-input" value={said} onChange={(e) => setSaid(e.target.value)} placeholder={t.saidPh} maxLength={80} />
                 <button className="kt-btn" disabled={busy} onClick={save}>{busy ? t.sending : t.send}</button>
               </>
             )}

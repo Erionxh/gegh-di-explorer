@@ -4,6 +4,8 @@ import { useLang } from './LangProvider';
 import { StatusPill } from './Footer';
 import SoundCompare from './SoundCompare';
 import MeyerBox from './MeyerBox';
+import Zerat from './Zerat';
+import { WANTED, archiveMatch } from '../lib/wantedWords';
 import { getWordDebate } from '../lib/forum';
 
 export default function WordView({ word: w }) {
@@ -29,6 +31,8 @@ export default function WordView({ word: w }) {
         <SoundCompare concept={w.concept} />
 
         <MeyerBox forms={[w.headword, ...w.forms, ...(w.tosk || [])]} />
+
+        <Zerat slugs={WANTED.filter((e) => archiveMatch(e)?.id === w.id).map((e) => e.slug)} />
 
         <section className="card pad" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <h2 style={{ fontSize: 26 }}>{s.voices}</h2>

@@ -30,6 +30,13 @@ export async function POST(req) {
   if (err) return err;
   let b = {};
   try { b = await req.json(); } catch { /* bosh */ }
+  if (b.action === 'transcribe' && b.id) {
+    const st = ['none', 'draft', 'checked'].includes(b.status) ? b.status : 'draft';
+    const { error } = await db.from('contributions').update({ ipa: clip(b.ipa, 200) || null, geg_spelling: clip(b.geg, 200) || null, transcription_status: st }).eq('id', b.id);
+    if (error) return json({ ok: false, error: /column/i.test(error.message || '') ? 'needs_sql' : 'failed' }, 500);
+    await db.from('audit_log').insert({ actor: user.email, action: 'transcribe', target_table: 'contributions', target_id: b.id, reason: st, detail: { ipa: b.ipa || null, geg: b.geg || null } });
+    return json({ ok: true });
+  }
   const reason = clip(b.reason, 500);
   if (!b.id || !['approved', 'rejected'].includes(b.action)) return json({ ok: false, error: 'bad_request' }, 400);
   if (reason.length < 3) return json({ ok: false, error: 'reason_required' }, 400);

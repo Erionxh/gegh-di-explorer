@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useLang } from './LangProvider';
 import MeyerBox from './MeyerBox';
+import Zerat from './Zerat';
 import { WANTED, getWanted, archiveMatch, layerMatch, CAT_EN } from '../lib/wantedWords';
 
 const T = {
@@ -39,6 +40,7 @@ export default function WantedView({ slug }) {
       {l && <p style={{ marginTop: 16 }}>{t.layer}: <Link href={`/shtresat/${l[0]}`}>{lang === 'en' ? l[2] : l[1]} →</Link></p>}
 
       <div style={{ marginTop: 18 }}><MeyerBox forms={w.sq.split('/').map((x) => x.trim())} /></div>
+      <Zerat slugs={[w.slug]} />
 
       <nav style={{ display: 'flex', justifyContent: 'space-between', marginTop: 28 }}>
         {i > 0 ? <Link href={`/kerkojme/${WANTED[i - 1].slug}`}>{t.prev}</Link> : <span />}
