@@ -57,9 +57,9 @@ function SignIn({ client, t }) {
   return (
     <div className="kl-box">
       <strong>{t.signin}</strong>
-      <button className="btn kl-google" onClick={() => client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: here() } })}>
+      {process.env.NEXT_PUBLIC_GOOGLE_SIGNIN === '1' && <button className="btn kl-google" onClick={() => client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: here() } })}>
         <span className="kl-g">G</span> {t.google}
-      </button>
+      </button>}
       {sent ? <p className="kl-ok">{t.linkSent}</p> : (
         <form className="kl-email" onSubmit={async (e) => { e.preventDefault(); const { error } = await client.auth.signInWithOtp({ email, options: { emailRedirectTo: here() } }); if (!error) setSent(true); }}>
           <input className="pn-input" type="email" required placeholder={t.email} value={email} onChange={(e) => setEmail(e.target.value)} />
