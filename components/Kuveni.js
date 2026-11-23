@@ -167,7 +167,7 @@ function Comment({ c, t, depth = 0 }) {
     <div className={`kv-c d${depth}`}>
       <Vote n={c.votes} />
       <div className="kv-body">
-        <div className="kv-foot"><Who u={c.u} place={c.place} badge={c.badge} t={t} /><span>· {c.ago}</span></div>
+        <div className="kv-foot"><Who u={c.u} place={c.place} badge={c.badge} t={t} /><span>· {c.ago}</span><span className="kv-ex">{t.ex}</span></div>
         <p>{c.t}</p>
         <div className="kv-foot">
           {c.src && <span className="kv-src">📖 {srcLabel(c.src)}</span>}
@@ -211,7 +211,7 @@ export function KuveniThread({ thread: x }) {
 
           {x.review && (
             <div className="kv-review">
-              <div className="kv-meta"><b>{t.review}</b><StatusPill status={x.review.status} /></div>
+              <div className="kv-meta"><b>{t.review}</b><StatusPill status={x.review.status} /><span className="kv-ex">{t.ex}</span></div>
               <p>{x.review.note}</p>
               <span className="kv-who">{x.review.by}</span>
             </div>
@@ -261,7 +261,7 @@ export function KuveniWord({ w }) {
               <div className="kv-vform">{v.form}</div>
               <div className="kv-vsay">{v.say}</div>
               <div className="kv-audio" title={t.disabled}><span>▶</span><i />{v.audio}</div>
-              <div className="kv-foot"><b style={{ color: 'var(--ink)' }}>{v.place}</b><span>· {v.who}</span></div>
+              <div className="kv-foot"><b style={{ color: 'var(--ink)' }}>{v.place}</b><span>· {v.who}</span><span className="kv-ex">{t.ex}</span></div>
               <SameBtn n={v.same} label={t.same} />
             </article>
           ))}
@@ -277,7 +277,7 @@ export function KuveniWord({ w }) {
             <div key={i} className="kv-c d0">
               <Vote n={c.votes} />
               <div className="kv-body">
-                <div className="kv-foot"><Who u={c.u} badge={c.badge} t={t} /><span className="kv-stance">{c.stance[lang]}</span></div>
+                <div className="kv-foot"><Who u={c.u} badge={c.badge} t={t} /><span className="kv-stance">{c.stance[lang]}</span><span className="kv-ex">{t.ex}</span></div>
                 <p>{c.t}</p>
                 <div className="kv-foot">{c.src ? <span className="kv-src">📖 {srcLabel(c.src)}</span> : <span className="kv-tag">{t.noSource}</span>}</div>
               </div>
