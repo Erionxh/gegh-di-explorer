@@ -837,3 +837,9 @@ input.lj-tile:focus { outline: none; border-style: solid; background: #fffaf0; }
 .lj-note { margin: 0; font-size: 14px; color: var(--ink-2); }
 .rj-shelf { list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 10px; }
 .rj-shelf li { line-height: 1.4; } .rj-shelf span { color: var(--ink-2); } .rj-shelf small { color: var(--ink-2); font-size: 14px; }
+
+.vs-photos { display: grid; gap: 10px; margin-top: 12px; }
+.vs-photos figure { margin: 0; }
+.vs-photos img { width: 100%; height: auto; border-radius: 10px; display: block; }
+.vs-photos figcaption { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+.vs-credit { font-size: 12px; color: var(--muted); margin: 0; }
