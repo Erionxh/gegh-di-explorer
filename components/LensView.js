@@ -44,6 +44,13 @@ export default function LensView({ id }) {
           </div>
         )}
         {p.link && <Link href={p.link[0]} className="btn btn-navy" style={{ alignSelf: 'flex-start' }}>{lang === 'en' ? p.link[2] : p.link[1]}</Link>}
+        {p.pages && (
+          <div className="lens-pages">
+            {p.pages.map(([href, sq, en, dsq, den]) => (
+              <Link key={href} href={href} className="card pad rr-card"><h3 style={{ margin: 0 }}>{lang === 'en' ? en : sq} →</h3><p style={{ margin: '6px 0 0' }}>{lang === 'en' ? den : dsq}</p></Link>
+            ))}
+          </div>
+        )}
       </section>
       <section className="lens-sec"><h2>{t.limits}</h2><p>{c.limits}</p></section>
       <section className="lens-sec">

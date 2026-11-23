@@ -4,7 +4,7 @@ import { checkText } from '../../../lib/server/profanity';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const TOPIC = /^(pyetje|(fjala|rrahje|tema):[A-Za-z0-9-]{1,60})$/;
+const TOPIC = /^(pyetje|(fjala|rrahje|tema|pyetje-geg):[A-Za-z0-9-]{1,60})$/;
 const KINDS = ['post', 'reply', 'version', 'argument'];
 const MAX_AUDIO = 5 * 1024 * 1024;
 
