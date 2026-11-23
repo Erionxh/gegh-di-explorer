@@ -14,10 +14,10 @@ const WORDS = [
 
 const T = {
   sq: {
-    eyebrow: 'GEG 1.0 · Moduli i parë: gegnishtja',
+    eyebrow: 'GEG 1.0 · Piloti: gegnishtja e Mirditës',
     from: (n, p) => `${p ? p + ', ' : ''}${n} të ka dërguar këtë ftesë.`,
     hello: 'Zani yt.', sub: 'Shpëto gjuhën e moçme shqiptare.',
-    lead: 'Ulu pranë më të moshuarit të familjes, nënës, babait, gjyshes ose gjyshit, dhe regjistroje. Disa fjalë, pesë nga pesë: sa të doni. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. Nuk ke asnjë pranë? Thuaji vetë, ashtu si i dëgjoje prej tyre.', module: 'Ky është moduli i parë i projektit: dialekti geg, varianti mirditor. Por çdo zë ruhet. Je nga Tirana, Elbasani, Kavaja, Skrapari, Tepelena, Çamëria apo nga një krahinë tjetër? Regjistro si e thoni ju: do të përdoret kur të vijë moduli i krahinës sate, dhe deri atëherë krahasimi na tregon ku ndahen dialektet.', notLang: 'Shqipja letrare mbetet gjuha jonë e përbashkët; ne nuk e ndryshojmë. Ruajmë dialektet, para se të humbasin.',
+    lead: 'Ulu pranë më të moshuarit të familjes, nënës, babait, gjyshes ose gjyshit, dhe regjistroje. Disa fjalë, pesë nga pesë: sa të doni. Zëri i tyre është shqipja më e moçme që kemi ende gjallë. Nuk ke asnjë pranë? Thuaji vetë, ashtu si i dëgjoje prej tyre.', module: 'Ky është piloti i projektit: dialekti geg, varianti mirditor. Por çdo zë ruhet. Je nga Tirana, Elbasani, Kavaja, Skrapari, Tepelena, Çamëria apo nga një krahinë tjetër? Regjistro si e thoni ju: do të përdoret kur të vijë moduli i krahinës sate, dhe deri atëherë krahasimi na tregon ku ndahen dialektet.', notLang: 'Shqipja letrare mbetet gjuha jonë e përbashkët; ne nuk e ndryshojmë. Ruajmë dialektet, para se të humbasin.',
     consent: 'Pranoj që zëri im, ose zëri i atij që regjistroj me pëlqimin e tij, të ruhet në arkivin GEG 1.0 dhe të përdoret për studim.',
     start: 'Fillo', modeQ: 'Kush do të flasë?', modes: ['Po regjistroj nënën ose babanë', 'Po regjistroj gjyshen ose gjyshin', 'Një tjetër të moshuar', 'Unë vetë, si i kujtoj'], modeHint: 'Sa më i moshuar zëri, aq më e çmuar fjala.',
     cTitle: 'Pëlqimi', cElderLead: 'Para se të nisni, lexoja me zë: «Ky regjistrim është për arkivin GEG 1.0. Zëri yt ruhet për studimin e gjuhës shqipe. Mund ta tërheqësh kurdo.» Pastaj le të thotë vetë një fjali pëlqimi, p.sh. «Po, pranoj.»',
@@ -45,10 +45,10 @@ const T = {
     more: 'Do të shohësh më shumë? Hyr në arkiv →',
   },
   en: {
-    eyebrow: 'GEG 1.0 · First module: Gheg',
+    eyebrow: 'GEG 1.0 · Pilot: Gheg of Mirdita',
     from: (n, p) => `${p ? p + ', ' : ''}${n} sent you this invitation.`,
     hello: 'Zani yt. Your voice.', sub: 'Save the old Albanian language.',
-    lead: 'Sit with the eldest in your family, your mother, father, grandmother or grandfather, and record them. A few words, five at a time: as many as you like. Their voice is the oldest Albanian still alive. No one nearby? Say the words yourself, the way you heard them from them.', module: 'This is the first module of the project: the Gheg dialect, Mirdita variant. But every voice is kept. From Tirana, Elbasan, Kavaja, Skrapar, Tepelena, Çamëria or another region? Record how you say it: it will be used when your region\'s module comes, and until then the comparison shows where the dialects part.', notLang: 'Standard Albanian remains our common language; we are not changing it. We preserve the dialects before they are lost.',
+    lead: 'Sit with the eldest in your family, your mother, father, grandmother or grandfather, and record them. A few words, five at a time: as many as you like. Their voice is the oldest Albanian still alive. No one nearby? Say the words yourself, the way you heard them from them.', module: 'This is the project's pilot: the Gheg dialect, Mirdita variant. But every voice is kept. From Tirana, Elbasan, Kavaja, Skrapar, Tepelena, Çamëria or another region? Record how you say it: it will be used when your region\'s module comes, and until then the comparison shows where the dialects part.', notLang: 'Standard Albanian remains our common language; we are not changing it. We preserve the dialects before they are lost.',
     consent: 'I agree that my voice, or the voice of the person I record with their consent, is kept in the GEG 1.0 archive and used for study.',
     start: 'Start', modeQ: 'Who will speak?', modes: ['I am recording my mother or father', 'I am recording my grandmother or grandfather', 'Another elder', 'Me, as I remember it'], modeHint: 'The older the voice, the more precious the word.',
     cTitle: 'Consent', cElderLead: 'Before you start, read this aloud: "This recording is for the GEG 1.0 archive. Your voice is kept for the study of the Albanian language. You can withdraw it at any time." Then let them say a sentence of consent themselves, e.g. "Yes, I agree."',

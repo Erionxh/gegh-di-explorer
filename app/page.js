@@ -44,6 +44,7 @@ export default function Home() {
               <li key={v} className={i === 0 ? 'now' : ''}><strong>{v}</strong><span>{r}</span></li>
             ))}
           </ol>
+          <p style={{ color: 'var(--ink-2)', fontSize: 15 }}>{h.roadmapNote}</p>
           <p className="why-open"><Link href="/kujtesa">{h.whyOpen} →</Link></p>
         </div>
 
