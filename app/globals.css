@@ -858,3 +858,8 @@ input.lj-tile:focus { outline: none; border-style: solid; background: #fffaf0; }
 .ipa-key span { font-size: 11px; color: var(--muted); }
 .ipa-ex { margin: 6px 0 0; padding-left: 18px; font-size: 13px; color: var(--ink-2); }
 .ipa-sticky { position: sticky; top: 0; z-index: 5; background: var(--bg, #f6efe1); padding: 6px 0; }
+.st-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.st-tile { background: #fff; border: 1px solid var(--line, #e5dcc8); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 2px; }
+.st-tile b { font-size: 40px; line-height: 1; color: var(--navy, #1d2b45); font-family: Inter, sans-serif; }
+.st-tile span { font-weight: 600; font-size: 15px; }
+.st-tile small { color: #2e7d4f; font-size: 13px; }

@@ -34,10 +34,19 @@ export async function GET() {
     return { exact: known.size, estimated: guessed };
   };
   const all = sessionsOf(rows);
+  // Kuveni dhe shqyrtimi: vetëm numra.
+  const [approved, pending, kvPosts, kvPosts48] = await Promise.all([
+    count(db.from('contributions').select('id', { count: 'exact', head: true }).eq('status', 'approved')),
+    count(db.from('contributions').select('id', { count: 'exact', head: true }).eq('status', 'pending')),
+    count(db.from('kv_posts').select('id', { count: 'exact', head: true }).eq('status', 'live')),
+    count(db.from('kv_posts').select('id', { count: 'exact', head: true }).eq('status', 'live').gte('created_at', since48)),
+  ]);
+  const villages = new Set(rows.map((r) => (r.village || '').split('·')[0].trim().toLowerCase()).filter(Boolean)).size;
   const recent = sessionsOf(rows.filter((r) => r.created_at >= since48));
   return Response.json({
     total, last48h: last48, last7d: last7,
     sessions: all.exact + all.estimated, sessionsEstimated: all.estimated,
     sessions48h: recent.exact + recent.estimated,
-  }, { headers: { 'Cache-Control': 's-maxage=300' } });
+    approved, pending, villages, kvPosts, kvPosts48h: kvPosts48, at: new Date().toISOString(),
+  }, { headers: { 'Cache-Control': 's-maxage=60' } });
 }
