@@ -44,6 +44,14 @@ export default function VendetShenjta() {
             <div className="tr-top"><span className={`tr-tag ${x.st}`}>{t[x.st]}</span></div>
             <h2>{x.name}</h2>
             <p>{lang === 'en' ? x.en : x.sq}</p>
+            {x.img && (
+              <div className="vs-photos">
+                {x.img.map(([src, sq, en]) => (
+                  <figure key={src}><img src={src} alt={lang === 'en' ? en : sq} loading="lazy" /><figcaption>{lang === 'en' ? en : sq}</figcaption></figure>
+                ))}
+                <p className="vs-credit">{lang === 'en' ? 'Photos: GEG 1.0' : 'Foto: GEG 1.0'}</p>
+              </div>
+            )}
           </article>
         ))}
       </div>
